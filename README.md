@@ -4,14 +4,18 @@
 
 This dataPipeline is a course work project for CS516 course at Duke University.
 
-##Dataset
+## Dataset
 The example dataset is Yelp Dataset from https://www.yelp.com/dataset/challenge
 
 ## Environment Set Up
 
-###Python
+### Python
 
-###MongoDB
+Please download the following packages:
+* pymongo
+* bson
+
+### MongoDB
 
 To download and install MongoDB, follow the instruction here:
 https://www.mongodb.com/download-center/community
