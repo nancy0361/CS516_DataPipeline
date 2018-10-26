@@ -1,4 +1,9 @@
+import sys
+sys.path.append('..')
+
 from flask import Flask, render_template, request
+from dataMining.mongoQuery import askMongo
+
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -16,6 +21,7 @@ def bubble_chart():
 def receiveInput():
     app.logger.debug("receiving Json...")
     if request.json:
+        askMongo()
         data = request.get_json()
         return "Thanks. Your age is %s\n" % data['age']
 
