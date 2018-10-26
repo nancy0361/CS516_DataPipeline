@@ -50,7 +50,11 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				</button>
-				<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database<span class="dashboard_text">Analysis System</span></a></h1>
+				{% if number %}
+				<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database {{number[1]}}<span class="dashboard_text">Analysis System</span></a></h1>
+				{% else%}
+				<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database <span class="dashboard_text">Analysis System</span></a></h1>
+				{% endif %}
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="sidebar-menu">
@@ -71,7 +75,7 @@
 						</a>
 					</li>
 					<li class="treeview">
-						<a href="#">
+						<a href="bubble-chart">
 						<i class="fa fa-bar-chart"></i> <span>Analysis</span>
 						<i class="fa fa-angle-left pull-right"></i>
 						</a>

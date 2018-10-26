@@ -7,6 +7,10 @@ app.config.from_pyfile('config.py')
 def hello_world():
     return render_template('homepage.html')
 
+@app.route('/bubble-chart')
+def bubble_chart():
+    return render_template('bubble_chart.html')
+
 
 @app.route("/input", methods=['POST'])
 def receiveInput():
