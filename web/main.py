@@ -5,7 +5,7 @@ app.config.from_pyfile('config.py')
 
 @app.route('/test')
 def hello_world():
-    return render_template('hello.html')
+    return render_template('html_test.html')
 
 
 @app.route("/input", methods=['POST'])
