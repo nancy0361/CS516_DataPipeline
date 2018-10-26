@@ -3,9 +3,9 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
-@app.route('/test')
+@app.route('/homepage')
 def hello_world():
-    return render_template('html_test.html')
+    return render_template('homepage.html')
 
 
 @app.route("/input", methods=['POST'])
