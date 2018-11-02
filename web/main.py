@@ -3,7 +3,7 @@ sys.path.append('..')
 
 from flask import Flask, render_template, request
 from dataMining.mongoQuery import askMongo
-
+import json
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -14,7 +14,18 @@ def hello_world():
 
 @app.route('/bubble-chart')
 def bubble_chart():
-    return render_template('bubble_chart.html')
+    test = [
+        {"text": "Java", "count": "236"},
+        {"text": ".Net", "count": "382"},
+        {"text": "Php", "count": "170"},
+        {"text": "Ruby", "count": "123"},
+        {"text": "D", "count": "12"},
+        {"text": "Python", "count": "170"},
+        {"text": "C/C++", "count": "382"},
+        {"text": "Pascal", "count": "10"},
+        {"text": "Something", "count": "170"},
+      ]
+    return render_template('bubble_chart.html', temp=json.dumps(test))
 
 
 @app.route("/input", methods=['POST'])
