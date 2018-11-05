@@ -31,7 +31,15 @@ body a:hover{
 	text-decoration:none;
 }
 .main-content {
-    position: relative;
+    /* position: relative; */
+    width: 80%;
+    float: right;
+    margin-right: 20px;
+}
+.main-menu {
+    width: 10%;
+    /* position: relative; */
+    float: left;
 }
 .sidebar-left .navbar-brand {
     height: 61px;

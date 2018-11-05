@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>General Elements</title>
+<title>Homepage</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="" />
@@ -22,7 +22,6 @@
  <!-- side nav css file -->
  
  <!-- js-->
-<script src="../static/js/jquery-1.11.1.min.js"></script>
 <script src="../static/js/modernizr.custom.js"></script>
 
 <!--webfonts-->
@@ -35,11 +34,26 @@
 <link href="../static/css/custom.css" rel="stylesheet">
 <!--//Metis Menu -->
 
+<script src="../static/js/modernizr.js"></script>
+<!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+<link rel="stylesheet" type="text/css" href="rs-plugin/rs-plugin/css/settings.css" media="screen" />
+
+<!-- Bootstrap Core CSS -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom CSS -->
+<link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../static/css/ionicons.min.css" rel="stylesheet">
+<link href="../static/css/main.css" rel="stylesheet">
+<link href="../static/css/style2.css" rel="stylesheet">
+<link href="../static/css/responsive.css" rel="stylesheet">
+
+<!-- COLORS -->
+<link rel="stylesheet" id="color" href="../static/css/default.css">
+
 </head> 
 
 <body class="cbp-spmenu-push">
-	<div class="main-content">
-	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left main-menu" id="cbp-spmenu-s1">
 		<!--left-fixed -navigation-->
 		<aside class="sidebar-left">
 		<nav class="navbar navbar-inverse">
@@ -72,7 +86,12 @@
 					<li class="treeview">
 						<a href="#">
 						<i class="fa fa-upload"></i> <span>Upload Database</span>
+						<i class="fa fa-angle-left pull-right"></i>
 						</a>
+						<ul class="treeview-menu">
+							<li><a href="#"><i class="fa fa-angle-right"></i> Search</a></li>
+							<li><a href="#"><i class="fa fa-angle-right"></i> Register</a></li>
+						</ul>
 					</li>
 					<li class="treeview">
 						<a href="bubble-chart">
@@ -96,5 +115,54 @@
 		</aside>
 	</div>
 		<!--left-fixed -navigation-->
+	<section class="innovaction padding-top-150 padding-bottom-100">
+		<div style="z-index: 6; font-size:70px; color:#1cd1aa; text-transform:uppercase; white-space: nowrap; margin-left: 10%;">Welcome To </div>	
+		<div style="z-index: 6;  font-size:50px; color:#ffffff; text-transform:uppercase; white-space: nowrap; margin-left: 10%;">Review Analysis System </div>
+		<hr>
+		<div style="font-size:20px;color:#ffffff; margin-left: 10%; ">Quick Start With &nbsp;&nbsp;<a href="#." class="btn">Upload Database</a></div>	
+	</section>
+	<br>
+	<div class="main-content">
+		<div class="heading text-center">
+			<h4 style="color: #252525;font-size: 24px;">What We Are</h4>
+			<hr>
+		</div>
+		<div class="heading text-center">
+			<h4 style="color: #252525;font-size: 24px;">What We Offer</h4>
+			<hr>
+		</div>
+		
+		<div class="offers">
+			<ul class="row">
+				<li class="col-sm-4"> <img src="../static/images/offer-img-6.jpg" class="img-responsive" alt="" >
+					<h5>Upload Database</h5>
+					<br>
+					<hr class="main">
+					<hr>
+					<p>We offer the options for the customer to upload their own review data to set up the database.</p>
+				</li>
+				<li class="col-sm-4"> <img src="../static/images/offer-img-5.jpg" class="img-responsive" alt="" >
+					<h5>Query Function and Result Visualization</h5>
+					<hr class="main">
+					<hr>
+					<p>With only a few clicks, customers can realize query funtion with the review database they set up. Some of the result of the query can be visualized.</p>
+				</li>
+				<li class="col-sm-4"> <img src="../static/images/offer-img-4.jpg" class="img-responsive" alt="" >
+					<h5>Sentiment Analysis</h5>
+					<br>
+					<hr class="main">
+					<hr>
+					<p>We provide the function of review sentiment analysis.</p>
+				</li>
+			</ul>
+		</div>
+
+		<br>
+		<br>
+		<div class="heading text-center">
+			<h4 style="color: #252525;font-size: 24px;">Our Team</h4>
+			<hr>
+		</div>
+	</div>
 </body>
 </html>
