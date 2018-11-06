@@ -9,8 +9,12 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
 @app.route('/homepage')
-def hello_world():
+def open_homepage():
     return render_template('homepage.html')
+
+@app.route('/Upload Database')
+def open_upload_page():
+    return render_template('upload.html')
 
 @app.route('/bubble-chart')
 def bubble_chart():
