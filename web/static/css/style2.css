@@ -4078,14 +4078,14 @@ footer button {
 	color: #333;
 }
 .rights {
-	background: #252525;
+	background: #ffffff;
 	padding: 20px 0;
 	text-align: left;
 	position: relative;
 }
 .rights p {
 	font-weight: 500;
-	color: #cccccc;
+	color: #000000;
 	margin: 0px;
 	font-size: 13px;
 }
