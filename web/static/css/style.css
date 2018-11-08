@@ -33,7 +33,7 @@ body a:hover{
 .main-content {
     /* position: relative; */
     width: 80%;
-    float: right;
+    margin-left: 10%;
     margin-right: 20px;
 }
 .main-menu {
