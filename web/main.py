@@ -6,7 +6,6 @@ from dataMining.mongoQuery import askMongo
 import json
 
 app = Flask(__name__)
-app.config.from_pyfile('config.py')
 
 @app.route('/homepage')
 def open_homepage():
@@ -34,7 +33,6 @@ def bubble_chart():
 
 @app.route("/input", methods=['POST'])
 def receiveInput():
-    app.logger.debug("receiving Json...")
     if request.json:
         askMongo()
         data = request.get_json()
@@ -45,4 +43,4 @@ def receiveInput():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
