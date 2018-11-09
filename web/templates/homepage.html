@@ -1,133 +1,135 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<title>Homepage</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<title>Homepage</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-<!-- Bootstrap Core CSS -->
-<link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- Bootstrap Core CSS -->
+	<link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
-<!-- Custom CSS -->
-<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+	<!-- Custom CSS -->
+	<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
 
-<!-- font-awesome icons CSS -->
-<link href="../static/css/font-awesome.css" rel="stylesheet"> 
-<!-- //font-awesome icons CSS -->
+	<!-- font-awesome icons CSS -->
+	<link href="../static/css/font-awesome.css" rel="stylesheet">
+	<!-- //font-awesome icons CSS -->
 
- <!-- side nav css file -->
- <link href='../static/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
- <!-- side nav css file -->
- 
- <!-- js-->
-<script src="../static/js/modernizr.custom.js"></script>
+	<!-- side nav css file -->
+	<link href='../static/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' />
+	<!-- side nav css file -->
 
-<!--webfonts-->
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-<!--//webfonts--> 
+	<!-- js-->
+	<script src="../static/js/modernizr.custom.js"></script>
 
-<!-- Metis Menu -->
-<script src="../static/js/metisMenu.min.js"></script>
-<script src="../static/js/custom.js"></script>
-<link href="../static/css/custom.css" rel="stylesheet">
-<!--//Metis Menu -->
+	<!--webfonts-->
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+	 rel="stylesheet">
+	<!--//webfonts-->
 
-<script src="../static/js/modernizr.js"></script>
-<!-- SLIDER REVOLUTION 4.x CSS SETTINGS
+	<!-- Metis Menu -->
+	<script src="../static/js/metisMenu.min.js"></script>
+	<script src="../static/js/custom.js"></script>
+	<link href="../static/css/custom.css" rel="stylesheet">
+	<!--//Metis Menu -->
+
+	<script src="../static/js/modernizr.js"></script>
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS
 <link rel="stylesheet" type="text/css" href="rs-plugin/rs-plugin/css/settings.css" media="screen" /> -->
 
-<!-- Bootstrap Core CSS -->
-<link href="../static/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom CSS -->
-<link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="../static/css/ionicons.min.css" rel="stylesheet">
-<link href="../static/css/main.css" rel="stylesheet">
-<link href="../static/css/style2.css" rel="stylesheet">
-<link href="../static/css/responsive.css" rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../static/css/ionicons.min.css" rel="stylesheet">
+	<link href="../static/css/main.css" rel="stylesheet">
+	<link href="../static/css/style2.css" rel="stylesheet">
+	<link href="../static/css/responsive.css" rel="stylesheet">
 
-<!-- COLORS -->
-<link rel="stylesheet" id="color" href="../static/css/default.css">
+	<!-- COLORS -->
+	<link rel="stylesheet" id="color" href="../static/css/default.css">
 
-</head> 
+</head>
 
 <body class="cbp-spmenu-push">
 	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left main-menu" id="cbp-spmenu-s1">
 		<!--left-fixed -navigation-->
 		<aside class="sidebar-left">
-		<nav class="navbar navbar-inverse">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				</button>
-				{% if number %}
-				<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database {{number[1]}}<span class="dashboard_text">Analysis System</span></a></h1>
-				{% else%}
-				<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database <span class="dashboard_text">Analysis System</span></a></h1>
-				{% endif %}
-			</div>
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="sidebar-menu">
-					<li class="header">MAIN NAVIGATION</li>
-					<li class="treeview">
-						<a href="homepage">
-						<i class="fa fa-home"></i> <span>Homepage</span>
-						</a>
-					</li>
-					<li class="treeview">
-						<a href="#">
-						<i class="fa fa-book"></i> <span>Background</span>
-						</a>
-					</li>
-					<li class="treeview">
-						<a href="Upload Database">
-						<i class="fa fa-upload"></i> <span>Upload Database</span>
-						<i class="fa fa-angle-left pull-right"></i>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-angle-right"></i> Search</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i> Register</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="bubble-chart">
-						<i class="fa fa-bar-chart"></i> <span>Analysis</span>
-						<i class="fa fa-angle-left pull-right"></i>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-angle-right"></i> Search</a></li>
-							<li><a href="#"><i class="fa fa-angle-right"></i> Register</a></li>
-						</ul>
-					</li>
-					<li class="treeview">
-						<a href="#">
-						<i class="fa fa-edit"></i> <span>Results</span>
-						</a>
-					</li>
-					<li class="treeview">
-							<a href="#">
-							<i class="fa fa-book"></i> <span>Acknowledge</span>
+			<nav class="navbar navbar-inverse">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					{% if number %}
+					<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database {{number[1]}}<span class="dashboard_text">Analysis
+								System</span></a></h1>
+					{% else%}
+					<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database <span class="dashboard_text">Analysis
+								System</span></a></h1>
+					{% endif %}
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="sidebar-menu">
+						<li class="header">MAIN NAVIGATION</li>
+						<li class="treeview">
+							<a href="homepage">
+								<i class="fa fa-home"></i> <span>Homepage</span>
 							</a>
 						</li>
-				</ul>
-			</div>
-          <!-- /.navbar-collapse -->
-		</nav>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-book"></i> <span>Background</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="Upload Database">
+								<i class="fa fa-upload"></i> <span>Upload Database</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="bubble-chart">
+								<i class="fa fa-bar-chart"></i> <span>Analysis</span>
+								<i class="fa fa-angle-left pull-right"></i>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="#"><i class="fa fa-angle-right"></i> Search</a></li>
+								<li><a href="#"><i class="fa fa-angle-right"></i> Register</a></li>
+							</ul>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-edit"></i> <span>Results</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-book"></i> <span>Acknowledge</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
 		</aside>
 	</div>
-		<!--left-fixed -navigation-->
+	<!--left-fixed -navigation-->
 	<section class="innovaction padding-top-150 padding-bottom-100">
-		<div style="z-index: 6; font-size:70px; color:#1cd1aa; text-transform:uppercase; white-space: nowrap; margin-left: 10%;">Welcome To </div>	
-		<div style="z-index: 6;  font-size:50px; color:#ffffff; text-transform:uppercase; white-space: nowrap; margin-left: 10%;">Review Analysis System </div>
+		<div style="z-index: 6; font-size:70px; color:#1cd1aa; text-transform:uppercase; white-space: nowrap; margin-left: 10%;">Welcome
+			To </div>
+		<div style="z-index: 6;  font-size:50px; color:#ffffff; text-transform:uppercase; white-space: nowrap; margin-left: 10%;">Review
+			Analysis System </div>
 		<hr>
-		<div style="font-size:20px;color:#ffffff; margin-left: 10%; ">Quick Start With &nbsp;&nbsp;<a href="#." class="btn">Upload Database</a></div>	
+		<div style="font-size:20px;color:#ffffff; margin-left: 10%; ">Quick Start With &nbsp;&nbsp;<a href="Upload Database" class="btn">Upload
+				Database</a></div>
 	</section>
 	<br>
-	<div  style="margin-left: 20%;">
+	<div style="margin-left: 20%;">
 		<div class="heading text-center">
 			<h4 style="color: #252525;font-size: 24px;">About Us</h4>
 			<hr>
@@ -136,23 +138,24 @@
 			<h4 style="color: #252525;font-size: 24px;">What We Offer</h4>
 			<hr>
 		</div>
-		
+
 		<div class="offers">
 			<ul class="row">
-				<li class="col-sm-4"> <img src="../static/images/offer-img-6.jpg" class="img-responsive" alt="" >
+				<li class="col-sm-4"> <img src="../static/images/offer-img-6.jpg" class="img-responsive" alt="">
 					<h5>Build Database</h5>
 					<br>
 					<hr class="main">
 					<hr>
 					<p>We offer the options for the customer to upload their own review data to set up the database.</p>
 				</li>
-				<li class="col-sm-4"> <img src="../static/images/offer-img-5.jpg" class="img-responsive" alt="" >
+				<li class="col-sm-4"> <img src="../static/images/offer-img-5.jpg" class="img-responsive" alt="">
 					<h5>Query Function and Result Visualization</h5>
 					<hr class="main">
 					<hr>
-					<p>With only a few clicks, customers can realize query funtion with the review database they set up. Some of the result of the query can be visualized.</p>
+					<p>With only a few clicks, customers can realize query funtion with the review database they set up. Some of the
+						result of the query can be visualized.</p>
 				</li>
-				<li class="col-sm-4"> <img src="../static/images/offer-img-4.jpg" class="img-responsive" alt="" >
+				<li class="col-sm-4"> <img src="../static/images/offer-img-4.jpg" class="img-responsive" alt="">
 					<h5>Sentiment Analysis</h5>
 					<br>
 					<hr class="main">
@@ -170,33 +173,27 @@
 		</div>
 
 		<div class="offers">
-				<ul class="row">
-					<li class="col-sm-3"> <img src="../static/images/siyuan liu.jpg" class="img-responsive" alt="" >
-						<h5>Siyuan Liu</h5>
-						<p>siyuan.liu@duke.edu</p>
-					</li>
-					<li class="col-sm-3"> <img src="../static/images/yunzhen zou.jpg" class="img-responsive" alt="" >
-						<h5>Yunzhen Zou</h5>
-						<p>yunzhen.zou@duke.edu</p>
-					</li>
-					<li class="col-sm-3"> <img src="../static/images/naixin yu.jpg" class="img-responsive" alt="" >
-						<h5>Naixin Yu</h5>
-						<p>naixin.yu@duke.edu</p>
-					</li>
-					<li class="col-sm-3"> <img src="../static/images/ming yang.jpg" class="img-responsive" alt="" >
-						<h5>Ming Yang</h5>
-						<p>ming.yang2@duke.edu</p>
-					</li>
-				</ul>
-			</div>
-
-		<!-- <div class="rights">
-			<div class="container">
-				<p>Copyright &copy; 2017.Company name All rights reserved.</p>
-				<div class="scroll"> <a href="#wrap" class="go-up"><i class="lnr lnr-arrow-up"></i></a> </div>
-			</div>
-		</div> -->
+			<ul class="row">
+				<li class="col-sm-3"> <img src="../static/images/siyuan liu.jpg" class="img-responsive" alt="">
+					<h5>Siyuan Liu</h5>
+					<p>siyuan.liu@duke.edu</p>
+				</li>
+				<li class="col-sm-3"> <img src="../static/images/yunzhen zou.jpg" class="img-responsive" alt="">
+					<h5>Yunzhen Zou</h5>
+					<p>yunzhen.zou@duke.edu</p>
+				</li>
+				<li class="col-sm-3"> <img src="../static/images/naixin yu.jpg" class="img-responsive" alt="">
+					<h5>Naixin Yu</h5>
+					<p>naixin.yu@duke.edu</p>
+				</li>
+				<li class="col-sm-3"> <img src="../static/images/ming yang.jpg" class="img-responsive" alt="">
+					<h5>Ming Yang</h5>
+					<p>ming.yang2@duke.edu</p>
+				</li>
+			</ul>
+		</div>
 	</div>
-	
+
 </body>
+
 </html>
