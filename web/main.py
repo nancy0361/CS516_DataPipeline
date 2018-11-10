@@ -2,10 +2,12 @@ import sys
 sys.path.append('..')
 
 from flask import Flask, render_template, request
+from flask_uploads import UploadSet, configure_uploads
 from dataMining.mongoQuery import askMongo
 import json
 
 app = Flask(__name__)
+app.config.from_pyfile('config.py')
 
 @app.route('/homepage')
 def open_homepage():
@@ -41,6 +43,18 @@ def receiveInput():
     else:
         return "no json received\n"
 
+dataset = UploadSet(name='dataset', extensions='json')
+# app.config['UPLOADED_DATASET_DEST'] = '../input'
+configure_uploads(app, dataset)
+
+@app.route("/upload", methods=['Post', 'Get'])
+def upload():
+    if request.method == 'POST' and 'dataset' in request.files:
+        file = request.files['dataset']
+        dataset.save(file)
+        return file.filename
+    return render_template('uploadTest.html')
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
