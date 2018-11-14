@@ -1,0 +1,10 @@
+{
+  "Business" : {
+    "_id" : "business_id",
+    "bname" : "name"
+  },
+  "User" : {
+    "_id" : "user_id",
+    "uname" : "name"
+  }
+}
