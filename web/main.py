@@ -48,7 +48,6 @@ def receiveInput():
         return "no json received\n"
 
 dataset = UploadSet(name='dataset', extensions='json')
-# app.config['UPLOADED_DATASET_DEST'] = '../input'
 configure_uploads(app, dataset)
 
 @app.route("/upload", methods=['Post', 'Get'])
