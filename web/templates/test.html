@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>JavaScript display</title>
+  <script language="javascript" type="text/javascript">
+  function display(){
+      var div1 = document.getElementById("div1");
+      if(div1.style.display=="none"){
+          div1.style.display = "block";
+          div2.style.display = "none";
+      }else{
+          div1.style.display = "none";
+          div2.style.display = "block";
+      }
+  }
+  </script>
+ </head>
+ <body>
+  <input type="button" value="点击" onclick="display()"></input>
+  <div id="div1">www.java-learn.com</div>
+  <div id="div2">Java学习网_Java学习从此开始</div>
+ </body>
+</html>

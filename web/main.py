@@ -9,8 +9,12 @@ import json
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
 
-@app.route('/homepage')
+@app.route('/hello')
 def open_homepage():
+    return render_template('hello.html')
+
+@app.route('/homepage')
+def open_hello():
     return render_template('homepage.html')
 
 @app.route('/Upload Database')

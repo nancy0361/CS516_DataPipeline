@@ -1,39 +1,47 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-    <title>Upload Database</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+	<title>Upload Database</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<!-- Bootstrap Core CSS -->
+	<link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
-    <!-- Custom CSS -->
-    <link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+	<!-- Custom CSS -->
+	<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
 
-    <!-- font-awesome icons CSS -->
-    <link href="../static/css/font-awesome.css" rel="stylesheet"> 
-    <!-- //font-awesome icons CSS -->
+	<!-- font-awesome icons CSS -->
+	<link href="../static/css/font-awesome.css" rel="stylesheet">
+	<!-- //font-awesome icons CSS -->
 
-    <!-- side nav css file -->
-    <link href='../static/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
-    <!-- side nav css file -->
-    
-    <!-- js-->
-    <script src="../static/js/modernizr.custom.js"></script>
+	<!-- side nav css file -->
+	<link href='../static/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' />
+	<!-- side nav css file -->
 
-    <!--webfonts-->
-    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-    <!--//webfonts--> 
+	<!-- js-->
+	<script src="../static/js/modernizr.custom.js"></script>
 
-    <!-- Metis Menu -->
-    <script src="../static/js/metisMenu.min.js"></script>
-    <script src="../static/js/custom.js"></script>
-    <link href="../static/css/custom.css" rel="stylesheet">
-    <!--//Metis Menu -->
-</head> 
+	<!--webfonts-->
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+	 rel="stylesheet">
+	<!--//webfonts-->
+
+	<!-- Metis Menu -->
+	<script src="../static/js/metisMenu.min.js"></script>
+	<script src="../static/js/custom.js"></script>
+	<link href="../static/css/custom.css" rel="stylesheet">
+	<!--//Metis Menu -->
+
+	<link href="../static/css/style2.css" rel="stylesheet">
+	<link href="../static/css/pretty-checkbox.css" rel="stylesheet">
+	<link href="../static/css/my.css" rel="stylesheet">
+
+
+</head>
 
 <body class="cbp-spmenu-push">
 	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left main-menu" id="cbp-spmenu-s1">
@@ -100,4 +108,183 @@
 		</aside>
 	</div>
 	<!--left-fixed -navigation-->
+	<div style="margin-left: 20%; margin-top: 30px">
+		<div class="heading text-center">
+			<h4 style="color: #252525;font-size: 24px;">Database Design</h4>
+			<hr>
+		</div>
+		<h4>What table do you want to have?</h4>
+		<br />
+		<br />
+		<div class="pretty p-svg p-curve">
+			<input type="checkbox" id="table_business" onclick="exe_open_business()" />
+			<div class="state p-success">
+				<!-- svg path -->
+				<svg width='20px' height='20px' class="svg svg-icon" viewBox="0 5 20 15">
+					<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+					 style="stroke: white;fill:white;"></path>
+				</svg>
+				<label style="font-size: 20px;">Business</label>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div id="business_show" style="display: none; background-color: #F8FcED; border-radius:10px; width:70%; height:100%; border-color: #252525;border-width: 1px; margin-left: 40px;">
+			<br />
+			<span style="margin-left: 20px; font-size: 18px;"><b>Please choose the columns you want for the "Business" table:</b></span>
+			<br />
+			<br />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">business_id</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:<input class="input_text_style"
+						 type="text" id="business_id" /></label>
+				</div>
+			</div>
+			<hr class="table_colunm_hr" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">star</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="star" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">name</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="name" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">latitude</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="latitude" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">longtitude</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="longtitude" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="
+		 checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">state</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="state" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="
+		 checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">city</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="city" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="
+		 checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">category</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="category" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="
+		 checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">zipcode</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: <input class="input_text_style"
+						 type="text" id="zipcode" /></label>
+				</div>
+			</div>
+			<br />
+			<br />
+		</div>
+		<script>
+			function exe_open_business() {
+				var is_checked = document.getElementById("table_business").checked;
+				var div_business = document.getElementById("business_show");
+				if (is_checked == true) {
+					// alert("复选框选中时触发一个方法！");
+					div_business.style.display = "block";
+				}
+				else {
+					div_business.style.display = "none";
+				}
+			}
+		</script>
+
+		<br />
+		<div class="pretty p-svg p-curve">
+			<input type="checkbox" />
+			<div class="state p-success">
+				<!-- svg path -->
+				<svg width='20px' height='20px' class="svg svg-icon" viewBox="0 5 20 15">
+					<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+					 style="stroke: white;fill:white;"></path>
+				</svg>
+				<label style="font-size: 20px;">User</label>
+			</div>
+		</div>
+
+	</div>
+
+
 </body>

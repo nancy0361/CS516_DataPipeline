@@ -1,9 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>D3 Tutorial</title>
-    </head>
-    <body>
-        <p>Hello World</p>
-    </body>
+<head>
+<meta charset="UTF-8">
+<title>option触发事件</title>
+<script src="../static/js/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<select name="" id="selected">
+<option value="1001">option1</option>
+<option value="1002">option2</option>
+<option value="1003">option3</option>
+<option value="1004">option4</option>
+<option value="1005">option5</option>
+</select>
+<div id="test">
+<dd class="sheng">您所在省：</dd>
+<dd><input type="text" class="input1" placeholder="浙江省"></dd>
+</div>
+</body>
+<script>
+$(document).ready(function(){
+/*
+ * 方法一    
+$("#selected").on("change",function(){
+if ($("option:selected",this).index() ==0) {
+$(".sheng").html("您所在省：");
+$(".input1").attr("placeholder","请输入您所在省");
+};
+if ($("option:selected",this).index() ==1) {
+$(".sheng").html("您所在市：");
+$(".input1").attr("placeholder","请输入您所在市");
+};
+if ($("option:selected",this).index() ==2) {
+$(".sheng").html("您的爱好：");
+$(".input1").attr("placeholder","请输入您的爱好");
+};
+if ($("option:selected",this).index() ==3) {
+$(".sheng").html("您的性别：");
+$(".input1").attr("placeholder","请输入您的性别");
+};
+if ($("option:selected",this).index() ==4) {
+$(".sheng").html("您最喜欢的水果：");
+$(".input1").attr("placeholder","请输入您最喜欢的水果");
+};
+});
+*/
+
+/*方法二*/
+$("#selected").on("change",function(){
+if ($("option:selected",this).val() == '1001') {
+$(".sheng").html("您最喜欢的水果：");
+$(".input1").attr("placeholder",'请输入您最喜欢的水果');
+}
+else if ($("option:selected",this).val() == '1002') {
+$(".sheng").html("您的性别：");
+$(".input1").attr("placeholder",'请输入您的性别');
+}
+else if ($("option:selected",this).val() == '1003') {
+$(".sheng").html("您的爱好：");
+$(".input1").attr("placeholder",'请输入您的爱好');
+}
+else if ($("option:selected",this).val() == '1004') {
+$(".sheng").html("您所在市：");
+$(".input1").attr("placeholder",'请输入您所在市');
+}
+else{
+$(".sheng").html("您所在省：");
+$(".input1").attr("placeholder",'请输入您所在省');
+}
+});
+});
+</script>
+<div style="margin-left:10%;">
+    <input type="checkbox" id="test1">
+    <label for="test1" >
+        ::before
+        "Beginning"
+        ::after
+    </label>
+</div>
 </html>
