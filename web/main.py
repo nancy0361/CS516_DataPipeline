@@ -58,6 +58,12 @@ def upload():
         return file.filename
     return render_template('uploadTest.html')
 
+@app.route("/requirement", methods=['Post'])
+def getRequirement():
+    data = request.data
+    print(data)
+    return "receive message"
+
 
 if __name__ == '__main__':
     app.run()
