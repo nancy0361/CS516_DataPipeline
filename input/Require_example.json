@@ -1,10 +1,15 @@
 {
   "Business" : {
     "_id" : "business_id",
-    "bname" : "name"
+    "bname" : "name",
+    "city" : "city",
+    "bstar" : "stars",
+    "category" : "categories"
   },
   "User" : {
     "_id" : "user_id",
-    "uname" : "name"
+    "uname" : "name",
+    "review_count" : "review_count",
+    "signup_data" : "yelping_since"
   }
 }

@@ -51,6 +51,20 @@ if __name__ == '__main__':
         for one in mycol.find():
             print(one)
 
-    print(myClient.list_database_names())
-    print(mydb.list_collection_names())
+    print('---------------------------------------------')
+    report = {}
+    report['Database'] = mydb.command("dbstats")
+    report['Collection'] = {}
+    report['Collection']['collection_names'] = mydb.list_collection_names()
+    for table in mydb.list_collection_names():
+        stats = mydb.command("collstats", table)
+        report['Collection'][table] = {}
+        report['Collection'][table]['name'] = stats['ns']
+        report['Collection'][table]['pk'] = '_id'
+        report['Collection'][table]['documents'] = stats['count']
+        report['Collection'][table]['size'] = stats['size']
+        
+    print(report)
+    # print(myClient.list_database_names())
+    # print(mydb.list_collection_names())
     removeDatabase("testDB",myClient)
