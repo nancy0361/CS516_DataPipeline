@@ -1,24 +1,34 @@
 <!doctype html>
-<html lang="en">
- <head>
-  <meta charset="UTF-8">
-  <title>JavaScript display</title>
-  <script language="javascript" type="text/javascript">
-  function display(){
-      var div1 = document.getElementById("div1");
-      if(div1.style.display=="none"){
-          div1.style.display = "block";
-          div2.style.display = "none";
-      }else{
-          div1.style.display = "none";
-          div2.style.display = "block";
-      }
-  }
-  </script>
- </head>
- <body>
-  <input type="button" value="点击" onclick="display()"></input>
-  <div id="div1">www.java-learn.com</div>
-  <div id="div2">Java学习网_Java学习从此开始</div>
- </body>
+<html>
+
+<head>
+</head>
+
+<body>
+    <script>
+        $(function () {
+            $('#submit').click(function () {
+                var d = {};
+                var t = $('form').serializeArray();
+                $.each(t, function () {
+                    d[this.name] = this.value;
+                    alert(this.name+this.value)
+                });
+                alert(JSON.stringify(d));
+            });
+        });
+    </script>
+    <form>
+        <input id="a1" type="input" value="" name="a1"><br>
+        <input id="a2" type="input" value="" name="a2"><br>
+        <input id="a3" type="input" value="" name="a3"><br>
+        <input id="a4" type="input" value="" name="a4"><br>
+        <select id="ax" name="ax">
+            <option value="0">选项1</option>
+            <option value="1">选项2</option>
+        </select><br>
+        <input id="submit" type="button" value="提交" name="submit">
+    </form>
+</body>
+
 </html>
