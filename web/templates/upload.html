@@ -7,7 +7,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous">
+	</script>
 	<!-- Bootstrap Core CSS -->
 	<link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
@@ -255,10 +259,10 @@
 		</div>
 		<script>
 			function exe_open_business() {
+				// open the selection box for business table
 				var is_checked = document.getElementById("table_business").checked;
 				var div_business = document.getElementById("business_show");
 				if (is_checked == true) {
-					// alert("复选框选中时触发一个方法！");
 					div_business.style.display = "block";
 				}
 				else {
@@ -295,7 +299,7 @@
 					var business_id = document.getElementById("business_id");
 					if (business_id_checked == true) {
 						require["Business"]["_id"] = business_id.value;
-						alert(require["Business"]["_id"]);
+						// alert(require["Business"]["_id"]);
 					}
 					var star_checked = document.getElementById("star_checkbox").checked;
 					var star = document.getElementById("star");
@@ -304,16 +308,16 @@
 						// alert(require["Business"]["star"]);
 					}
 				}
-				// $.ajax({
-				// 	type: "POST",
-				// 	url: "http://localhost:5000/requirement",
-				// 	dataType: "json",
-				// 	contentType: "application/json",
-				// 	data: JSON.stringify(require),
-				// 	success: function (data) {
-				// 		alert("success");
-				// 	}
-				// });
+				$.ajax({
+					type: "POST",
+					url: "http://localhost:5000/requirement",
+					dataType: "json",
+					contentType: "application/json",
+					data: JSON.stringify(require),
+					success: function (data) {
+						alert("success");
+					}
+				});
 			}
 		</script>
 

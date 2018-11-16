@@ -1,10 +1,12 @@
 import sys
 sys.path.append('..')
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from flask_uploads import UploadSet, configure_uploads
 from dataMining.mongoQuery import askMongo
 import json
+from database import *
+from io import BytesIO
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -60,9 +62,46 @@ def upload():
 
 @app.route("/requirement", methods=['Post'])
 def getRequirement():
+    print("enter get requirement")
     data = request.data
     print(data)
     return "receive message"
+
+@app.route("/ratings/image", methods=['Get'])
+def show_ratings():
+    (dates, rates) = get_ratings_by_season()
+    plt.xticks(range(0,len(dates)),dates,rotation = 70,fontsize = 8)
+    plt.plot(range(0,len(dates)),rates,linewidth=3.0,color = 'blue')
+    plt.title(' Average Review Rating By Season', fontsize = 20)
+    img = BytesIO()
+    plt.savefig(img)
+    plt.clf()
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
+
+@app.route("/ratings")
+def ratings_page():
+    return render_template("ratings.html", title="ratings")
+
+@app.route("/distribution", methods=['Get'])
+def distribution_page():
+    return render_template("distribution.html", title="distribution of stars")
+
+@app.route("/distribution/image", methods=['Get'])
+def show_distribution():
+    print("enter show distribution1")
+    res = get_distribution()
+    names='Rating: 1.0', 'Rating: 2.0', 'Rating: 3.0', 'Rating: 4.0','Rating: 5.0'
+    pie = plt.pie(res,autopct='%1.1f%%',explode=(0, 0, 0, 0, 0.08), colors=['red','orange','grey','skyblue','pink'])
+    plt.title('Fake Reivews Rating Distribution',fontsize = 10)
+    plt.axis('equal')
+    plt.legend(pie[0], labels = names,fontsize = 12)
+    print("enter show distribution2")
+    img = BytesIO()
+    plt.savefig(img)
+    plt.clf()
+    img.seek(0)
+    return send_file(img, mimetype='image/png')
 
 
 if __name__ == '__main__':
