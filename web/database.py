@@ -2,6 +2,11 @@ import matplotlib.pyplot as plt
 import json
 import string
 from pymongo import MongoClient
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from wordcloud import WordCloud, STOPWORDS
+import re
+from collections import Counter
 
 conn = MongoClient('127.0.0.1', 27017)
 db = conn.yelp
@@ -57,3 +62,40 @@ def get_distribution():
     		size.append(distribution[i])
     print(size)
     return size
+
+def get_wordcloud():
+    # word cloud of one business review
+    stopwords = set(STOPWORDS)
+    # reviews = review.aggregate([
+    #   {'$match':{'business_id':'_c3ixq9jYKxhLUB0czi0ug'}},
+    #   {'$project':{'text':1, '_id':0}}
+    # ])
+    # review_list = list(reviews)
+    review_list = [{'text':"So this is what it is like at the Works for me--- can\'t you see why so much love? "}, 
+                   {'text':"The fries were good."}, {'text':"The chicken strip are disappointing though, get a burger."}]
+    for i in range(len(review_list)):
+        line = review_list[i]['text']
+        line = line.lower() # lower case
+        translation = str.maketrans("","", string.punctuation)
+        line = line.translate(translation)
+        split = word_tokenize(line)
+         # filter out any tokens not containing letters (e.g., numeric tokens, raw punctuation)
+        filtered = []
+        for token in split:
+            if re.search('[a-zA-Z]', token):    
+                filtered.append(token)
+        word = [i for i in filtered if i not in stopwords]
+        # d = [stemmer.stem(word) for word in word] 
+        # d = [wordnet_lemmatizer.lemmatize(word) for word in d]
+        review_list[i] = word
+    words = sum(review_list, [])
+    counts = Counter(words)
+    # print(counts)
+    wordcloud = WordCloud(    
+                          background_color='white',
+                          max_words=100,
+                          max_font_size=50,
+                          min_font_size=10,
+                          random_state=40,
+                         ).fit_words(counts)
+    return wordcloud

@@ -103,6 +103,20 @@ def show_distribution():
     img.seek(0)
     return send_file(img, mimetype='image/png')
 
+@app.route("/wordcloud/image", methods=['Get'])
+def show_wordcloud():
+    wordcloud = get_wordcloud()
+    plt.imshow(wordcloud)
+    plt.axis('off')  # remove axis
+    img = BytesIO()
+    plt.savefig(img)
+    img.seek(0)
+    return send_file(img, mimetype='text/plain')
+
+@app.route("/wordcloud", methods=['Get'])
+def wordcloud_page():
+    return render_template('wordcloud.html', title="wordcloud")
+
 
 if __name__ == '__main__':
     app.run()
