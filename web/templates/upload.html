@@ -114,6 +114,15 @@
 	<!--left-fixed -navigation-->
 	<div style="margin-left: 20%; margin-top: 30px">
 		<div class="heading text-center">
+			<h4 style="color: #252525;font-size: 24px;">Upload Database</h4>
+			<hr>
+		</div>
+		<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+        	<input type=file name=dataset>
+        	<input type="submit">
+    	</form>
+		<br />
+		<div class="heading text-center">
 			<h4 style="color: #252525;font-size: 24px;">Database Design</h4>
 			<hr>
 		</div>
@@ -269,11 +278,33 @@
 					div_business.style.display = "none";
 				}
 			}
+			function exe_open_user() {
+				// open the selection box for business table
+				var is_checked = document.getElementById("table_user").checked;
+				var div_user = document.getElementById("user_show");
+				if (is_checked == true) {
+					div_user.style.display = "block";
+				}
+				else {
+					div_user.style.display = "none";
+				}
+			}
+			function exe_open_review() {
+				// open the selection box for business table
+				var is_checked = document.getElementById("table_review").checked;
+				var div_review = document.getElementById("review_show");
+				if (is_checked == true) {
+					div_review.style.display = "block";
+				}
+				else {
+					div_review.style.display = "none";
+				}
+			}
 		</script>
 
 		<br />
 		<div class="pretty p-svg p-curve">
-			<input type="checkbox" />
+			<input type="checkbox" id="table_user" onclick="exe_open_user()"/>
 			<div class="state p-success">
 				<!-- svg path -->
 				<svg width='20px' height='20px' class="svg svg-icon" viewBox="0 5 20 15">
@@ -282,6 +313,62 @@
 				</svg>
 				<label style="font-size: 20px;">User</label>
 			</div>
+		</div>
+		<div id="user_show" style="display: none; background-color: #F8FcED; border-radius:10px; width:70%; height:100%; border-color: #252525;border-width: 1px; margin-left: 40px;">
+			<br />
+			<span style="margin-left: 20px; font-size: 18px;"><b>Please choose the columns you want for the "User" table:</b></span>
+			<br />
+			<br />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="user_id_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">user_id</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="user_id" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<br />
+			<br />
+		</div>
+		<br />
+		<br />
+		<br />
+		<div class="pretty p-svg p-curve">
+			<input type="checkbox" id="table_review" onclick="exe_open_review()"/>
+			<div class="state p-success">
+				<!-- svg path -->
+				<svg width='20px' height='20px' class="svg svg-icon" viewBox="0 5 20 15">
+					<path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+					 style="stroke: white;fill:white;"></path>
+				</svg>
+				<label style="font-size: 20px;">Review</label>
+			</div>
+		</div>
+		<div id="review_show" style="display: none; background-color: #F8FcED; border-radius:10px; width:70%; height:100%; border-color: #252525;border-width: 1px; margin-left: 40px;">
+			<br />
+			<span style="margin-left: 20px; font-size: 18px;"><b>Please choose the columns you want for the "Review" table:</b></span>
+			<br />
+			<br />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="review_id_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">review_id</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="review_id" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
+			<br />
+			<br />
 		</div>
 
 		<br />
@@ -305,8 +392,43 @@
 					var star = document.getElementById("star");
 					if (star_checked == true) {
 						require["Business"]["star"] = star.value;
-						// alert(require["Business"]["star"]);
 					}
+					var name_checked = document.getElementById("name_checkbox").checked;
+					var name = document.getElementById("name");
+					if (name_checked == true) {
+						require["Business"]["name"] = name.value;
+					}
+					var latitude_checked = document.getElementById("latitude_checkbox").checked;
+					var latitude = document.getElementById("latitude");
+					if (latitude_checked == true) {
+						require["Business"]["latitude"] = latitude.value;
+					}
+					var longtitude_checked = document.getElementById("longtitude_checkbox").checked;
+					var longtitude = document.getElementById("longtitude");
+					if (longtitude_checked == true) {
+						require["Business"]["longtitude"] = longtitude.value;
+					}
+					var state_checked = document.getElementById("state_checkbox").checked;
+					var state = document.getElementById("state");
+					if (state_checked == true) {
+						require["Business"]["state"] = state.value;
+					}
+					var city_checked = document.getElementById("city_checkbox").checked;
+					var city = document.getElementById("city");
+					if (city_checked == true) {
+						require["Business"]["city"] = city.value;
+					}
+					var category_checked = document.getElementById("category_checkbox").checked;
+					var category = document.getElementById("category");
+					if (category_checked == true) {
+						require["Business"]["category"] = category.value;
+					}
+					var zipcode_checked = document.getElementById("zipcode_checkbox").checked;
+					var zipcode = document.getElementById("zipcode");
+					if (zipcode_checked == true) {
+						require["Business"]["zipcode"] = zipcode.value;
+					}
+					
 				}
 				$.ajax({
 					type: "POST",
