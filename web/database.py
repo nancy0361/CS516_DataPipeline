@@ -13,6 +13,16 @@ db = conn.yelp
 business = db.business
 review = db.review
 
+
+def get_business_count():
+    # business_state_count = business.aggregate([
+    #     {'$group': {
+    #         '_id': '$state',
+    #         'count': {'$sum': 1}
+    #     }
+    #     }
+    # ])    
+    print(list_count)
 def get_ratings_by_season():
 
     # display rating of a specific business over time
