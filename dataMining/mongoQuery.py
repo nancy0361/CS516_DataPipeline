@@ -7,8 +7,8 @@ from pymongo import MongoClient
 from bson import Code
 import json
 import pprint
-# from dataMining.generateJson import writeJson
-from generateJson import writeJson
+from dataMining.generateJson import writeJson
+# from generateJson import writeJson
 
 
 def askMongo(dict):
