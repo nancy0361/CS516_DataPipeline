@@ -133,7 +133,7 @@ def getRequirement():
     print("get data"+data)
     info = initializeDatabase(data)
     print(info)
-    return render_template('upload.html', info)
+    return render_template('upload.html')
 
 @app.route("/ratings/image", methods=['Get'])
 def show_ratings():
