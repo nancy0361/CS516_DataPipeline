@@ -133,7 +133,7 @@ def getRequirement():
     # print(data)
     info = initializeDatabase(data)
     print(info)
-    return render_template('uploadTest.html', info)
+    return render_template('upload.html', info)
 
 @app.route("/ratings/image", methods=['Get'])
 def show_ratings():
@@ -187,5 +187,5 @@ def wordcloud_page():
 
 
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0')
-    app.run()
+    app.run(host='0.0.0.0')
+    # app.run()

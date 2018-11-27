@@ -373,15 +373,17 @@
 
 		<script>
 			function submit(){
+				alert("click");
 				var require = {};
 				var business_checked = document.getElementById("table_business").checked;
 				if (business_checked == true) {
+					alert("business selected");
 					require["Business"] = {};
 					var business_id_checked = document.getElementById("business_id_checkbox").checked;
 					var business_id = document.getElementById("business_id");
 					if (business_id_checked == true) {
 						require["Business"]["_id"] = business_id.value;
-						// alert(require["Business"]["_id"]);
+						alert(require["Business"]["_id"]);
 					}
 					var star_checked = document.getElementById("star_checkbox").checked;
 					var star = document.getElementById("star");
