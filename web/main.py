@@ -100,7 +100,7 @@ def bubble_chart():
     return render_template('bubble_chart.html', temp=json.dumps(test))
 
 @app.route('/analysis')
-def open_upload_page():
+def open_analysis_page():
     return render_template('analysis.html')
 
 
