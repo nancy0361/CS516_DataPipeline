@@ -4,6 +4,7 @@ sys.path.append('..')
 from flask import Flask, render_template, request, send_file
 from flask_uploads import UploadSet, configure_uploads
 from dataMining.mongoQuery import askMongo
+from dataMining.databaseInit import initializeDatabase
 import json
 from database import *
 from io import BytesIO
@@ -129,8 +130,10 @@ def upload():
 def getRequirement():
     print("enter get requirement")
     data = request.data
-    print(data)
-    return "receive message"
+    # print(data)
+    info = initializeDatabase(data)
+    print(info)
+    return render_template('uploadTest.html', info)
 
 @app.route("/ratings/image", methods=['Get'])
 def show_ratings():
