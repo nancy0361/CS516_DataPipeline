@@ -67,4 +67,4 @@ if __name__ == '__main__':
     print(report)
     # print(myClient.list_database_names())
     # print(mydb.list_collection_names())
-    removeDatabase("testDB",myClient)
+    # removeDatabase("testDB",myClient)
