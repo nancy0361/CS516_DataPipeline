@@ -162,8 +162,8 @@
                 <div class="form-body">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" style="font-size:18px;">Please select a state</label>
-                            <div class="col-sm-9">
+                            <label class="col-sm-4 control-label" style="font-size:18px;">Please select a state</label>
+                            <div class="col-sm-7">
                                 <select id="collection" class="form-control1" style="font-size:18px;">
                                     <option>NC</option>
                                     <option>LA</option>
@@ -174,17 +174,43 @@
                 </div>
             </div>
         </div>
-        <h4 style="text-transform:none;">To get the rating distribution of a state:</h4>
         <br />
-        <h5 style="text-transform:none; margin-left: 30px;display:inline;">Please select a state:</h5>
-        <select id=state style="margin-left: 30px;display:inline;">
-            <option>NC</option>
-            <option>LA</option>
-        </select>
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow ">
+                <div class="form-title">
+                    <h4 style="text-transform:none;">To get the rating history of a business:</h4>
+                </div>
+                <div class="form-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" style="font-size:18px;">Please input a business id</label>
+                            <div class="col-sm-7">
+                                <input style="font-size:18px;" class="form-control" id="business_id_rating" placeholder="Please input the business id">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <br />
-        <h4 style="text-transform:none;">To get the rating history of a business:</h4>
-        <br />
-        <h4 style="text-transform:none;">To get the wordcloud for a business:</h4>
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow ">
+                <div class="form-title">
+                    <h4 style="text-transform:none;">To get the wordcloud for a business:</h4>
+                </div>
+                <div class="form-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label" style="font-size:18px;">Please input a business id</label>
+                            <div class="col-sm-7">
+                                <input style="font-size:18px;" class="form-control" id="business_id_wordcloud"
+                                    placeholder="Please input the business id">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <br />
     </div>
 </body>
