@@ -131,6 +131,7 @@ def getRequirement():
     print("enter get requirement")
     data = request.data
     print(data)
+    data = data.decode(utf-8)
     requirement = json.loads(data)
     print(requirement)
     info = initializeDatabase(requirement)
