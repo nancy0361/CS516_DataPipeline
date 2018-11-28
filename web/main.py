@@ -159,7 +159,7 @@ def distribution_page():
     return render_template("distribution.html", title="distribution of stars")
 
 @app.route("/distribution/image/<state>", methods=['Get'])
-def show_distribution():
+def show_distribution(state):
     print("enter show distribution1")
     res = get_distribution(state)
     names='Rating: 1.0', 'Rating: 2.0', 'Rating: 3.0', 'Rating: 4.0','Rating: 5.0'
