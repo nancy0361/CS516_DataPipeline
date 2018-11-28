@@ -188,6 +188,10 @@ def show_wordcloud():
 def wordcloud_page():
     return render_template('wordcloud.html', title="wordcloud")
 
+@app.route('/recommendation')
+def open_recommendation():
+    return render_template('recommendation.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

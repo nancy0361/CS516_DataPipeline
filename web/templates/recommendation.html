@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <title>Recommendation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+    <!-- Custom CSS -->
+    <link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+
+    <!-- font-awesome icons CSS -->
+    <link href="../static/css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons CSS -->
+
+    <!-- side nav css file -->
+    <link href='../static/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' />
+    <!-- side nav css file -->
+
+    <!-- js-->
+    <script src="../static/js/modernizr.custom.js"></script>
+
+    <!--webfonts-->
+    <link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+        rel="stylesheet">
+    <!--//webfonts-->
+
+    <!-- Metis Menu -->
+    <script src="../static/js/metisMenu.min.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <link href="../static/css/custom.css" rel="stylesheet">
+    <!--//Metis Menu -->
+
+    <link href="../static/css/style2.css" rel="stylesheet">
+    <link href="../static/css/my.css" rel="stylesheet">
+</head>
+
+<body class="cbp-spmenu-push">
+    <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left main-menu" id="cbp-spmenu-s1">
+        <!--left-fixed -navigation-->
+        <aside class="sidebar-left">
+            <nav class="navbar navbar-inverse">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse"
+                        aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    {% if number %}
+                    <h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database {{number[1]}}<span
+                                class="dashboard_text">Analysis
+                                System</span></a></h1>
+                    {% else%}
+                    <h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Database <span class="dashboard_text">Analysis
+                                System</span></a></h1>
+                    {% endif %}
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="sidebar-menu">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li class="treeview">
+                            <a href="homepage">
+                                <i class="fa fa-home"></i> <span>Homepage</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-book"></i> <span>Background</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="Upload Database">
+                                <i class="fa fa-upload"></i> <span>Upload Database</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="analysis">
+                                <i class="fa fa-bar-chart"></i> <span>Analysis</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="recommendation">
+                                <i class="fa fa-thumbs-o-up"></i> <span>Recommendation</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-book"></i> <span>Acknowledge</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </aside>
+    </div>
+    <!--left-fixed -navigation-->
+    <div style="margin-left: 20%; margin-top: 30px; margin-right: 100px;">
+        <div class="heading text-center">
+            <h4 style="color: #252525;font-size: 24px;">Recommendation System</h4>
+            <hr>
+        </div>
+        <div class="widget-shadow ">
+            <div class="form-title">
+                <h4 style="text-transform:none;">Please input the user id:</h4>
+            </div>
+            <div class="form-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="font-size:18px;">User ID</label>
+                        <div class="col-sm-7">
+                            <input style="font-size:18px;" class="form-control" id="user_id" placeholder="Please input the user id">
+                        </div>
+                    </div>
+                    <div class="col-sm-offset-5">
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 media_1-left widget-shadow">
+
+        </div>
+    </div>
+</body>
+
+</html>
