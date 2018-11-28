@@ -158,10 +158,10 @@ def ratings_page():
 def distribution_page():
     return render_template("distribution.html", title="distribution of stars")
 
-@app.route("/distribution/image", methods=['Get'])
+@app.route("/distribution/image/<state>", methods=['Get'])
 def show_distribution():
     print("enter show distribution1")
-    res = get_distribution()
+    res = get_distribution(state)
     names='Rating: 1.0', 'Rating: 2.0', 'Rating: 3.0', 'Rating: 4.0','Rating: 5.0'
     pie = plt.pie(res,autopct='%1.1f%%',explode=(0, 0, 0, 0, 0.08), colors=['red','orange','grey','skyblue','pink'])
     plt.title('Fake Reivews Rating Distribution',fontsize = 10)

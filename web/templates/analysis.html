@@ -191,8 +191,8 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label" style="font-size:18px;">Please select a state</label>
                             <div class="col-sm-7">
-                                <select id="collection" class="form-control1" style="font-size:18px;">
-                                    <option>NC</option>
+                                <select id="distribution" class="form-control1" style="font-size:18px;" >
+                                    <option value="NC">NC</option>
                                     <option>LA</option>
                                 </select>
                             </div>
@@ -204,7 +204,7 @@
                 </div>
             </div>
         </div>
-        <img src="{{ url_for('show_distribution') }}" alt="Image Placeholder" height="500">
+        <img alt="Image Placeholder" height="500" style="display:none;" id="img_distribution">
         <br />
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow ">
@@ -286,7 +286,10 @@
 
         }
         function rating_distribution() {
-
+            var state_distribution = document.getElementById("distribution").value;
+            var img_distribution = document.getElementById("img_distribution");
+            $("#img_distribution").attr("src", "/distribution/image/" + state_distribution);
+            img_distribution.style.display = "block";
         }
         function rating_history() {
 

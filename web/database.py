@@ -51,7 +51,7 @@ def get_ratings_by_season():
     return (dates, rates)
 
 # show distribution of stars in each state
-def get_distribution():
+def get_distribution(state):
     state_star_distribution = business.aggregate([
         {'$group':{
                 '_id':{'state':'$state',
@@ -63,7 +63,7 @@ def get_distribution():
     ])
     distribution = {}
     for row in list(filter(
-    	lambda x:x['_id']['state'] == 'NC', state_star_distribution)):
+    	lambda x:x['_id']['state'] == state, state_star_distribution)):
     	distribution[row['_id']['stars']] = row['count']
 
     size=[]
