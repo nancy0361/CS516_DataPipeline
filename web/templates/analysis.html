@@ -37,7 +37,7 @@
     <!--//Metis Menu -->
 
     <link href="../static/css/style2.css" rel="stylesheet">
-	<link href="../static/css/my.css" rel="stylesheet">
+    <link href="../static/css/my.css" rel="stylesheet">
 </head>
 
 <body class="cbp-spmenu-push">
@@ -103,17 +103,41 @@
     </div>
     <!--left-fixed -navigation-->
     <div style="margin-left: 20%; margin-top: 30px">
-		<div class="heading text-center">
-			<h4 style="color: #252525;font-size: 24px;">Simple Selection</h4>
-			<hr>
+        <div class="heading text-center">
+            <h4 style="color: #252525;font-size: 24px;">Simple Selection</h4>
+            <hr>
         </div>
         <div class=" form-grids row form-grids-right">
-            <div class="widget-shadow " data-example-id="basic-forms"> 
+            <div class="widget-shadow " data-example-id="basic-forms">
                 <div class="form-title">
-                    <h4>Horizontal form :</h4>
+                    <h4>Please input the information you want to get:</h4>
                 </div>
                 <div class="form-body">
-                    <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-2 control-label">Email</label> <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Email"> </div> </div> <div class="form-group"> <label for="inputPassword3" class="col-sm-2 control-label">Password</label> <div class="col-sm-9"> <input type="password" class="form-control" id="inputPassword3" placeholder="Password"> </div> </div> <div class="form-group"> <div class="col-sm-offset-2 col-sm-10"> <div class="checkbox"> <label> <input type="checkbox"> Remember me </label> </div> </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-default">Sign in</button> </div> </form> 
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Search From</label>
+                            <div class="form-group">
+                                <label for="selector1" class="col-sm-2 control-label">Dropdown Select</label>
+                                <div class="col-sm-8">
+                                    <select name="selector1" id="selector1" class="form-control1">
+                                        <option>Please select a collection</option>
+                                        <option>Business</option>
+                                        <option>User</option>
+                                        <option>Review</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-2">
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -124,34 +148,34 @@
             <option>User</option>
             <option>Review</option>
         </select>
-        <br/>
+        <br />
         <h4 style="display:inline">By &nbsp;</h4>
         <select id=item style="display:inline; font-size: 16px;">
             <option>Please select the item</option>
             <option>id</option>
         </select>
-        <br/>
+        <br />
         <h4 style="display:inline">Value</h4>
         <div style="display:inline">
-            <label style="font-size: 18px;font-weight: normal; color: #666666;"><input class="input_text_style"
-                 type="text" id="value" /></label>
+            <label style="font-size: 18px;font-weight: normal; color: #666666;"><input class="input_text_style" type="text"
+                    id="value" /></label>
         </div>
         <div class="heading text-center">
-			<h4 style="color: #252525;font-size: 24px;">Analysis</h4>
-			<hr>
+            <h4 style="color: #252525;font-size: 24px;">Analysis</h4>
+            <hr>
         </div>
         <h4 style="text-transform:none;">To get the rating distribution of a state:</h4>
-        <br/>
+        <br />
         <h5 style="text-transform:none; margin-left: 30px;display:inline;">Please select a state:</h5>
         <select id=state style="margin-left: 30px;display:inline;">
             <option>NC</option>
             <option>LA</option>
         </select>
-        <br/>
+        <br />
         <h4 style="text-transform:none;">To get the rating history of a business:</h4>
-        <br/>
+        <br />
         <h4 style="text-transform:none;">To get the wordcloud for a business:</h4>
-        <br/>
+        <br />
     </div>
 </body>
 
