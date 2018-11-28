@@ -133,13 +133,15 @@
         <script>
             function get_user_id() {
 				var user_info_box = document.getElementById("user_info");
-                var user_id = document.getElementById("user_id");
-                var option_num = document.getElementById("option_num");
+                var user_id = document.getElementById("user_id").value;
+                var option_num = document.getElementById("option_num").value;
                 user_info_box.style.display = "block";
                 alert(user_id);
                 alert(option_num);
 			}
         </script>
+        <br/>
+        <br/>
         <div class="col-md-6 media_1-left widget-shadow" style="display: none;" id="user_info">
             <div class="form-title">
                 <h4 style="text-transform:none;">User Review History</h4>
