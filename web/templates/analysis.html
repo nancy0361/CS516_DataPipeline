@@ -117,21 +117,25 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="font-size:18px;">Search From</label>
                             <div class="col-sm-9">
-                                <select id="collection" class="form-control1" style="font-size:18px;">
+                                <select id="collection" class="form-control1" style="font-size:18px;" onclick="item_list()">
                                     <option>Please select a collection</option>
-                                    <option>Business</option>
-                                    <option>User</option>
-                                    <option>Review</option>
+                                    <option value="Business">Business</option>
+                                    <option value="User">User</option>
+                                    <option value="Review">Review</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="font-size:18px;">By</label>
                             <div class="col-sm-9">
-                                <select id="item" class="form-control1" style="font-size:18px;">
+                                <select id="default_item" class="form-control1" style="display:block;font-size:18px;">
                                     <option>Please select a item</option>
-                                    <option>id</option>
-                                    <option>name</option>
+                                </select>
+                                <select id="business_item" class="form-control1" style="display:none;font-size:18px;">
+                                    <option>Please select a item</option>
+                                    <option value="_id">id</option>
+                                    <option value="name">business name</option>
+                                    <option value="bstar">star</option>
                                 </select>
                             </div>
                         </div>
@@ -142,7 +146,7 @@
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default" onclick="simple_query()">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -171,7 +175,7 @@
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default" onclick="rating_distribution()">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -192,7 +196,7 @@
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default" onclick="rating_history()">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -214,7 +218,7 @@
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default" onclick="wordcloud()">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -222,6 +226,29 @@
         </div>
         <br />
     </div>
+    <script>
+        function item_list(){
+            var collection = document.getElementById("collection").value;
+            var default_list = document.getElementById("default_item");
+            var business_list = document.getElementById("business_item");
+            if(collection == "Business"){
+                default_list.style.display = "none";
+                business_list.style.display = "block";
+            }
+        }
+        function simple_query() {
+
+        }
+        function rating_distribution() {
+
+        }
+        function rating_history() {
+
+        }
+        function wordcloud() {
+
+        }
+    </script>
 </body>
 
 </html>
