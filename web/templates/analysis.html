@@ -102,20 +102,20 @@
         </aside>
     </div>
     <!--left-fixed -navigation-->
-    <div style="margin-left: 20%; margin-top: 30px; margin-right: 30px;">
+    <div style="margin-left: 20%; margin-top: 30px; margin-right: 100px;">
         <div class="heading text-center">
             <h4 style="color: #252525;font-size: 24px;">Simple Selection</h4>
             <hr>
         </div>
         <div class=" form-grids row form-grids-right">
-            <div class="widget-shadow " >
+            <div class="widget-shadow ">
                 <div class="form-title">
                     <h4 style="text-transform:none;">Please input the information you want to get:</h4>
                 </div>
                 <div class="form-body">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label" style="font-size:18px;">Search From</label>
+                            <label class="col-sm-2 control-label" style="font-size:18px;">Search From</label>
                             <div class="col-sm-9">
                                 <select id="collection" class="form-control1" style="font-size:18px;">
                                     <option>Please select a collection</option>
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-2 control-label" style="font-size:18px;">By</label>
+                            <label class="col-sm-2 control-label" style="font-size:18px;">By</label>
                             <div class="col-sm-9">
                                 <select id="item" class="form-control1" style="font-size:18px;">
                                     <option>Please select a item</option>
@@ -136,11 +136,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                                <label for="inputPassword3" class="col-sm-2 control-label" style="font-size:18px;">Value</label>
-                                <div class="col-sm-9"> 
-                                    <input style="font-size:18px;" class="form-control" id="value" placeholder="Please input the value you want to check">
-                                </div>
+                            <label class="col-sm-2 control-label" style="font-size:18px;">Value</label>
+                            <div class="col-sm-9">
+                                <input style="font-size:18px;" class="form-control" id="value" placeholder="Please input the value you want to check">
                             </div>
+                        </div>
                         <div class="col-sm-offset-2">
                             <button type="submit" class="btn btn-default">Submit</button>
                         </div>
@@ -148,9 +148,31 @@
                 </div>
             </div>
         </div>
+        <br />
+        <br />
         <div class="heading text-center">
             <h4 style="color: #252525;font-size: 24px;">Analysis</h4>
             <hr>
+        </div>
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow ">
+                <div class="form-title">
+                    <h4 style="text-transform:none;">To get the rating distribution of a state:</h4>
+                </div>
+                <div class="form-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" style="font-size:18px;">Please select a state</label>
+                            <div class="col-sm-9">
+                                <select id="collection" class="form-control1" style="font-size:18px;">
+                                    <option>NC</option>
+                                    <option>LA</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <h4 style="text-transform:none;">To get the rating distribution of a state:</h4>
         <br />
