@@ -107,8 +107,18 @@
 			<h4 style="color: #252525;font-size: 24px;">Simple Selection</h4>
 			<hr>
         </div>
-        <h4 style="display:inline">Search &nbsp;</h4>
-        <select id=collection style="display:inline">
+        <div class=" form-grids row form-grids-right">
+            <div class="widget-shadow " data-example-id="basic-forms"> 
+                <div class="form-title">
+                    <h4>Horizontal form :</h4>
+                </div>
+                <div class="form-body">
+                    <form class="form-horizontal"> <div class="form-group"> <label for="inputEmail3" class="col-sm-2 control-label">Email</label> <div class="col-sm-9"> <input type="email" class="form-control" id="inputEmail3" placeholder="Email"> </div> </div> <div class="form-group"> <label for="inputPassword3" class="col-sm-2 control-label">Password</label> <div class="col-sm-9"> <input type="password" class="form-control" id="inputPassword3" placeholder="Password"> </div> </div> <div class="form-group"> <div class="col-sm-offset-2 col-sm-10"> <div class="checkbox"> <label> <input type="checkbox"> Remember me </label> </div> </div> </div> <div class="col-sm-offset-2"> <button type="submit" class="btn btn-default">Sign in</button> </div> </form> 
+                </div>
+            </div>
+        </div>
+        <h4 class="col-md-2" style="display:inline; width: 300px;">Search &nbsp;</h4>
+        <select id=collection class="col-md-10" style="display:inline; font-size: 16px;">
             <option>Please select the collection</option>
             <option>Business</option>
             <option>User</option>
@@ -116,7 +126,7 @@
         </select>
         <br/>
         <h4 style="display:inline">By &nbsp;</h4>
-        <select id=item style="display:inline">
+        <select id=item style="display:inline; font-size: 16px;">
             <option>Please select the item</option>
             <option>id</option>
         </select>
