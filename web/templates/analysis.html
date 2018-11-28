@@ -136,6 +136,29 @@
                                     <option value="_id">id</option>
                                     <option value="name">business name</option>
                                     <option value="bstar">star</option>
+                                    <option value="state">state</option>
+                                    <option value="city">city</option>
+                                    <option value="category">category</option>
+                                    <option value="latitude">latitude</option>
+                                    <option value="longtitude">longtitude</option>
+                                    <option value="zipcode">zipcode</option>
+                                    <option value="review_count">review count</option>
+                                </select>
+                                <select id="user_item" class="form-control1" style="display:none;font-size:18px;">
+                                    <option>Please select a item</option>
+                                    <option value="_id">id</option>
+                                    <option value="average_star">average star</option>
+                                    <option value="signup_date">signup date</option>
+                                    <option value="review_count">review count</option>
+                                </select>
+                                <select id="review_item" class="form-control1" style="display:none;font-size:18px;">
+                                    <option>Please select a item</option>
+                                    <option value="_id">id</option>
+                                    <option value="bid">business id</option>
+                                    <option value="uid">user id</option>
+                                    <option value="review">review</option>
+                                    <option value="rstars">review star</option>
+                                    <option value="rdate">review date</option>
                                 </select>
                             </div>
                         </div>
@@ -227,13 +250,35 @@
         <br />
     </div>
     <script>
-        function item_list(){
+        function item_list() {
             var collection = document.getElementById("collection").value;
             var default_list = document.getElementById("default_item");
             var business_list = document.getElementById("business_item");
-            if(collection == "Business"){
+            var user_list = document.getElementById("user_item");
+            var review_list = document.getElementById("review_item");
+            if (collection == "Business") {
                 default_list.style.display = "none";
                 business_list.style.display = "block";
+                user_list.style.display = "none";
+                review_list.style.display = "none";
+            }
+            else if(collection == "User") {
+                default_list.style.display = "none";
+                business_list.style.display = "none";
+                user_list.style.display = "block";
+                review_list.style.display = "none";
+            }
+            else if(collection == "Review") {
+                default_list.style.display = "none";
+                business_list.style.display = "none";
+                user_list.style.display = "none";
+                review_list.style.display = "block";
+            }
+            else {
+                default_list.style.display = "block";
+                business_list.style.display = "none";
+                user_list.style.display = "none";
+                review_list.style.display = "none";
             }
         }
         function simple_query() {
