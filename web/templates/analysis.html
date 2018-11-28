@@ -102,7 +102,7 @@
         </aside>
     </div>
     <!--left-fixed -navigation-->
-    <div style="margin-left: 20%; margin-top: 30px">
+    <div style="margin-left: 20%; margin-top: 30px; margin-right: 30px;">
         <div class="heading text-center">
             <h4 style="color: #252525;font-size: 24px;">Simple Selection</h4>
             <hr>
@@ -110,7 +110,7 @@
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow " data-example-id="basic-forms">
                 <div class="form-title">
-                    <h4>Please input the information you want to get:</h4>
+                    <h4 style="display:inline;">Please input the information you want to get:</h4>
                 </div>
                 <div class="form-body">
                     <form class="form-horizontal">
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-2 control-label">By</label>
+                            <label for="inputPassword3" class="col-sm-2 control-label" style="font-size:18px;">By</label>
                             <div class="col-sm-9">
                                 <select id="item" class="form-control1" style="font-size:18px;">
                                     <option>Please select a item</option>
@@ -135,31 +135,18 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label" style="font-size:18px;">Value</label>
+                                <div class="col-sm-9"> 
+                                    <input class="form-control" id="value" placeholder="Please input the value you want to check">
+                                </div>
+                            </div>
                         <div class="col-sm-offset-2">
                             <button type="submit" class="btn btn-default">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
-        <h4 class="col-md-2" style="display:inline; width: 300px;">Search &nbsp;</h4>
-        <select id=collection class="col-md-10" style="display:inline; font-size: 16px;">
-            <option>Please select the collection</option>
-            <option>Business</option>
-            <option>User</option>
-            <option>Review</option>
-        </select>
-        <br />
-        <h4 style="display:inline">By &nbsp;</h4>
-        <select id=item style="display:inline; font-size: 16px;">
-            <option>Please select the item</option>
-            <option>id</option>
-        </select>
-        <br />
-        <h4 style="display:inline">Value</h4>
-        <div style="display:inline">
-            <label style="font-size: 18px;font-weight: normal; color: #666666;"><input class="input_text_style" type="text"
-                    id="value" /></label>
         </div>
         <div class="heading text-center">
             <h4 style="color: #252525;font-size: 24px;">Analysis</h4>
