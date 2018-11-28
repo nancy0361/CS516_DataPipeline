@@ -119,19 +119,34 @@
                         </div>
                     </div>
                     <div class="form-group">
-                            <label class="col-sm-4 control-label" style="font-size:18px;">How many options do you want?</label>
-                            <div class="col-sm-7">
-                                <input style="font-size:18px;" class="form-control" id="option_num" placeholder="Please input a number">
-                            </div>
+                        <label class="col-sm-4 control-label" style="font-size:18px;">How many options do you want?</label>
+                        <div class="col-sm-7">
+                            <input style="font-size:18px;" class="form-control" id="option_num" placeholder="Please input a number">
                         </div>
+                    </div>
                     <div class="col-sm-offset-5">
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-default" onclick="get_user_id()">Submit</button>
                     </div>
                 </form>
             </div>
         </div>
-        <div class="col-md-6 media_1-left widget-shadow">
-
+        <script>
+            function get_user_id() {
+				var user_info_box = document.getElementById("user_info");
+                var user_id = document.getElementById("user_id");
+                var option_num = document.getElementById("option_num");
+                user_info_box.style.display = "block";
+                alert(user_id);
+                alert(option_num);
+			}
+        </script>
+        <div class="col-md-6 media_1-left widget-shadow" style="display: none;" id="user_info">
+            <div class="form-title">
+                <h4 style="text-transform:none;">User Review History</h4>
+            </div>
+            <div class="form-body">
+                <h5 style="text-transform:none;">User id</h5>
+            </div>
         </div>
     </div>
 </body>
