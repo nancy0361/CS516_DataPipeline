@@ -193,7 +193,7 @@
                             <div class="col-sm-7">
                                 <select id="distribution" class="form-control1" style="font-size:18px;" >
                                     <option value="NC">NC</option>
-                                    <option>LA</option>
+                                    <option value="LA">LA</option>
                                 </select>
                             </div>
                         </div>
@@ -204,7 +204,7 @@
                 </div>
             </div>
         </div>
-        <img alt="Image Placeholder" height="500" style="display:none;" id="img_distribution">
+        <img height="500" style="display:none;" id="img_distribution">
         <br />
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow ">
@@ -287,9 +287,11 @@
         }
         function rating_distribution() {
             var state_distribution = document.getElementById("distribution").value;
+            console.log(state_distribution)
             var img_distribution = document.getElementById("img_distribution");
             $("#img_distribution").attr("src", "/distribution/image/" + state_distribution);
             img_distribution.style.display = "block";
+            console.log( $("#img_distribution").attr("src"));
         }
         function rating_history() {
 
