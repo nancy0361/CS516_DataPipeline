@@ -114,7 +114,7 @@
 			<div class="col-md-6">
 				<input type=file name=dataset>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<input type="submit" class="btn btn-default" value="Submit">
 			</div>
 		</form>
@@ -142,7 +142,7 @@
 		<br />
 		<div id="business_show" class="widget-shadow " style="display: none; margin-left: 40px;">
 			<div class="form-title">
-				<h4 style="text-transform:none;">Please choose the columns you want for the "Business" table:</h4>
+				<h4 style="text-transform:none;">Please choose the columns you want for the "Business" collection:</h4>
 			</div>
 			<br />
 			<div style="border-color:#252525;">
@@ -238,6 +238,19 @@
 			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
 			<div>
 				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="review_count_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">review count</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name: &nbsp;<input class="input_text_style"
+						 type="text" id="review_count" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div>
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
 					<input type="checkbox" id="category_checkbox" />
 					<div class="state p-success">
 						<label style="font-size: 18px; color: #666666;">category</label>
@@ -311,10 +324,10 @@
 				<label style="font-size: 20px;">User</label>
 			</div>
 		</div>
-		<div id="user_show" style="display: none; background-color: #F8FcED; border-radius:10px; width:70%; height:100%; border-color: #252525;border-width: 1px; margin-left: 40px;">
-			<br />
-			<span style="margin-left: 20px; font-size: 18px;"><b>Please choose the columns you want for the "User" table:</b></span>
-			<br />
+		<div id="user_show" class="widget-shadow " style="display: none; margin-left: 40px;">
+			<div class="form-title">
+				<h4 style="text-transform:none;">Please choose the columns you want for the "User" collection:</h4>
+			</div>
 			<br />
 			<div style="border-color:#252525;">
 				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
@@ -328,8 +341,45 @@
 						 type="text" id="user_id" /></label>
 				</div>
 			</div>
-			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
-			<br />
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="user_review_cnt_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">review count</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="user_review_cnt" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="avg_star_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">average star</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="avg_star" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="signup_date_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">signup date</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="signup_date" /></label>
+				</div>
+			</div>
 			<br />
 		</div>
 		<br />
@@ -346,10 +396,10 @@
 				<label style="font-size: 20px;">Review</label>
 			</div>
 		</div>
-		<div id="review_show" style="display: none; background-color: #F8FcED; border-radius:10px; width:70%; height:100%; border-color: #252525;border-width: 1px; margin-left: 40px;">
-			<br />
-			<span style="margin-left: 20px; font-size: 18px;"><b>Please choose the columns you want for the "Review" table:</b></span>
-			<br />
+		<div id="review_show" class="widget-shadow " style="display: none; margin-left: 40px;">
+			<div class="form-title">
+				<h4 style="text-transform:none;">Please choose the columns you want for the "Review" collection:</h4>
+			</div>
 			<br />
 			<div style="border-color:#252525;">
 				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
@@ -363,11 +413,73 @@
 						 type="text" id="review_id" /></label>
 				</div>
 			</div>
-			<hr style="height:1px;border:none;border-top:1px solid #577906; margin-left: 30px; margin-right: 70px;" />
-			<br />
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="review_business_id_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">business_id</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="review_business_id" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="review_user_id_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">user_id</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="review_user_id" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="review_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">review</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="review" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="review_star_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">review star</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="review_star" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="review_date_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">review date</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="review_date" /></label>
+				</div>
+			</div>
 			<br />
 		</div>
-
 		<br />
 		<div style="margin: 0 auto; width:200px; height:100px;">
 			<input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;" onclick="submit()" />
@@ -375,59 +487,120 @@
 
 		<script>
 			function submit() {
-				alert("click");
 				var require = {};
 				var business_checked = document.getElementById("table_business").checked;
+				var user_checked = document.getElementById("table_user").checked;
+				var review_checked = document.getElementById("table_review").checked;
 				if (business_checked == true) {
-					alert("business selected");
+					// alert("business selected");
 					require["Business"] = {};
 					var business_id_checked = document.getElementById("business_id_checkbox").checked;
 					var business_id = document.getElementById("business_id");
 					if (business_id_checked == true) {
 						require["Business"]["_id"] = business_id.value;
-						alert(require["Business"]["_id"]);
+						// alert(require["Business"]["_id"]);
 					}
 					var star_checked = document.getElementById("star_checkbox").checked;
 					var star = document.getElementById("star");
 					if (star_checked == true) {
 						require["Business"]["star"] = star.value;
 					}
-					// var name_checked = document.getElementById("name_checkbox").checked;
-					// var name = document.getElementById("name");
-					// if (name_checked == true) {
-					// 	require["Business"]["name"] = name.value;
-					// }
-					// var latitude_checked = document.getElementById("latitude_checkbox").checked;
-					// var latitude = document.getElementById("latitude");
-					// if (latitude_checked == true) {
-					// 	require["Business"]["latitude"] = latitude.value;
-					// }
-					// var longtitude_checked = document.getElementById("longtitude_checkbox").checked;
-					// var longtitude = document.getElementById("longtitude");
-					// if (longtitude_checked == true) {
-					// 	require["Business"]["longtitude"] = longtitude.value;
-					// }
-					// var state_checked = document.getElementById("state_checkbox").checked;
-					// var state = document.getElementById("state");
-					// if (state_checked == true) {
-					// 	require["Business"]["state"] = state.value;
-					// }
-					// var city_checked = document.getElementById("city_checkbox").checked;
-					// var city = document.getElementById("city");
-					// if (city_checked == true) {
-					// 	require["Business"]["city"] = city.value;
-					// }
-					// var category_checked = document.getElementById("category_checkbox").checked;
-					// var category = document.getElementById("category");
-					// if (category_checked == true) {
-					// 	require["Business"]["category"] = category.value;
-					// }
-					// var zipcode_checked = document.getElementById("zipcode_checkbox").checked;
-					// var zipcode = document.getElementById("zipcode");
-					// if (zipcode_checked == true) {
-					// 	require["Business"]["zipcode"] = zipcode.value;
-					// }
-
+					var name_checked = document.getElementById("name_checkbox").checked;
+					var name = document.getElementById("name");
+					if (name_checked == true) {
+						require["Business"]["name"] = name.value;
+					}
+					var latitude_checked = document.getElementById("latitude_checkbox").checked;
+					var latitude = document.getElementById("latitude");
+					if (latitude_checked == true) {
+						require["Business"]["latitude"] = latitude.value;
+					}
+					var longtitude_checked = document.getElementById("longtitude_checkbox").checked;
+					var longtitude = document.getElementById("longtitude");
+					if (longtitude_checked == true) {
+						require["Business"]["longtitude"] = longtitude.value;
+					}
+					var state_checked = document.getElementById("state_checkbox").checked;
+					var state = document.getElementById("state");
+					if (state_checked == true) {
+						require["Business"]["state"] = state.value;
+					}
+					var city_checked = document.getElementById("city_checkbox").checked;
+					var city = document.getElementById("city");
+					if (city_checked == true) {
+						require["Business"]["city"] = city.value;
+					}
+					var review_count_checked = document.getElementById("review_count_checkbox").checked;
+					var review_count = document.getElementById("review_count");
+					if (review_count_checked == true) {
+						require["Business"]["review_count"] = review_count.value;
+					}
+					var category_checked = document.getElementById("category_checkbox").checked;
+					var category = document.getElementById("category");
+					if (category_checked == true) {
+						require["Business"]["category"] = category.value;
+					}
+					var zipcode_checked = document.getElementById("zipcode_checkbox").checked;
+					var zipcode = document.getElementById("zipcode");
+					if (zipcode_checked == true) {
+						require["Business"]["zipcode"] = zipcode.value;
+					}
+				}
+				if (user_checked == true) {
+					require["User"] = {};
+					var user_id_checked = document.getElementById("user_id_checkbox").checked;
+					var user_id = document.getElementById("user_id");
+					if (user_id_checked == true) {
+						require["User"]["_id"] = user_id.value;
+					}
+					var user_review_cnt_checked = document.getElementById("user_review_cnt_checkbox").checked;
+					var user_review_cnt = document.getElementById("user_review_cnt");
+					if (user_review_cnt_checked == true) {
+						require["User"]["review_count"] = user_review_cnt.value;
+					}
+					var avg_star_checked = document.getElementById("avg_star_checkbox").checked;
+					var avg_star = document.getElementById("avg_star");
+					if (avg_star_checked == true) {
+						require["User"]["average_star"] = avg_star.value;
+					}
+					var signup_date_checked = document.getElementById("signup_date_checkbox").checked;
+					var signup_date = document.getElementById("signup_date");
+					if (signup_date_checked == true) {
+						require["User"]["signup_date"] = signup_date.value;
+					}
+				}
+				if (review_checked == true) {
+					require["Review"] = {};
+					var review_id_checked = document.getElementById("review_id_checkbox").checked;
+					var review_id = document.getElementById("review_id");
+					if (review_id_checked == true) {
+						require["Review"]["_id"] = review_id.value;
+					}
+					var review_business_id_checked = document.getElementById("review_business_id_checkbox").checked;
+					var review_business_id = document.getElementById("review_business_id");
+					if (review_business_id_checked == true) {
+						require["Review"]["bid"] = review_business_id.value;
+					}
+					var review_user_id_checked = document.getElementById("review_user_id_checkbox").checked;
+					var review_user_id = document.getElementById("review_user_id");
+					if (review_user_id_checked == true) {
+						require["Review"]["uid"] = review_user_id.value;
+					}
+					var review_checked = document.getElementById("review_checkbox").checked;
+					var review = document.getElementById("review");
+					if (review_checked == true) {
+						require["Review"]["review"] = review.value;
+					}
+					var review_star_checked = document.getElementById("review_star_checkbox").checked;
+					var review_star = document.getElementById("review_star");
+					if (review_star_checked == true) {
+						require["Review"]["rstars"] = review_star.value;
+					}
+					var review_date_checked = document.getElementById("review_date_checkbox").checked;
+					var review_date = document.getElementById("review_date");
+					if (review_date_checked == true) {
+						require["Review"]["rdate"] = review_date.value;
+					}
 				}
 				$.ajax({
 					type: "POST",
