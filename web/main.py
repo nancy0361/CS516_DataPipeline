@@ -131,6 +131,7 @@ def getRequirement():
     print("enter get requirement")
     data = request.data
     print(data)
+    print(type(data))
     info = initializeDatabase(data)
     print(info)
     return render_template('upload.html')
