@@ -23,11 +23,11 @@ def get_business_count():
     #     }
     # ])    
     print(list_count)
-def get_ratings_by_season():
+def get_ratings_by_season(business_id):
 
     # display rating of a specific business over time
     rating_by_month = review.aggregate([
-    	{'$match':{'business_id':'_c3ixq9jYKxhLUB0czi0ug'}},
+    	{'$match':{'business_id':business_id}},
     	{'$group':{
     		'_id':{
     			'season': {'$ceil':{'$divide':[
@@ -73,7 +73,7 @@ def get_distribution(state):
     print(size)
     return size
 
-def get_wordcloud():
+def get_wordcloud(business_id):
     # word cloud of one business review
     stopwords = set(STOPWORDS)
     # reviews = review.aggregate([

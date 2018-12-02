@@ -42,22 +42,24 @@ best_model = ALSModel.load('../data/Charlotte_als_model')
 def random_user():
     return random.choice(list(user.keys()))
 
-@app.route("/recommend", methods=["GET"])
-def make_pred():
-    user_id = request.args.get('user')
-    try:
-        n = int(request.args.get('n'))
-    except (ValueError, TypeError):
-        n = 5
-
+@app.route("/recommend/<user_id>/<n>", methods=["POST"])
+def make_pred(user_id, n=5):
+    # user_id = request.args.get('user')
+    # try:
+    #     n = int(request.args.get('n'))
+    # except (ValueError, TypeError):
+    #     n = 5
+    print("n " + str(n))
+    print("user_id " + str(user_id))
     user_idn = user[user_id]
     visited = all_visited[user_idn]
     test_user = sqlc.createDataFrame([Row(user_idn=user_idn, business_idn=float(i)) for i in list(set(range(n_business)).difference(set(visited)))])
 
     pred_test = best_model.transform(test_user).na.fill(-5.0)
-    top_pred = pred_test.orderBy(desc('prediction')).select('business_idn').rdd.map(lambda row: row.business_idn).take(n)
+    top_pred = pred_test.orderBy(desc('prediction')).select('business_idn').rdd.map(lambda row: row.business_idn).take(int(n))
     response = map(lambda idn: rest[idn], top_pred)
-    return render_template("recommend.html", restaurants = list(response))
+    return json.dumps(list(response))
+    # return render_template("recommend.html", restaurants = list(response))
     # return json.dumps(list(response))
 
 @app.route("/list", methods=["GET"])
@@ -138,9 +140,10 @@ def getRequirement():
     print(info)
     return render_template('upload.html')
 
-@app.route("/ratings/image", methods=['Get'])
-def show_ratings():
-    (dates, rates) = get_ratings_by_season()
+@app.route("/ratings/image/<business_id>", methods=['Get'])
+def show_ratings(business_id):
+    print("enter ratings 1")
+    (dates, rates) = get_ratings_by_season(business_id)
     plt.xticks(range(0,len(dates)),dates,rotation = 70,fontsize = 8)
     plt.plot(range(0,len(dates)),rates,linewidth=3.0,color = 'blue')
     plt.title(' Average Review Rating By Season', fontsize = 20)
@@ -164,7 +167,7 @@ def show_distribution(state):
     res = get_distribution(state)
     names='Rating: 1.0', 'Rating: 2.0', 'Rating: 3.0', 'Rating: 4.0','Rating: 5.0'
     pie = plt.pie(res,autopct='%1.1f%%',explode=(0, 0, 0, 0, 0.08), colors=['red','orange','grey','skyblue','pink'])
-    plt.title('Fake Reivews Rating Distribution',fontsize = 10)
+    plt.title('Star distribution in ' + state,fontsize = 10)
     plt.axis('equal')
     plt.legend(pie[0], labels = names,fontsize = 12)
     print("enter show distribution2")
@@ -174,9 +177,9 @@ def show_distribution(state):
     img.seek(0)
     return send_file(img, mimetype='image/png')
 
-@app.route("/wordcloud/image", methods=['Get'])
-def show_wordcloud():
-    wordcloud = get_wordcloud()
+@app.route("/wordcloud/image/<business_id>", methods=['Get'])
+def show_wordcloud(business_id):
+    wordcloud = get_wordcloud(business_id)
     plt.imshow(wordcloud)
     plt.axis('off')  # remove axis
     img = BytesIO()
@@ -191,6 +194,16 @@ def wordcloud_page():
 @app.route('/recommendation')
 def open_recommendation():
     return render_template('recommendation.html')
+
+@app.route("/simple_query/<collection>/<key>/<value>", methods=["POST"])
+def get_simple_query(collection, key, value):
+    print(collection)
+    print(key)
+    print(value)
+    input_dict = {"collection": collection, "key": key, "value": value}
+    output = askMongo(input_dict)
+    print(output)
+    return json.dumps(output)
 
 
 if __name__ == '__main__':

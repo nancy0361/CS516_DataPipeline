@@ -17,6 +17,7 @@ def askMongo(dict):
     # countStates(db)
     result = generalQuery(db, dict)
     print(result)
+    return result
 
 
 # def countStates(db):
@@ -44,9 +45,13 @@ def askMongo(dict):
 #     writeJson(answer, 'businessCount')
 
 def generalQuery(db, dict):
+    print("enter generalQuery")
+    print(dict)
+    print(db.list_collection_names())
     result = {}
     if dict["collection"] == "Business":
         collection = db.Business
+        print(collection.count())
     elif dict["collection"] == "User":
         collection = db.User
     elif dict["collection"] == "Review":
@@ -60,6 +65,7 @@ def generalQuery(db, dict):
     index = 1
     for doc in docs:
         result[index] = doc
+        index += 1
     
     return result
 
@@ -68,4 +74,5 @@ if __name__ == '__main__':
     dict["collection"] = "Business"
     dict["key"] = "city"
     dict["value"] = "Pittsburgh"
-    askMongo(dict)
+    input_dict = {"collection": "Business", "key": "business_id", "value": "aYE3ARaHRuk5GQ4K5FNqvw"}
+    askMongo(input_dict)

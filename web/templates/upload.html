@@ -111,16 +111,17 @@
 			<hr>
 		</div>
 		<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
-			<div class="col-md-6">
-				<input type=file name=dataset>
-			</div>
 			<div class="col-md-5">
+				<input  charset="utf-8" type=file name=dataset style="font-size:20px;height:30px;">
+			</div>
+			<div class="col-md-7">
 				<input type="submit" class="btn btn-default" value="Submit">
 			</div>
 		</form>
 		<br />
 		<br />
-		<div class="heading text-center">
+		
+		<div class="heading text-center" style="margin-top:100px;">
 			<h4 style="color: #252525;font-size: 24px;">Database Design</h4>
 			<hr>
 		</div>
@@ -384,7 +385,7 @@
 			</div>
 			<br />
 		</div>
-		<br />
+		
 		<br />
 		<div class="pretty p-svg p-curve">
 			<input type="checkbox" id="table_review" onclick="exe_open_review()" />

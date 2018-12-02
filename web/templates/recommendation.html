@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous">
+	</script>
     <!-- Bootstrap Core CSS -->
     <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
 
@@ -125,7 +126,7 @@
                         </div>
                     </div>
                     <div class="col-sm-offset-5">
-                        <button type="submit" class="btn btn-default" onclick="get_user_id()">Submit</button>
+                        <input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;" onclick="get_user_id()" />
                     </div>
                 </form>
             </div>
@@ -136,8 +137,24 @@
                 var user_id = document.getElementById("user_id").value;
                 var option_num = document.getElementById("option_num").value;
                 user_info_box.style.display = "block";
-                alert(user_id);
-                alert(option_num);
+                var para = document.getElementById("name");
+                $.post("/recommend/" + user_id+"/"+option_num, function(data, status){
+                    var recommend = JSON.parse(data);
+                    var i = 0;
+                    while (i < option_num){
+                        var div = document.createElement("div");
+                        var p = document.createElement("p");
+                        var name = document.createTextNode("name: " + recommend[i]["name"]);
+                        var category = document.createTextNode("category: " + recommend[i]["category"]);
+                        var br = document.createElement("br");
+                        p.appendChild(name);
+                        p.appendChild(category);
+                        div.appendChild(p);
+                        div.appendChild(br);
+                        para.appendChild(div);
+                    }
+
+                })
 			}
         </script>
         <br/>
@@ -149,6 +166,7 @@
             <div class="form-body">
                 <h5 style="text-transform:none;">User id</h5>
             </div>
+            <div id="name"></div>
         </div>
     </div>
 </body>

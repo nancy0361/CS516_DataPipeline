@@ -8,8 +8,8 @@
     <meta name="keywords" content="" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	 crossorigin="anonymous">
-	</script>
+        crossorigin="anonymous">
+        </script>
 
 
 
@@ -133,13 +133,13 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label" style="font-size:18px;">By</label>
                             <div class="col-sm-9">
-                                <select id="default_item" class="form-control1" style="display:block;font-size:18px;">
+                                <select id="default_item" class="form-control1" style="display:none;font-size:18px;">
                                     <option>Please select a item</option>
                                 </select>
-                                <select id="business_item" class="form-control1" style="display:none;font-size:18px;">
+                                <select id="business_item" class="form-control1" style="display:block;font-size:18px;">
                                     <option>Please select a item</option>
                                     <option value="_id">id</option>
-                                    <option value="name">business name</option>
+                                    <option value="bname">business name</option>
                                     <option value="bstar">star</option>
                                     <option value="state">state</option>
                                     <option value="city">city</option>
@@ -174,11 +174,16 @@
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default" onclick="simple_query()">Submit</button>
+                            <input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;"
+                                onclick="simple_query()" />
                         </div>
                     </form>
                 </div>
             </div>
+        </div>
+        <div id = "result" style="display:none;">
+            <h5>result</h5>
+            <div id="simple_query_result"></div>
         </div>
         <br />
         <br />
@@ -196,20 +201,26 @@
                         <div class="form-group">
                             <label class="col-sm-4 control-label" style="font-size:18px;">Please select a state</label>
                             <div class="col-sm-7">
-                                <select id="distribution" class="form-control1" style="font-size:18px;" >
+                                <select id="distribution" class="form-control1" style="font-size:18px;">
                                     <option value="NC">NC</option>
-                                    <option value="LA">LA</option>
+                                    <option value="IL">IL</option>
+                                    <option value="AZ">AZ</option>
+                                    <option value="OH">OH</option>
+                                    <option value="PA">PA</option>
+                                    <option value="NV">NV</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default" onclick="rating_distribution()">Submit</button>
+                            <input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;"
+                                onclick="rating_distribution()" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <img height="500" style="display:none;" id="img_distribution">
+        <img style="display:none; text-align:center;" id="img_distribution">
+        <br />
         <br />
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow ">
@@ -225,12 +236,15 @@
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default" onclick="rating_history()">Submit</button>
+                            <input class="btn btn-default" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;"
+                                onclick="rating_history()" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <img style="display:none; text-align:center;" id="img_ratings">
+        <br />
         <br />
         <div class=" form-grids row form-grids-right">
             <div class="widget-shadow ">
@@ -247,12 +261,14 @@
                             </div>
                         </div>
                         <div class="col-sm-offset-5">
-                            <button type="submit" class="btn btn-default" onclick="wordcloud()">Submit</button>
+                            <input class="btn btn-default" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;"
+                                onclick="wordcloud()" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <img style="display:none; text-align:center;" id="img_wordcloud">
         <br />
     </div>
     <script>
@@ -268,26 +284,46 @@
                 user_list.style.display = "none";
                 review_list.style.display = "none";
             }
-            else if(collection == "User") {
+            else if (collection == "User") {
                 default_list.style.display = "none";
                 business_list.style.display = "none";
                 user_list.style.display = "block";
                 review_list.style.display = "none";
             }
-            else if(collection == "Review") {
+            else if (collection == "Review") {
                 default_list.style.display = "none";
                 business_list.style.display = "none";
                 user_list.style.display = "none";
                 review_list.style.display = "block";
             }
             else {
-                default_list.style.display = "block";
-                business_list.style.display = "none";
+                default_list.style.display = "none";
+                business_list.style.display = "block";
                 user_list.style.display = "none";
                 review_list.style.display = "none";
             }
         }
         function simple_query() {
+            var collection = document.getElementById("collection").value;
+            if (collection == "Business") {
+                var key = document.getElementById("business_item").value;
+            }
+            else if (collection == "User") {
+                var key = document.getElementById("user_item").value;
+            }
+            else if (collection == "Review") {
+                var key = document.getElementById("review_item").value;
+            }
+            var value = document.getElementById("value").value;
+            var result = document.getElementById("result");
+            $.post("/simple_query/" + collection + "/" + key + "/" + value, function (data, status) {
+                var para = document.getElementById("simple_query_result");
+                var p = document.createElement("p");
+                var word = document.createTextNode(data);
+                p.appendChild(word);
+                para.appendChild(p);
+                result.style.display = "block";
+            })
 
         }
         function rating_distribution() {
@@ -296,13 +332,19 @@
             var img_distribution = document.getElementById("img_distribution");
             $("#img_distribution").attr("src", "/distribution/image/" + state_distribution);
             img_distribution.style.display = "block";
-            console.log( $("#img_distribution").attr("src"));
+            console.log($("#img_distribution").attr("src"));
         }
         function rating_history() {
-
+            var business_id = document.getElementById("business_id_rating").value;
+            var img_ratings = document.getElementById("img_ratings");
+            $("#img_ratings").attr("src", "/ratings/image/" + business_id);
+            img_ratings.style.display = "block";
         }
         function wordcloud() {
-
+            var business_id = document.getElementById("business_id_wordcloud").value;
+            var img_wordcloud = document.getElementById("img_wordcloud");
+            $("#img_wordcloud").attr("src", "/wordcloud/image/" + business_id);
+            img_wordcloud.style.display = "block";
         }
     </script>
 </body>
