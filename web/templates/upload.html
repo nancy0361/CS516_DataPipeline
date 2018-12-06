@@ -508,6 +508,9 @@
 		<div style="margin: 0 auto; width:200px; height:100px;">
 			<input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;" onclick="submit()" />
 		</div>
+		<div id="db_info" style="display:none;margin-bottom: 100px;">
+
+		</div>
 
 		<script>
 			function submit() {
@@ -633,12 +636,78 @@
 				}
 				$.ajax({
 					type: "POST",
-					url: "http://vcm-6828.vm.duke.edu:5000/requirement",
+					url: "/requirement",
 					dataType: "json",
 					contentType: "application/json",
 					data: JSON.stringify(require),
-					success: function (data) {
-						alert("success");
+					success: function (data, status) {
+						alert(data);
+						// var info = JSON.parse(data);
+						var info = data;
+	
+						var div_db = document.createElement("div");
+                        div_db.className = "widget-shadow";
+                        var title_db = document.createElement("div");
+                        title_db.className = "form-title";
+                        var body_db = document.createElement("div");
+                        body_db.className = "form-body";
+						var title_db_h = document.createElement("h4");
+                        title_db_h.style = "text-transform:none;";
+                        var title_db_content = document.createTextNode("Database Information");
+                        title_db_h.appendChild(title_db_content);
+                        title_db.appendChild(title_db_h);
+						for(var key in info["Database"]){
+							var content = document.createTextNode(key + ": " + String(info["Database"][key]));
+							var item = document.createElement("h5");
+                        	item.style = "text-transform:none;";
+							item.appendChild(content);
+							body_db.appendChild(item);
+						}
+						div_db.appendChild(title_db);
+						div_db.appendChild(body_db)
+						var db_info = document.getElementById("db_info");
+						db_info.appendChild(div_db);
+
+						var div_collection = document.createElement("div");
+						div_collection.className = "widget-shadow";
+						var title_collection = document.createElement("div");
+                        title_collection.className = "form-title";
+                        var body_collection = document.createElement("div");
+                        body_collection.className = "form-body";
+						var title_collection_h = document.createElement("h4");
+                        title_collection_h.style = "text-transform:none;";
+                        var title_collection_content = document.createTextNode("Collection Information");
+                        title_collection_h.appendChild(title_collection_content);
+                        title_collection.appendChild(title_collection_h);
+						for (var i = 0; i < info["Collection"]['collection_names'].length; i++){
+							var coll_name = info["Collection"]['collection_names'][i];
+							var div_item = document.createElement("div");
+							div_item.className = "widget-shadow";
+							var title_item = document.createElement("div");
+							title_item.className = "form-title";
+							var body_item = document.createElement("div");
+							body_item.className = "form-body";
+							var title_item_h = document.createElement("h5");
+							title_item_h.style = "text-transform:none;";
+							var title_item_content = document.createTextNode(coll_name);
+							title_item_h.appendChild(title_item_content);
+							title_item.appendChild(title_item_h);
+							for(var key in info["Collection"][coll_name]){
+								var content = document.createTextNode(key + ": " + String(info["Collection"][coll_name][key]));
+								var coll_item = document.createElement("h5");
+                        		coll_item.style = "text-transform:none;";
+								coll_item.appendChild(content);
+								body_item.appendChild(coll_item);
+							}
+							div_item.appendChild(title_item);
+							div_item.appendChild(body_item);
+							body_collection.appendChild(div_item);
+						}
+						div_collection.appendChild(title_collection);
+						div_collection.appendChild(body_collection);
+						db_info.appendChild(div_collection);
+
+						db_info.style.display = "block";
 					}
 				});
 			}

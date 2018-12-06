@@ -52,30 +52,24 @@ def make_pred(user_id, n=5):
 
     pred_test = best_model.transform(test_user).na.fill(-5.0)
     top_pred = pred_test.orderBy(desc('prediction')).select('business_idn').rdd.map(lambda row: row.business_idn).take(int(n))
-<<<<<<< HEAD
     response = list(map(lambda idn: rest[idn], top_pred))
     # response_visited = list(sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:int(n)])
     response_visited = list(sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True))
     print(response_visited)
     return json.dumps({0:response, 1:response_visited})
 
-=======
-    response = map(lambda idn: rest[idn], top_pred)
-    return json.dumps(list(response))
-    
->>>>>>> b727917a7dbfa91f3285b1bfc02f3b0fa5ded5a9
-@app.route("/list", methods=["GET"])
-def list_ratings():
-    user_id = request.args.get('user')
-    try:
-        n = int(request.args.get('n'))
-    except (ValueError, TypeError):
-        n = 5
+# @app.route("/list", methods=["GET"])
+# def list_ratings():
+#     user_id = request.args.get('user')
+#     try:
+#         n = int(request.args.get('n'))
+#     except (ValueError, TypeError):
+#         n = 5
 
-    user_idn = user[user_id]
-    visited = all_visited[user_idn]
-    response_visited = sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:int(n)]
-    return json.dumps(response)
+#     user_idn = user[user_id]
+#     visited = all_visited[user_idn]
+#     response = sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:int(n)]
+#     return json.dumps(response)
 
 # @app.route('/hello')
 # def open_homepage():
@@ -131,7 +125,7 @@ def receiveInput():
 
 @app.route("/requirement", methods=['Post'])
 def getRequirement():
-    print("enter get requirement")
+    # print("enter get requirement")
     data = request.data
     print(data)
     data = data.decode('utf-8')
@@ -139,7 +133,8 @@ def getRequirement():
     print(requirement)
     info = initializeDatabase(requirement)
     print(info)
-    return render_template('upload.html')
+    # return render_template('upload.html', temp=info)
+    return json.dumps(info)
 
 @app.route("/ratings/image/<business_id>", methods=['Get'])
 def show_ratings(business_id):
