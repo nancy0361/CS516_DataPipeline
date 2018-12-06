@@ -347,6 +347,19 @@
 			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
 			<div style="border-color:#252525;">
 				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
+					<input type="checkbox" id="user_name_checkbox" />
+					<div class="state p-success">
+						<label style="font-size: 18px; color: #666666;">name</label>
+					</div>
+				</div>
+				<div>
+					<label style="font-size: 18px;font-weight: normal; color: #666666;">original name:&nbsp;<input class="input_text_style"
+						 type="text" id="user_name" /></label>
+				</div>
+			</div>
+			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
+			<div style="border-color:#252525;">
+				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
 					<input type="checkbox" id="user_review_cnt_checkbox" />
 					<div class="state p-success">
 						<label style="font-size: 18px; color: #666666;">review count</label>
@@ -556,6 +569,11 @@
 					var user_id = document.getElementById("user_id");
 					if (user_id_checked == true) {
 						require["User"]["_id"] = user_id.value;
+					}
+					var user_name_checked = document.getElementById("user_name_checkbox").checked;
+					var user_name = document.getElementById("user_name");
+					if (user_name_checked == true) {
+						require["User"]["name"] = user_name.value;
 					}
 					var user_review_cnt_checked = document.getElementById("user_review_cnt_checkbox").checked;
 					var user_review_cnt = document.getElementById("user_review_cnt");
