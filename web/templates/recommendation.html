@@ -76,7 +76,7 @@
                             </a>
                         </li>
                         <li class="treeview">
-                            <a href="Upload Database">
+                            <a href="upload">
                                 <i class="fa fa-upload"></i> <span>Upload Database</span>
                             </a>
                         </li>
@@ -102,7 +102,7 @@
         </aside>
     </div>
     <!--left-fixed -navigation-->
-    <div style="margin-left: 20%; margin-top: 30px; margin-right: 100px;">
+    <div style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
         <div class="heading text-center">
             <h4 style="color: #252525;font-size: 24px;">Recommendation System</h4>
             <hr>
@@ -136,24 +136,94 @@
 				var user_info_box = document.getElementById("user_info");
                 var user_id = document.getElementById("user_id").value;
                 var option_num = document.getElementById("option_num").value;
-                user_info_box.style.display = "block";
-                var para = document.getElementById("name");
+                var visited  = document.getElementById("visited");
+                var para = document.getElementById("recommendation_block");
+                var user_id_display = document.getElementById("user_id_display");
                 $.post("/recommend/" + user_id+"/"+option_num, function(data, status){
+                    // alert(data)
+                    // var user_id_display = document.getElementById("user_id_display");
+                    var id_content = document.createTextNode("User ID: "+ user_id);
+                    var id_h = document.createElement("h5");
+                    id_h.style = "text-transform:none;";
+                    id_h.appendChild(id_content);
+                    user_id_display.appendChild(id_h);
                     var recommend = JSON.parse(data);
-                    var i = 0;
-                    while (i < option_num){
+                    for (var i = 0; i < option_num; i++){
                         var div = document.createElement("div");
-                        var p = document.createElement("p");
-                        var name = document.createTextNode("name: " + recommend[i]["name"]);
-                        var category = document.createTextNode("category: " + recommend[i]["category"]);
-                        var br = document.createElement("br");
-                        p.appendChild(name);
-                        p.appendChild(category);
-                        div.appendChild(p);
-                        div.appendChild(br);
+                        div.className = "widget-shadow";
+                        var title = document.createElement("div");
+                        title.className = "form-title";
+                        var body = document.createElement("div");
+                        body.className = "form-body";
+                        var title_h = document.createElement("h5");
+                        title_h.style = "text-transform:none;";
+                        var title_content = document.createTextNode("Recommendation "+ String(i+1));
+                        title_h.appendChild(title_content);
+                        title.appendChild(title_h);
+                        var name_content = document.createTextNode("Business name: " + recommend["0"][i]["name"]);
+                        var category_content = document.createTextNode("Category: " + recommend["0"][i]["category"]);
+                        var stars_content = document.createTextNode("Stars: " + recommend["0"][i]["stars"]);
+                        var address_content = document.createTextNode("Address: " + recommend["0"][i]["address"]);
+                        var name = document.createElement("h5");
+                        name.style = "text-transform:none;";
+                        var category = document.createElement("h5");
+                        category.style = "text-transform:none;";
+                        var stars = document.createElement("h5");
+                        stars.style = "text-transform:none;";
+                        var address = document.createElement("h5");
+                        address.style = "text-transform:none;";
+                        name.appendChild(name_content);
+                        category.appendChild(category_content);
+                        stars.appendChild(stars_content);
+                        address.appendChild(address_content);
+                        body.appendChild(name);
+                        body.appendChild(category);
+                        body.appendChild(stars);
+                        body.appendChild(address);
+                        div.appendChild(title);
+                        div.appendChild(body);
                         para.appendChild(div);
                     }
-
+                    // alert(recommend["1"].length)
+                    // alert(recommend["1"][0]["name"])
+                    for (var i = 0; i < recommend["1"].length; i++){
+                        var div = document.createElement("div");
+                        div.className = "widget-shadow";
+                        var title = document.createElement("div");
+                        title.className = "form-title";
+                        var body = document.createElement("div");
+                        body.className = "form-body";
+                        var title_h = document.createElement("h5");
+                        title_h.style = "text-transform:none;";
+                        var title_content = document.createTextNode("Visited "+ String(i+1));
+                        title_h.appendChild(title_content);
+                        title.appendChild(title_h);
+                        var visited_name_content = document.createTextNode("Business name: " + recommend["1"][i]["name"]);
+                        var category_content = document.createTextNode("Category: " + recommend["1"][i]["categories"]);
+                        var stars_content = document.createTextNode("Stars: " + recommend["1"][i]["stars"]);
+                        var address_content = document.createTextNode("Address: " + recommend["1"][i]["address"]);
+                        var visited_name = document.createElement("h5");
+                        visited_name.style = "text-transform:none;";
+                        var category = document.createElement("h5");
+                        category.style = "text-transform:none;";
+                        var stars = document.createElement("h5");
+                        stars.style = "text-transform:none;";
+                        var address = document.createElement("h5");
+                        address.style = "text-transform:none;";
+                        visited_name.appendChild(visited_name_content);
+                        category.appendChild(category_content);
+                        stars.appendChild(stars_content);
+                        address.appendChild(address_content);
+                        body.appendChild(visited_name);
+                        body.appendChild(category);
+                        body.appendChild(stars);
+                        body.appendChild(address);
+                        div.appendChild(title);
+                        div.appendChild(body);
+                        visited.appendChild(div);
+                    }
+                    user_info_box.style.display = "block";
+                    para.style.display = "block";
                 })
 			}
         </script>
@@ -161,12 +231,17 @@
         <br/>
         <div class="col-md-6 media_1-left widget-shadow" style="display: none;" id="user_info">
             <div class="form-title">
-                <h4 style="text-transform:none;">User Review History</h4>
+                <h4 style="text-transform:none;">User Visit History</h4>
             </div>
             <div class="form-body">
-                <h5 style="text-transform:none;">User id</h5>
+                <div id="user_id_display"></div>
+                <br/>
+                <br/>
+                <div id="visited"></div>
             </div>
-            <div id="name"></div>
+        </div>
+        <div class="col-md-6" style="display: none;" id="recommendation_block"> 
+
         </div>
     </div>
 </body>

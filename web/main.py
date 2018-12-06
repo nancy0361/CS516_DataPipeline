@@ -57,10 +57,11 @@ def make_pred(user_id, n=5):
 
     pred_test = best_model.transform(test_user).na.fill(-5.0)
     top_pred = pred_test.orderBy(desc('prediction')).select('business_idn').rdd.map(lambda row: row.business_idn).take(int(n))
-    response = map(lambda idn: rest[idn], top_pred)
-    return json.dumps(list(response))
-    # return render_template("recommend.html", restaurants = list(response))
-    # return json.dumps(list(response))
+    response = list(map(lambda idn: rest[idn], top_pred))
+    # response_visited = list(sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:int(n)])
+    response_visited = list(sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True))
+    print(response_visited)
+    return json.dumps({0:response, 1:response_visited})
 
 @app.route("/list", methods=["GET"])
 def list_ratings():
@@ -72,35 +73,41 @@ def list_ratings():
 
     user_idn = user[user_id]
     visited = all_visited[user_idn]
-    response = sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:n]
+    response_visited = sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:int(n)]
     return json.dumps(response)
 
-@app.route('/hello')
-def open_homepage():
-    return render_template('hello.html')
+# @app.route('/hello')
+# def open_homepage():
+#     return render_template('hello.html')
 
 @app.route('/homepage')
-def open_hello():
+def open_homepage():
     return render_template('homepage.html')
 
-@app.route('/Upload Database')
-def open_upload_page():
+dataset = UploadSet(name='dataset', extensions='json')
+configure_uploads(app, dataset)
+@app.route("/upload", methods=['Post', 'Get'])
+def upload():
+    if request.method == 'POST' and 'dataset' in request.files:
+        file = request.files['dataset']
+        dataset.save(file)
+        return render_template('upload.html', temp="Upload Successfully")
     return render_template('upload.html')
 
-@app.route('/bubble-chart')
-def bubble_chart():
-    test = [
-        {"text": "Java", "count": "236"},
-        {"text": ".Net", "count": "382"},
-        {"text": "Php", "count": "170"},
-        {"text": "Ruby", "count": "123"},
-        {"text": "D", "count": "12"},
-        {"text": "Python", "count": "170"},
-        {"text": "C/C++", "count": "382"},
-        {"text": "Pascal", "count": "10"},
-        {"text": "Something", "count": "170"},
-      ]
-    return render_template('bubble_chart.html', temp=json.dumps(test))
+# @app.route('/bubble-chart')
+# def bubble_chart():
+#     test = [
+#         {"text": "Java", "count": "236"},
+#         {"text": ".Net", "count": "382"},
+#         {"text": "Php", "count": "170"},
+#         {"text": "Ruby", "count": "123"},
+#         {"text": "D", "count": "12"},
+#         {"text": "Python", "count": "170"},
+#         {"text": "C/C++", "count": "382"},
+#         {"text": "Pascal", "count": "10"},
+#         {"text": "Something", "count": "170"},
+#       ]
+#     return render_template('bubble_chart.html', temp=json.dumps(test))
 
 @app.route('/analysis')
 def open_analysis_page():
@@ -117,16 +124,9 @@ def receiveInput():
     else:
         return "no json received\n"
 
-dataset = UploadSet(name='dataset', extensions='json')
-configure_uploads(app, dataset)
 
-@app.route("/upload", methods=['Post', 'Get'])
-def upload():
-    if request.method == 'POST' and 'dataset' in request.files:
-        file = request.files['dataset']
-        dataset.save(file)
-        return file.filename
-    return render_template('uploadTest.html')
+
+
 
 @app.route("/requirement", methods=['Post'])
 def getRequirement():
@@ -153,13 +153,13 @@ def show_ratings(business_id):
     img.seek(0)
     return send_file(img, mimetype='image/png')
 
-@app.route("/ratings")
-def ratings_page():
-    return render_template("ratings.html", title="ratings")
+# @app.route("/ratings")
+# def ratings_page():
+#     return render_template("ratings.html", title="ratings")
 
-@app.route("/distribution", methods=['Get'])
-def distribution_page():
-    return render_template("distribution.html", title="distribution of stars")
+# @app.route("/distribution", methods=['Get'])
+# def distribution_page():
+#     return render_template("distribution.html", title="distribution of stars")
 
 @app.route("/distribution/image/<state>", methods=['Get'])
 def show_distribution(state):
@@ -187,9 +187,9 @@ def show_wordcloud(business_id):
     img.seek(0)
     return send_file(img, mimetype='text/plain')
 
-@app.route("/wordcloud", methods=['Get'])
-def wordcloud_page():
-    return render_template('wordcloud.html', title="wordcloud")
+# @app.route("/wordcloud", methods=['Get'])
+# def wordcloud_page():
+#     return render_template('wordcloud.html', title="wordcloud")
 
 @app.route('/recommendation')
 def open_recommendation():

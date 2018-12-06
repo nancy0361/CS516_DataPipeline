@@ -79,7 +79,7 @@
 							</a>
 						</li>
 						<li class="treeview">
-							<a href="Upload Database">
+							<a href="upload">
 								<i class="fa fa-upload"></i> <span>Upload Database</span>
 							</a>
 						</li>
@@ -118,6 +118,13 @@
 				<input type="submit" class="btn btn-default" value="Submit">
 			</div>
 		</form>
+		{% if temp %}
+		<br/>
+		<br/>
+		<br/>
+		<h4 style="text-transform:none; margin-left: 30px;">{{temp}}</h4>
+		{% else%}
+		{% endif %}
 		<br />
 		<br />
 		
