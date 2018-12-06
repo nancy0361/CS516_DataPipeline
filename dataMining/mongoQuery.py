@@ -44,6 +44,8 @@ def askMongo(dict):
 
 #     writeJson(answer, 'businessCount')
 
+numberlist = ["latitude", "longitude", "stars", "review_count", "average_star", "rstars"]
+
 def generalQuery(db, dict):
     print("enter generalQuery")
     print(dict)
@@ -51,7 +53,6 @@ def generalQuery(db, dict):
     result = {}
     if dict["collection"] == "Business":
         collection = db.Business
-        print(collection.count())
     elif dict["collection"] == "User":
         collection = db.User
     elif dict["collection"] == "Review":
@@ -60,6 +61,9 @@ def generalQuery(db, dict):
         result["error"] = "Collection " + dict["collection"] + " doesn't find"
         return result 
     
+    if dict["key"] in numberlist:
+        dict["value"] = float(dict["value"])
+
     docs = collection.find({dict["key"] : dict["value"]})
 
     index = 1
