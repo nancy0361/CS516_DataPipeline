@@ -44,11 +44,6 @@ def random_user():
 
 @app.route("/recommend/<user_id>/<n>", methods=["POST"])
 def make_pred(user_id, n=5):
-    # user_id = request.args.get('user')
-    # try:
-    #     n = int(request.args.get('n'))
-    # except (ValueError, TypeError):
-    #     n = 5
     print("n " + str(n))
     print("user_id " + str(user_id))
     user_idn = user[user_id]
@@ -57,12 +52,18 @@ def make_pred(user_id, n=5):
 
     pred_test = best_model.transform(test_user).na.fill(-5.0)
     top_pred = pred_test.orderBy(desc('prediction')).select('business_idn').rdd.map(lambda row: row.business_idn).take(int(n))
+<<<<<<< HEAD
     response = list(map(lambda idn: rest[idn], top_pred))
     # response_visited = list(sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:int(n)])
     response_visited = list(sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True))
     print(response_visited)
     return json.dumps({0:response, 1:response_visited})
 
+=======
+    response = map(lambda idn: rest[idn], top_pred)
+    return json.dumps(list(response))
+    
+>>>>>>> b727917a7dbfa91f3285b1bfc02f3b0fa5ded5a9
 @app.route("/list", methods=["GET"])
 def list_ratings():
     user_id = request.args.get('user')
