@@ -44,11 +44,6 @@ def random_user():
 
 @app.route("/recommend/<user_id>/<n>", methods=["POST"])
 def make_pred(user_id, n=5):
-    # user_id = request.args.get('user')
-    # try:
-    #     n = int(request.args.get('n'))
-    # except (ValueError, TypeError):
-    #     n = 5
     print("n " + str(n))
     print("user_id " + str(user_id))
     user_idn = user[user_id]
@@ -59,9 +54,7 @@ def make_pred(user_id, n=5):
     top_pred = pred_test.orderBy(desc('prediction')).select('business_idn').rdd.map(lambda row: row.business_idn).take(int(n))
     response = map(lambda idn: rest[idn], top_pred)
     return json.dumps(list(response))
-    # return render_template("recommend.html", restaurants = list(response))
-    # return json.dumps(list(response))
-
+    
 @app.route("/list", methods=["GET"])
 def list_ratings():
     user_id = request.args.get('user')

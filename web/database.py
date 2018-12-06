@@ -76,13 +76,13 @@ def get_distribution(state):
 def get_wordcloud(business_id):
     # word cloud of one business review
     stopwords = set(STOPWORDS)
-    # reviews = review.aggregate([
-    #   {'$match':{'business_id':'_c3ixq9jYKxhLUB0czi0ug'}},
-    #   {'$project':{'text':1, '_id':0}}
-    # ])
-    # review_list = list(reviews)
-    review_list = [{'text':"So this is what it is like at the Works for me--- can\'t you see why so much love? "}, 
-                   {'text':"The fries were good."}, {'text':"The chicken strip are disappointing though, get a burger."}]
+    reviews = review.aggregate([
+      {'$match':{'business_id':business_id}},
+      {'$project':{'text':1, '_id':0}}
+    ])
+    review_list = list(reviews)
+    # review_list = [{'text':"So this is what it is like at the Works for me--- can\'t you see why so much love? "}, 
+    #                {'text':"The fries were good."}, {'text':"The chicken strip are disappointing though, get a burger."}]
     for i in range(len(review_list)):
         line = review_list[i]['text']
         line = line.lower() # lower case
