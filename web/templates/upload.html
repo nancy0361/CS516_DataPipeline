@@ -508,6 +508,10 @@
 		<div style="margin: 0 auto; width:200px; height:100px;">
 			<input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;" onclick="submit()" />
 		</div>
+		<div class="heading text-center" style="display:none;margin-top:30px;" id="report">
+			<h4 style="color: #252525;font-size: 24px;">Database Creation Report</h4>
+			<hr>
+		</div>
 		<div id="db_info" style="display:none;margin-bottom: 100px;">
 
 		</div>
@@ -641,7 +645,7 @@
 					contentType: "application/json",
 					data: JSON.stringify(require),
 					success: function (data, status) {
-						alert(data);
+						alert("Database create successfully. Pleale look at the creation report.");
 						// var info = JSON.parse(data);
 						var info = data;
 	
@@ -707,6 +711,8 @@
 						div_collection.appendChild(body_collection);
 						db_info.appendChild(div_collection);
 
+						var report_title = document.getElementById("report");
+						report_title.style.display = "block";
 						db_info.style.display = "block";
 					}
 				});
