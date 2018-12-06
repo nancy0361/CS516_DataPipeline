@@ -46,7 +46,7 @@ def get_ratings_by_season(business_id):
     # 	print(dist)
     dates, rates = [], []
     for r in rating_by_month:
-    	dates.append(r['_id']['season'] + r['_id']['year'] * 1000)
+    	dates.append(int(r['_id']['season'] + r['_id']['year'] * 100))
     	rates.append(r['avg'])
     return (dates, rates)
 
