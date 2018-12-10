@@ -1,6 +1,8 @@
 import pymongo
 import json
 
+numberField = ["star", "latitude", "longtitude", "review_count", "average_star", "rstars"]
+
 def createDatabase(dbName, myClient):
 
     dblist = myClient.list_database_names()
@@ -41,6 +43,13 @@ def initializeDatabase(requirement):
         doc = {}
         for data in dataset:
             for field, originalName in requirement[table].items():
+                if originalName not in data:
+                    if field in numberField:
+                        data[originalName] = 0.0
+                    if field == "name":
+                        data[originalName] = "anonymous"
+                if field in numberField:
+                    doc[field] = float(data[originalName])
                 doc[field] = data[originalName]
             mycol.insert_one(doc)
 
@@ -65,44 +74,5 @@ def initializeDatabase(requirement):
 
 if __name__ == '__main__':
 
-    myClient = pymongo.MongoClient("mongodb://localhost:27017/")
-    removeDatabase("testDB",myClient)
-    tableName = ["Business", "User", "Review"]
-
-    mydb = createDatabase("testDB", myClient)
-
     requirement = json.loads(open("../input/Require_example.json").read())
-    
-    for table in tableName:
-        if table not in requirement:
-            continue
-        
-        mycol = createCollection(table, myClient, mydb)
-        dataset = json.loads(open("../input/" + table + "_example.json").read())
-        doc = {}
-        for data in dataset:
-            for field, originalName in requirement[table].items():
-                doc[field] = data[originalName]
-            mycol.insert_one(doc)
-
-        print("In collection " + table)
-        for one in mycol.find():
-            print(one)
-
-    print('---------------------------------------------')
-    report = {}
-    report['Database'] = mydb.command("dbstats")
-    report['Collection'] = {}
-    report['Collection']['collection_names'] = mydb.list_collection_names()
-    for table in mydb.list_collection_names():
-        stats = mydb.command("collstats", table)
-        report['Collection'][table] = {}
-        report['Collection'][table]['name'] = stats['ns']
-        report['Collection'][table]['pk'] = '_id'
-        report['Collection'][table]['documents'] = stats['count']
-        report['Collection'][table]['size'] = stats['size']
-        
-    print(report)
-    print(myClient.list_database_names())
-    print(mydb.list_collection_names())
-    # removeDatabase("testDB",myClient)
+    initializeDatabase(requirement)
