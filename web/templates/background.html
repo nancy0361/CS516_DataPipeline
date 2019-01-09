@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Homepage</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+	<!-- Bootstrap Core CSS -->
+	<link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+	<!-- Custom CSS -->
+	<link href="../static/css/style.css" rel='stylesheet' type='text/css' />
+
+	<!-- font-awesome icons CSS -->
+	<link href="../static/css/font-awesome.css" rel="stylesheet">
+	<!-- //font-awesome icons CSS -->
+
+	<!-- side nav css file -->
+	<link href='../static/css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css' />
+	<!-- side nav css file -->
+
+	<!-- js-->
+	<script src="../static/js/modernizr.custom.js"></script>
+
+	<!--webfonts-->
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext"
+	 rel="stylesheet">
+	<!--//webfonts-->
+
+	<!-- Metis Menu -->
+	<script src="../static/js/metisMenu.min.js"></script>
+	<script src="../static/js/custom.js"></script>
+	<link href="../static/css/custom.css" rel="stylesheet">
+	<!--//Metis Menu -->
+
+	<script src="../static/js/modernizr.js"></script>
+	<!-- SLIDER REVOLUTION 4.x CSS SETTINGS
+<link rel="stylesheet" type="text/css" href="rs-plugin/rs-plugin/css/settings.css" media="screen" /> -->
+
+	<!-- Bootstrap Core CSS -->
+	<link href="../static/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="../static/css/ionicons.min.css" rel="stylesheet">
+	<link href="../static/css/main.css" rel="stylesheet">
+	<link href="../static/css/style2.css" rel="stylesheet">
+	<link href="../static/css/responsive.css" rel="stylesheet">
+
+	<!-- COLORS -->
+	<link rel="stylesheet" id="color" href="../static/css/default.css">
+
+</head>
+
+<body class="cbp-spmenu-push">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left main-menu" id="cbp-spmenu-s1">
+		<!--left-fixed -navigation-->
+		<aside class="sidebar-left">
+			<nav class="navbar navbar-inverse">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					{% if number %}
+					<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Review {{number[1]}}<span class="dashboard_text">Analysis
+								System</span></a></h1>
+					{% else%}
+					<h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Review <span class="dashboard_text">Analysis
+								System</span></a></h1>
+					{% endif %}
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="sidebar-menu">
+						<li class="treeview">
+							<a href="homepage">
+								<i class="fa fa-home"></i> <span>Homepage</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-book"></i> <span>Background</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="upload">
+								<i class="fa fa-upload"></i> <span>Upload Database</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="analysis">
+								<i class="fa fa-bar-chart"></i> <span>Analysis</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="recommendation">
+								<i class="fa fa-thumbs-o-up"></i> <span>Recommendation</span>
+							</a>
+						</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fa fa-book"></i> <span>Acknowledge</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+		</aside>
+	</div>
+    <!--left-fixed -navigation-->
+    <div class="heading text-center" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
+            <h4 style="color: #252525;font-size: 24px;">Background Introduction</h4>
+            <hr>
+    </div>
+    <div>
+		<p style="text-transform:none; margin-left: 20%; margin-right: 5%; font-size: 18px;line-height: 1.8; text-align: justify"> 
+				&nbsp; &nbsp; &nbsp; &nbsp;In the modern society, it is common that people open an app like Yelp to check the rating and review of a restaurant before they going into it or check the reviews of a product before they finally making a purchase on Amazon. According to the local consumer review survey by BrightLocal, 90% of consumers read online reviews before visiting a business and 85% of consumers trust online reviews as much as personal recommendations. Actually, for both business runners and customers, efficiently generating reasonable and instructive insights from these review and rating data is an important task. Customers can take these reviews as a valuable reference when making their purchase decision. And from the viewpoint of business runners, reviews not only work as a way of advertisement but also serve as a guidebook for them to improve their service.</p>
+        <p style="text-transform:none; margin-left: 20%; margin-right: 5%; font-size: 18px;line-height: 1.8; text-align: justify"> 
+                &nbsp; &nbsp; &nbsp; &nbsp;However, the review data is always huge in amount and poor in formatting since it is written by many different people. Therefore, it is difficult for a person without professional training to retrieve useful information from this data. Even for a professional, the analysis process is still inefficient because he may need to repeat the same tasks in order to analyze the different datasets.</p>
+        <p style="text-transform:none; margin-left: 20%; margin-right: 5%; font-size: 18px;line-height: 1.8; text-align: justify"> 
+                &nbsp; &nbsp; &nbsp; &nbsp;Previously, standalone software such as Excel or Matlab is used for data analysis and visualization, which requires the user to install this software on PC. And the user has to write queries manually to acquire the information they want. Our goal is to help them to simplify this work with an analysis tool, a big data analysis pipeline working through the whole process. In this project, we built a user-friendly web application, which allowed the user to build their own database by simply uploading their data in JSON format, perform search and analysis on it using a graphical user interface and generate a list of recommendations based on the user's review history. All the complex details of schema design, data cleaning, query generation, and recommendation model training will be hidden from them.</p>
+                        
+    </div>
+    <div class="heading text-center" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
+            <h4 style="color: #252525;font-size: 24px;">System Design</h4>
+            <hr>
+    </div>
+    <div>
+        <h5 style="margin-left: 20%;"><b>The KDD Data Process Model</b></h5>
+        <hr>
+        <br>
+        <p style="text-transform:none; margin-left: 20%; margin-right: 5%; font-size: 18px;line-height: 1.8; text-align: justify"> 
+                &nbsp; &nbsp; &nbsp; &nbsp;The KDD process was first raised by Usama Fayyad et.al. in 1996. The word KDD stands for "Knowledge Discovery in Databases". It defines a series of steps for data analysis. A complete KDD process involves 9 steps: gather domain knowledge, create target dataset, data cleaning and processing, data reduction and projection, choose data mining function, choose data mining algorithm, data mining, interpretation and use discovered knowledge.</p>
+        <p style="text-transform:none; margin-left: 20%; margin-right: 5%; font-size: 18px;line-height: 1.8; text-align: justify"> 
+                &nbsp; &nbsp; &nbsp; &nbsp;In this project, we designed our system based on this KDD framework. According to the application, five steps are chosen from them to form a pipeline. The picture below shows an overview of our pipeline structure.</p>
+        <img src="../static/images/algorithm.png" class="img-responsive" alt="" width="50%" style="margin-left: 20%;">
+        <div style="margin-left: 20%; font-size: 18px; line-height: 1.8;">
+            <ul>
+                <li><b>Create Target Dataset: </b>chose a subset, which contains the information needed for further analysis, from the whole dataset.</li>
+                <li><b>Data Cleaning: </b>remove the invalid data.</li>
+                <li><b>Data Mining: </b>find patterns from the dataset.</li>
+                <li><b>Interpretation: </b>a visualization of the data mining results.</li>
+                <li><b>Use Discovered Knowledge: </b>In this project, generate recommendations according to users' review history.</li>
+            </ul>
+        </div>                   
+    </div>
+
+    <div class="offers" style="margin-left: 20%;">
+        <h5>System Architecture</h5>
+        <hr>
+        <ul class="row">
+            <li class="col-sm-5"> 
+                <p style="font-size: 18px;line-height: 1.8; text-align: justify"> 
+                    &nbsp; &nbsp; &nbsp; &nbsp;The whole system can be divided into three parts: the database, the back-end server and the web user interface. The website serves as the interface between this system and user. It allows user to express their intention using a graphical interface. The server serves as the interface between website and database. It can convert the user requests into commands that can be used for database manipulation and sent to the database as well as convert the query result into user-friendly messages or graphs. The database is used to store data and perform queries. The picture on the right shows a overview of the system architecture.</p>
+            </li>
+            <li class="col-sm-5"> 
+                <img src="../static/images/architecture.png" class="img-responsive" alt="">
+            </li>
+        </ul>
+    </div>
+
+    <div class="offers" style="margin-left: 20%;">
+        <h5>Database Schema</h5>
+        <hr>
+		<ul class="row">
+			<li class="col-sm-5"> 
+                <img src="../static/images/schema.png" class="img-responsive" alt="" width="90%">
+            </li>
+			<li class="col-sm-5"> 
+				<p style="font-size: 18px;line-height: 1.8; text-align: justify">&nbsp; &nbsp; &nbsp; &nbsp;In order to build a database schema that is compatible for most review systems, we define three relations in this schema: Business, User and Review. The schema designed for review system’s database is shown in the picture on the left.</p>
+			</li>
+		</ul>
+    </div>
+    
+    <div class="offers" style="margin-left: 20%;">
+        <h5>Work Flow</h5>
+        <hr>
+        <ul class="row">
+            <li class="col-sm-5"> 
+                <p style="font-size: 18px;line-height: 1.8; text-align: justify">&nbsp; &nbsp; &nbsp; &nbsp;The work flow of this review system pipeline follows the KDD process design introduced above. The picture on the right is a more detailed illustration of this work flow.</p>
+            </li>
+            <li class="col-sm-5"> 
+                <img src="../static/images/workflow.png" class="img-responsive" alt="" width="70%">
+            </li>
+        </ul>
+    </div>
+
+    <div class="heading text-center" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
+            <h4 style="color: #252525;font-size: 24px;">Future Work</h4>
+			<hr>
+    </div>
+    <div>
+        <p style="text-transform:none; margin-left: 20%; margin-right: 5%; font-size: 18px;line-height: 1.8; text-align: justify"> 
+                &nbsp; &nbsp; &nbsp; &nbsp;This project is just a prototype of the review data analysis pipeline. More functions are needed in order to make it more complete, useful and approachable. For example, accepting dataset other than JSON format, searching in range and searching with regular expression, more customized analysis and result visualization. And as working with a bigger dataset, it is also a choice to move the database from server's local disk to a cloud-based database.</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    </body>
+    
+    </html>
