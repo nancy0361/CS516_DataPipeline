@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, send_file
 from flask_uploads import UploadSet, configure_uploads
 from dataMining.mongoQuery import askMongo
 from dataMining.databaseInit import initializeDatabase
+from dataMining.checkDB import checkStatus
 import json
 from database import *
 from io import BytesIO
@@ -87,8 +88,10 @@ def open_background():
 def open_acknowledge():
     return render_template('acknowledge.html')
 
-@app.route('/status')
+@app.route('/status', methods=["Get"])
 def open_status():
+    report = checkStatus()
+    print(report)
     return render_template('status.html')
 
 dataset = UploadSet(name='dataset', extensions='json')
@@ -130,9 +133,6 @@ def receiveInput():
 
     else:
         return "no json received\n"
-
-
-
 
 
 @app.route("/requirement", methods=['Post'])
