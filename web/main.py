@@ -79,6 +79,18 @@ def make_pred(user_id, n=5):
 def open_homepage():
     return render_template('homepage.html')
 
+@app.route('/background')
+def open_background():
+    return render_template('background.html')
+
+@app.route('/acknowledge')
+def open_acknowledge():
+    return render_template('acknowledge.html')
+
+@app.route('/status')
+def open_status():
+    return render_template('status.html')
+
 dataset = UploadSet(name='dataset', extensions='json')
 configure_uploads(app, dataset)
 @app.route("/upload", methods=['Post', 'Get'])

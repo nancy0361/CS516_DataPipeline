@@ -58,14 +58,8 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    {% if number %}
-                    <h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Review {{number[1]}}<span
-                                class="dashboard_text">Analysis
-                                System</span></a></h1>
-                    {% else%}
                     <h1><a class="navbar-brand" href="#"><span class="fa fa-database"></span> Review <span class="dashboard_text">Analysis
                                 System</span></a></h1>
-                    {% endif %}
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="sidebar-menu">
@@ -75,13 +69,18 @@
                             </a>
                         </li>
                         <li class="treeview">
-                            <a href="#">
+                            <a href="background">
                                 <i class="fa fa-book"></i> <span>Background</span>
                             </a>
                         </li>
                         <li class="treeview">
                             <a href="upload">
                                 <i class="fa fa-upload"></i> <span>Upload Database</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="status">
+                                <i class="fa fa-book"></i> <span>Database Status</span>
                             </a>
                         </li>
                         <li class="treeview">
@@ -95,7 +94,7 @@
                             </a>
                         </li>
                         <li class="treeview">
-                            <a href="#">
+                            <a href="acknowledge">
                                 <i class="fa fa-book"></i> <span>Acknowledge</span>
                             </a>
                         </li>
