@@ -105,7 +105,7 @@
 	</div>
 	<!--left-fixed -navigation-->
 	<div style="margin-left: 20%; margin-top: 30px; margin-right: 100px;">
-		<div class="heading text-center">
+		<!-- <div class="heading text-center">
 			<h4 style="color: #252525;font-size: 24px;">Upload Database</h4>
 			<hr>
 		</div>
@@ -125,8 +125,8 @@
 		{% else%}
 		{% endif %}
 		<br />
-		<br />
-		
+		<br /> -->
+
 		<div class="heading text-center" style="margin-top:100px;">
 			<h4 style="color: #252525;font-size: 24px;">Database Design</h4>
 			<hr>
@@ -271,7 +271,7 @@
 			<hr style="height:1px;border:none;border-top:1px solid #DDDDDD; margin-left: 30px; margin-right: 70px;" />
 			<div>
 				<div class="pretty p-default p-round col-sm-3" style="margin-left: 40px; margin-top: 1.5%;">
-					<input type="checkbox" id="zipcode_checkbox"/>
+					<input type="checkbox" id="zipcode_checkbox" />
 					<div class="state p-success">
 						<label style="font-size: 18px; color: #666666;">zipcode</label>
 					</div>
@@ -283,38 +283,67 @@
 			</div>
 			<br />
 		</div>
+		<div id="business_submit" style="display: none; margin-left: 40px;" >
+			<br/>
+			<br/>
+			<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}" onsubmit="business_submit()">
+				<div class="col-md-5">
+					<p style="text-transform:none;font-size: 20px;color: #666666;">Please choose your file for the Business table: </p>
+				</div>
+				<div class="col-md-7">
+					<input id='business_file' charset="utf-8" type=file name=dataset style="font-size:20px;height:30px;">
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<div class="col-md-12" align="center">
+					<input type="submit" class="btn btn-default" value="Create Business Table" >
+				</div>
+			</form>
+		</div>
+
 		<script>
 			function exe_open_business() {
 				// open the selection box for business table
 				var is_checked = document.getElementById("table_business").checked;
 				var div_business = document.getElementById("business_show");
+				var business_submit = document.getElementById("business_submit");
 				if (is_checked == true) {
 					div_business.style.display = "block";
+					business_submit.style.display = "block";
 				}
 				else {
 					div_business.style.display = "none";
+					business_submit.style.display = "none";
 				}
 			}
 			function exe_open_user() {
 				// open the selection box for business table
 				var is_checked = document.getElementById("table_user").checked;
 				var div_user = document.getElementById("user_show");
+				var user_submit = document.getElementById("user_submit");
 				if (is_checked == true) {
 					div_user.style.display = "block";
+					user_submit.style.display = "block";
 				}
 				else {
 					div_user.style.display = "none";
+					user_submit.style.display = "block";
 				}
 			}
 			function exe_open_review() {
 				// open the selection box for business table
 				var is_checked = document.getElementById("table_review").checked;
 				var div_review = document.getElementById("review_show");
+				var review_submit = document.getElementById("review_submit");
 				if (is_checked == true) {
 					div_review.style.display = "block";
+					review_submit.style.display = "block";
 				}
 				else {
 					div_review.style.display = "none";
+					review_submit.style.display = "block";
 				}
 			}
 		</script>
@@ -404,8 +433,27 @@
 			</div>
 			<br />
 		</div>
-		
 		<br />
+		<div id="user_submit" style="display: none; margin-left: 40px;" >
+			<br/>
+			<br/>
+			<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}"onsubmit="user_submit()">
+				<div class="col-md-5">
+					<p style="text-transform:none;font-size: 20px;color: #666666;">Please choose your file for the User table: </p>
+				</div>
+				<div class="col-md-7">
+					<input id='user_file' charset="utf-8" type=file name=dataset style="font-size:20px;height:30px;">
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<div class="col-md-12" align="center">
+					<input type="submit" class="btn btn-default" value="Create User Table" >
+				</div>
+			</form>
+		</div>
+
 		<div class="pretty p-svg p-curve">
 			<input type="checkbox" id="table_review" onclick="exe_open_review()" />
 			<div class="state p-success">
@@ -504,9 +552,28 @@
 			<br />
 		</div>
 		<br />
-		<div style="margin: 0 auto; width:200px; height:100px;">
-			<input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;" onclick="submit()" />
+		<div id="review_submit" style="display: none; margin-left: 40px;margin-bottom: 100px;" >
+			<br/>
+			<br/>
+			<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}" onsubmit="review_submit()">
+				<div class="col-md-5">
+					<p style="text-transform:none;font-size: 20px;color: #666666;">Please choose your file for the Review table: </p>
+				</div>
+				<div class="col-md-7">
+					<input id='review_file'charset="utf-8" type=file name=dataset style="font-size:20px;height:30px;" >
+				</div>
+				<br />
+				<br />
+				<br />
+				<br />
+				<div class="col-md-12" align="center">
+					<input type="submit" class="btn btn-default" value="Create Review Table" >
+				</div>
+			</form>
 		</div>
+		<!-- <div style="margin: 0 auto; width:200px; height:100px;">
+			<input class="btn btn-danger" name="submit1" type="button" value="&nbsp;&nbsp;Submit&nbsp;&nbsp;" onclick="submit()" />
+		</div> -->
 		<div class="heading text-center" style="display:none;margin-top:30px;" id="report">
 			<h4 style="color: #252525;font-size: 24px;">Database Creation Report</h4>
 			<hr>
@@ -516,19 +583,17 @@
 		</div>
 
 		<script>
-			function submit() {
+			function business_submit(){
 				var require = {};
 				var business_checked = document.getElementById("table_business").checked;
-				var user_checked = document.getElementById("table_user").checked;
-				var review_checked = document.getElementById("table_review").checked;
+				var business_file = document.getElementById('business_file').value;
+				require["Filename"] = business_file;
 				if (business_checked == true) {
-					// alert("business selected");
 					require["Business"] = {};
 					var business_id_checked = document.getElementById("business_id_checkbox").checked;
 					var business_id = document.getElementById("business_id");
 					if (business_id_checked == true) {
 						require["Business"]["_id"] = business_id.value;
-						// alert(require["Business"]["_id"]);
 					}
 					var star_checked = document.getElementById("star_checkbox").checked;
 					var star = document.getElementById("star");
@@ -576,6 +641,22 @@
 						require["Business"]["zipcode"] = zipcode.value;
 					}
 				}
+				$.ajax({
+					type: "POST",
+					url: "/requirement",
+					dataType: "json",
+					contentType: "application/json",
+					data: JSON.stringify(require),
+					success: function (data, status) {
+						alert("Business table create successfully. Pleale look at the report.");
+					}
+				});
+			}
+			function user_submit(){
+				var require = {};
+				var user_checked = document.getElementById("table_user").checked;
+				var user_file = document.getElementById('user_file').value;
+				require["Filename"] = user_file;
 				if (user_checked == true) {
 					require["User"] = {};
 					var user_id_checked = document.getElementById("user_id_checkbox").checked;
@@ -604,6 +685,22 @@
 						require["User"]["signup_date"] = signup_date.value;
 					}
 				}
+				$.ajax({
+					type: "POST",
+					url: "/requirement",
+					dataType: "json",
+					contentType: "application/json",
+					data: JSON.stringify(require),
+					success: function (data, status) {
+						alert("User table create successfully. Pleale look at the report.");
+					}
+				});
+			}
+			function review_submit(){
+				var require = {};
+				var review_checked = document.getElementById("table_review").checked;
+				var review_file = document.getElementById('review_file').value;
+				require["Filename"] = review_file;
 				if (review_checked == true) {
 					require["Review"] = {};
 					var review_id_checked = document.getElementById("review_id_checkbox").checked;
@@ -644,78 +741,210 @@
 					contentType: "application/json",
 					data: JSON.stringify(require),
 					success: function (data, status) {
-						alert("Database create successfully. Pleale look at the creation report.");
-						// var info = JSON.parse(data);
-						var info = data;
-	
-						var div_db = document.createElement("div");
-                        div_db.className = "widget-shadow";
-                        var title_db = document.createElement("div");
-                        title_db.className = "form-title";
-                        var body_db = document.createElement("div");
-                        body_db.className = "form-body";
-						var title_db_h = document.createElement("h4");
-                        title_db_h.style = "text-transform:none;";
-                        var title_db_content = document.createTextNode("Database Information");
-                        title_db_h.appendChild(title_db_content);
-                        title_db.appendChild(title_db_h);
-						for(var key in info["Database"]){
-							var content = document.createTextNode(key + ": " + String(info["Database"][key]));
-							var item = document.createElement("h5");
-                        	item.style = "text-transform:none;";
-							item.appendChild(content);
-							body_db.appendChild(item);
-						}
-						div_db.appendChild(title_db);
-						div_db.appendChild(body_db)
-						var db_info = document.getElementById("db_info");
-						db_info.appendChild(div_db);
-
-						var div_collection = document.createElement("div");
-						div_collection.className = "widget-shadow";
-						var title_collection = document.createElement("div");
-                        title_collection.className = "form-title";
-                        var body_collection = document.createElement("div");
-                        body_collection.className = "form-body";
-						var title_collection_h = document.createElement("h4");
-                        title_collection_h.style = "text-transform:none;";
-                        var title_collection_content = document.createTextNode("Collection Information");
-                        title_collection_h.appendChild(title_collection_content);
-                        title_collection.appendChild(title_collection_h);
-						for (var i = 0; i < info["Collection"]['collection_names'].length; i++){
-							var coll_name = info["Collection"]['collection_names'][i];
-							var div_item = document.createElement("div");
-							div_item.className = "widget-shadow";
-							var title_item = document.createElement("div");
-							title_item.className = "form-title";
-							var body_item = document.createElement("div");
-							body_item.className = "form-body";
-							var title_item_h = document.createElement("h5");
-							title_item_h.style = "text-transform:none;";
-							var title_item_content = document.createTextNode(coll_name);
-							title_item_h.appendChild(title_item_content);
-							title_item.appendChild(title_item_h);
-							for(var key in info["Collection"][coll_name]){
-								var content = document.createTextNode(key + ": " + String(info["Collection"][coll_name][key]));
-								var coll_item = document.createElement("h5");
-                        		coll_item.style = "text-transform:none;";
-								coll_item.appendChild(content);
-								body_item.appendChild(coll_item);
-							}
-							div_item.appendChild(title_item);
-							div_item.appendChild(body_item);
-							body_collection.appendChild(div_item);
-						}
-						div_collection.appendChild(title_collection);
-						div_collection.appendChild(body_collection);
-						db_info.appendChild(div_collection);
-
-						var report_title = document.getElementById("report");
-						report_title.style.display = "block";
-						db_info.style.display = "block";
+						alert("User table create successfully. Pleale look at the report.");
 					}
 				});
 			}
+			// function submit() {
+			// 	var require = {};
+			// 	var business_checked = document.getElementById("table_business").checked;
+			// 	var user_checked = document.getElementById("table_user").checked;
+			// 	var review_checked = document.getElementById("table_review").checked;
+			// 	if (business_checked == true) {
+			// 		// alert("business selected");
+			// 		require["Business"] = {};
+			// 		var business_id_checked = document.getElementById("business_id_checkbox").checked;
+			// 		var business_id = document.getElementById("business_id");
+			// 		if (business_id_checked == true) {
+			// 			require["Business"]["_id"] = business_id.value;
+			// 			// alert(require["Business"]["_id"]);
+			// 		}
+			// 		var star_checked = document.getElementById("star_checkbox").checked;
+			// 		var star = document.getElementById("star");
+			// 		if (star_checked == true) {
+			// 			require["Business"]["star"] = star.value;
+			// 		}
+			// 		var name_checked = document.getElementById("name_checkbox").checked;
+			// 		var name = document.getElementById("name");
+			// 		if (name_checked == true) {
+			// 			require["Business"]["name"] = name.value;
+			// 		}
+			// 		var latitude_checked = document.getElementById("latitude_checkbox").checked;
+			// 		var latitude = document.getElementById("latitude");
+			// 		if (latitude_checked == true) {
+			// 			require["Business"]["latitude"] = latitude.value;
+			// 		}
+			// 		var longtitude_checked = document.getElementById("longtitude_checkbox").checked;
+			// 		var longtitude = document.getElementById("longtitude");
+			// 		if (longtitude_checked == true) {
+			// 			require["Business"]["longtitude"] = longtitude.value;
+			// 		}
+			// 		var state_checked = document.getElementById("state_checkbox").checked;
+			// 		var state = document.getElementById("state");
+			// 		if (state_checked == true) {
+			// 			require["Business"]["state"] = state.value;
+			// 		}
+			// 		var city_checked = document.getElementById("city_checkbox").checked;
+			// 		var city = document.getElementById("city");
+			// 		if (city_checked == true) {
+			// 			require["Business"]["city"] = city.value;
+			// 		}
+			// 		var review_count_checked = document.getElementById("review_count_checkbox").checked;
+			// 		var review_count = document.getElementById("review_count");
+			// 		if (review_count_checked == true) {
+			// 			require["Business"]["review_count"] = review_count.value;
+			// 		}
+			// 		var category_checked = document.getElementById("category_checkbox").checked;
+			// 		var category = document.getElementById("category");
+			// 		if (category_checked == true) {
+			// 			require["Business"]["category"] = category.value;
+			// 		}
+			// 		var zipcode_checked = document.getElementById("zipcode_checkbox").checked;
+			// 		var zipcode = document.getElementById("zipcode");
+			// 		if (zipcode_checked == true) {
+			// 			require["Business"]["zipcode"] = zipcode.value;
+			// 		}
+			// 	}
+			// 	if (user_checked == true) {
+			// 		require["User"] = {};
+			// 		var user_id_checked = document.getElementById("user_id_checkbox").checked;
+			// 		var user_id = document.getElementById("user_id");
+			// 		if (user_id_checked == true) {
+			// 			require["User"]["_id"] = user_id.value;
+			// 		}
+			// 		var user_name_checked = document.getElementById("user_name_checkbox").checked;
+			// 		var user_name = document.getElementById("user_name");
+			// 		if (user_name_checked == true) {
+			// 			require["User"]["name"] = user_name.value;
+			// 		}
+			// 		var user_review_cnt_checked = document.getElementById("user_review_cnt_checkbox").checked;
+			// 		var user_review_cnt = document.getElementById("user_review_cnt");
+			// 		if (user_review_cnt_checked == true) {
+			// 			require["User"]["review_count"] = user_review_cnt.value;
+			// 		}
+			// 		var avg_star_checked = document.getElementById("avg_star_checkbox").checked;
+			// 		var avg_star = document.getElementById("avg_star");
+			// 		if (avg_star_checked == true) {
+			// 			require["User"]["average_star"] = avg_star.value;
+			// 		}
+			// 		var signup_date_checked = document.getElementById("signup_date_checkbox").checked;
+			// 		var signup_date = document.getElementById("signup_date");
+			// 		if (signup_date_checked == true) {
+			// 			require["User"]["signup_date"] = signup_date.value;
+			// 		}
+			// 	}
+			// 	if (review_checked == true) {
+			// 		require["Review"] = {};
+			// 		var review_id_checked = document.getElementById("review_id_checkbox").checked;
+			// 		var review_id = document.getElementById("review_id");
+			// 		if (review_id_checked == true) {
+			// 			require["Review"]["_id"] = review_id.value;
+			// 		}
+			// 		var review_business_id_checked = document.getElementById("review_business_id_checkbox").checked;
+			// 		var review_business_id = document.getElementById("review_business_id");
+			// 		if (review_business_id_checked == true) {
+			// 			require["Review"]["bid"] = review_business_id.value;
+			// 		}
+			// 		var review_user_id_checked = document.getElementById("review_user_id_checkbox").checked;
+			// 		var review_user_id = document.getElementById("review_user_id");
+			// 		if (review_user_id_checked == true) {
+			// 			require["Review"]["uid"] = review_user_id.value;
+			// 		}
+			// 		var review_checked = document.getElementById("review_checkbox").checked;
+			// 		var review = document.getElementById("review");
+			// 		if (review_checked == true) {
+			// 			require["Review"]["review"] = review.value;
+			// 		}
+			// 		var review_star_checked = document.getElementById("review_star_checkbox").checked;
+			// 		var review_star = document.getElementById("review_star");
+			// 		if (review_star_checked == true) {
+			// 			require["Review"]["rstars"] = review_star.value;
+			// 		}
+			// 		var review_date_checked = document.getElementById("review_date_checkbox").checked;
+			// 		var review_date = document.getElementById("review_date");
+			// 		if (review_date_checked == true) {
+			// 			require["Review"]["rdate"] = review_date.value;
+			// 		}
+			// 	}
+			// 	$.ajax({
+			// 		type: "POST",
+			// 		url: "/requirement",
+			// 		dataType: "json",
+			// 		contentType: "application/json",
+			// 		data: JSON.stringify(require),
+			// 		success: function (data, status) {
+			// 			alert("Database create successfully. Pleale look at the creation report.");
+						
+			// 			var info = data;
+
+			// 			var div_db = document.createElement("div");
+			// 			div_db.className = "widget-shadow";
+			// 			var title_db = document.createElement("div");
+			// 			title_db.className = "form-title";
+			// 			var body_db = document.createElement("div");
+			// 			body_db.className = "form-body";
+			// 			var title_db_h = document.createElement("h4");
+			// 			title_db_h.style = "text-transform:none;";
+			// 			var title_db_content = document.createTextNode("Database Information");
+			// 			title_db_h.appendChild(title_db_content);
+			// 			title_db.appendChild(title_db_h);
+			// 			for (var key in info["Database"]) {
+			// 				var content = document.createTextNode(key + ": " + String(info["Database"][key]));
+			// 				var item = document.createElement("h5");
+			// 				item.style = "text-transform:none;";
+			// 				item.appendChild(content);
+			// 				body_db.appendChild(item);
+			// 			}
+			// 			div_db.appendChild(title_db);
+			// 			div_db.appendChild(body_db)
+			// 			var db_info = document.getElementById("db_info");
+			// 			db_info.appendChild(div_db);
+
+			// 			var div_collection = document.createElement("div");
+			// 			div_collection.className = "widget-shadow";
+			// 			var title_collection = document.createElement("div");
+			// 			title_collection.className = "form-title";
+			// 			var body_collection = document.createElement("div");
+			// 			body_collection.className = "form-body";
+			// 			var title_collection_h = document.createElement("h4");
+			// 			title_collection_h.style = "text-transform:none;";
+			// 			var title_collection_content = document.createTextNode("Collection Information");
+			// 			title_collection_h.appendChild(title_collection_content);
+			// 			title_collection.appendChild(title_collection_h);
+			// 			for (var i = 0; i < info["Collection"]['collection_names'].length; i++) {
+			// 				var coll_name = info["Collection"]['collection_names'][i];
+			// 				var div_item = document.createElement("div");
+			// 				div_item.className = "widget-shadow";
+			// 				var title_item = document.createElement("div");
+			// 				title_item.className = "form-title";
+			// 				var body_item = document.createElement("div");
+			// 				body_item.className = "form-body";
+			// 				var title_item_h = document.createElement("h5");
+			// 				title_item_h.style = "text-transform:none;";
+			// 				var title_item_content = document.createTextNode(coll_name);
+			// 				title_item_h.appendChild(title_item_content);
+			// 				title_item.appendChild(title_item_h);
+			// 				for (var key in info["Collection"][coll_name]) {
+			// 					var content = document.createTextNode(key + ": " + String(info["Collection"][coll_name][key]));
+			// 					var coll_item = document.createElement("h5");
+			// 					coll_item.style = "text-transform:none;";
+			// 					coll_item.appendChild(content);
+			// 					body_item.appendChild(coll_item);
+			// 				}
+			// 				div_item.appendChild(title_item);
+			// 				div_item.appendChild(body_item);
+			// 				body_collection.appendChild(div_item);
+			// 			}
+			// 			div_collection.appendChild(title_collection);
+			// 			div_collection.appendChild(body_collection);
+			// 			db_info.appendChild(div_collection);
+
+			// 			var report_title = document.getElementById("report");
+			// 			report_title.style.display = "block";
+			// 			db_info.style.display = "block";
+			// 		}
+			// 	});
+			// }
 		</script>
 
 	</div>
