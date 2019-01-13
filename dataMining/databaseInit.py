@@ -22,6 +22,9 @@ def removeDatabase(dbName, myClient):
 
 
 def createCollection(collName, myClient, mydb):
+    collectionNames = mydb.collection_names()
+    if collName in collectionNames:
+        mydb[collName].drop()
     mycol = mydb[collName]
     print("Collection " + collName + " created.")
     return mycol
@@ -45,19 +48,26 @@ def checkStatus():
     return report
 
 def initializeDatabase(requirement):
-
+    print("init database....")
     myClient = pymongo.MongoClient("mongodb://localhost:27017/")
+
+    # create database if not exists
+    dbnames = myClient.list_database_names()
+    if "testDB" in dbnames:
+        mydb = myClient.testDB
+    else:
+        mydb = createDatabase("testDB", myClient)
+
+    # extract input file name
+    index = requirement["Filename"].rfind("\\") + 1
+    filename = "../input/" + requirement["Filename"][index:]
     tableName = ["Business", "User", "Review"]
-    
-    removeDatabase("testDB",myClient)
-    mydb = createDatabase("testDB", myClient)
-    
+
     for table in tableName:
         if table not in requirement:
             continue
-        
         mycol = createCollection(table, myClient, mydb)
-        dataset = json.loads(open("../input/" + table + "_example.json").read())
+        dataset = json.loads(open(filename).read())
         doc = {}
         for data in dataset:
             for field, originalName in requirement[table].items():
