@@ -112,52 +112,118 @@
 			</nav>
 		</aside>
 	</div>
-    <!--left-fixed -navigation-->
-    <div class="heading text-center" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
-            <h4 style="color: #252525;font-size: 24px;">-- Welcome Business Runner --</h4>
-            <hr>
-    </div>
-    <div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
-        <h5>Want to Check Your Basic Information?</h5>
-        <p>Please tell us your name or business id.</p><br>
-            <form action="" method="post" id="businessInfo" name="businessInfo">
-                <ul class="row">
-                    <li class="col-sm-4"> 
-                        <label style="font-size: 18px;" for="business_name">Business Name</label><br>
-                        <input style="font-size: 18px; width: 100%;" type="text" name="business_name" id="business_name" placeholder="Maggie & Stella's Gifts">
-                    </li>
-                    <li class="col-sm-4"> 
-                        <label style="font-size: 18px;" for="business_id">Business ID</label><br>
-                        <input style="font-size: 18px; width: 100%;" type="text" name="business_id" id="business_id" placeholder="UTm5QZThPQlT35mkAcGOjg">
-                    </li>
-                </ul>
-                <br><br><br>
-                <input type="submit" class="btn btn-default" value="Check Information" >
-            </form>
-    </div> 
-    <br>
-    <div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
-        <h5>Want to Check The Rating History for Your Business?</h5>
-        <p>Please tell us your business id.</p><br>
-        <form action="" method="post" id="rating_history" name="rating_history">
-            <label style="font-size: 18px;" for="business_id_rating">Business ID</label>
-            <input style="font-size: 18px; width: 30%;" type="text" name="business_id_rating" id="business_id_rating" placeholder="UTm5QZThPQlT35mkAcGOjg">
-            <br><br><br>
-            <input type="submit" class="btn btn-default" value="Check Information" >
-        </form>
-    </div>
-    <br>
-    <div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
-        <h5>Find Out the Rating Distribution in Your State?</h5>
-        <p>Please tell us which state are you in.</p><br>
-            <form action="" method="post" id="state_distribution" name="state_distribution">
-                <label style="font-size: 18px;" for="state">State Name</label>
-                <input style="font-size: 18px; width: 30%;" type="text" name="state" id="state" placeholder="NC">
-                <br><br><br>
-                <input type="submit" class="btn btn-default" value="Check Distribution" >
-            </form>
-        </div>  
-      
+	<!--left-fixed -navigation-->
+	<div class="heading text-center" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
+		<h4 style="color: #252525;font-size: 24px;">-- Welcome Business Runner --</h4>
+		<hr>
+	</div>
+	<div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
+		<h5>Want to Check Your Basic Information?</h5>
+		<p>Please tell us your name or business id.</p><br />
+		<form action="" method="post" id="businessInfo" name="businessInfo">
+			<ul class="row">
+				<li class="col-sm-4">
+					<label style="font-size: 18px;" for="business_name">Business Name</label><br>
+					<input class="form-control" style="font-size: 18px; width: 100%;" type="text" name="business_name" id="business_name"
+					 placeholder="Maggie & Stella's Gifts">
+				</li>
+				<li class="col-sm-4">
+					<label style="font-size: 18px;" for="business_id">Business ID</label><br>
+					<input class="form-control" style="font-size: 18px; width: 100%;" type="text" name="business_id" id="business_id"
+					 placeholder="UTm5QZThPQlT35mkAcGOjg">
+				</li>
+			</ul>
+			<br><br><br>
+			<input type="button" class="btn btn-default" value="Check Information" onclick="check_business_info()">
+		</form>
+	</div>
+	<div id="search_business" style="display:none;margin-left: 20%;">
+		<br />
+		<h5>result</h5>
+		<div id="search_business_result"></div>
+	</div>
+	<script>
+		function check_business_info() {
+			var business_name = document.getElementById('business_name').value;
+			var business_id = document.getElementById('business_id').value;
+			var result = document.getElementById("search_business");
+			$.post("/check_business_info/" + business_id + "/" + business_name, function (data, status) {
+				var get_data = JSON.parse(data);
+				var para = document.getElementById("search_business_result");
+				for (var key_num in get_data) {
+					var item = get_data[key_num];
+					var item_block = document.createElement("div");
+					item_block.className = "widget-shadow";
+					var item_seperate = document.createElement("hr");
+					item_block.appendChild(item_seperate);
+					for (var key in item) {
+						var line = document.createElement("div")
+						var name = document.createElement("div");
+						name.className = "col-sm-3"
+						var line_name = document.createElement("p");
+						var content_name = document.createTextNode(key);
+						line_name.appendChild(content_name);
+						name.appendChild(line_name);
+						line.appendChild(name);
+						var value = document.createElement("div");
+						value.className = "col-sm-8"
+						var line_value = document.createElement("p");
+						var content_value = document.createTextNode(item[key]);
+						line_value.appendChild(content_value);
+						value.appendChild(line_value);
+						line.appendChild(value);
+						item_block.appendChild(line);
+					}
+					para.appendChild(item_block);
+				}
+				result.style.display = "block";
+			});
+		}
+	</script>
+	<br>
+	<hr style="margin-left: 25%; margin-right: 10%;">
+	<div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
+		<h5>Want to Check The Rating History for Your Business?</h5>
+		<p>Please tell us your business id.</p><br>
+		<form action="" method="post" id="rating_history" name="rating_history">
+			<label style="font-size: 18px;" for="business_id_rating">Business ID</label>
+			<input class="form-control" style="font-size: 18px; width: 30%;" type="text" name="business_id_rating" id="business_id_rating"
+			 placeholder="UTm5QZThPQlT35mkAcGOjg">
+			<br><br><br>
+			<input type="button" class="btn btn-default" value="Check Information" onclick="rating_history()">
+		</form>
+	</div>
+	<img style="margin-left:20%;display:none; text-align:center;" id="img_ratings">
+	<script>
+		function rating_history() {
+            var business_id = document.getElementById("business_id_rating").value;
+            var img_ratings = document.getElementById("img_ratings");
+            $("#img_ratings").attr("src", "/ratings/image/" + business_id);
+            img_ratings.style.display = "block";
+        }
+	</script>
+	<br>
+	<hr style="margin-left: 25%; margin-right: 10%;">
+	<div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
+		<h5>Find Out the Rating Distribution in Your State?</h5>
+		<p>Please tell us which state are you in.</p><br>
+		<form action="" method="post" id="state_distribution" name="state_distribution">
+			<label style="font-size: 18px;" for="state">State Name</label>
+			<input class="form-control" style="font-size: 18px; width: 30%;" type="text" name="state" id="state" placeholder="NC">
+			<br><br><br>
+			<input type="button" class="btn btn-default" value="Check Distribution" style="margin-bottom: 100px;" onclick="rating_distribution()">
+		</form>
+	</div>
+	<img style="margin-left: 20%;display:none; text-align:center;" id="img_distribution">
+	<script>
+		function rating_distribution() {
+            var state_distribution = document.getElementById("state").value;
+            var img_distribution = document.getElementById("img_distribution");
+            $("#img_distribution").attr("src", "/distribution/image/" + state_distribution);
+            img_distribution.style.display = "block";
+        }
+	</script>
+
 </body>
 
 </html>

@@ -1630,6 +1630,39 @@ header .container {
 .innovaction.light-sec p {
 	color: #000;
 }
+
+
+.innovaction_small_business {
+	background: url(../images/smallbusiness.jpg) center center no-repeat;
+	background-size: cover;
+	margin-left: 10%;
+}
+.innovaction_small_business .heading span {
+	color: #1cd1aa;
+}
+.innovaction_small_business.light-sec {
+	background: #fff;
+}
+.innovaction_small_business.light-sec p {
+	color: #000;
+}
+
+
+.innovaction_customer {
+	background: url(../images/customer.jpg) center center no-repeat;
+	background-size: cover;
+	margin-left: 10%;
+}
+.innovaction_customer .heading span {
+	color: #1cd1aa;
+}
+.innovaction_customer.light-sec {
+	background: #fff;
+}
+.innovaction_customer.light-sec p {
+	color: #000;
+}
+
 /*=======================================================
       SERVICES
 ========================================================*/
