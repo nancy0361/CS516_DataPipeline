@@ -152,6 +152,8 @@
 				alert("Invalid Input: Empty Input.");
 			}
 			else {
+				user_id = (user_id != "") ? user_id : "_";
+				user_name = (user_name != "") ? user_name : "_";
 				var result = document.getElementById("search_user");
 				$.post("/search_user/" + user_id + "/" + user_name, function (data, status) {
 					var get_data = JSON.parse(data);
@@ -238,6 +240,11 @@
 				alert("Invalid Input: Empty Input.");
 			}
 			else {
+				business_name = (business_name != "") ? business_name : "_";
+				state = (state != "") ? state : "_";
+				review_count = (review_count != "") ? review_count : "_";
+				star_small = (star_small != "") ? star_small : "_";
+				star_big = (star_big != "") ? star_big : "_";
 				var result = document.getElementById("search_business");
 				$.post("/search_business/" + business_name + "/" + state + "/" + review_count + "/" + star_small + "/" + star_big, function (data, status) {
 					var get_data = JSON.parse(data);
