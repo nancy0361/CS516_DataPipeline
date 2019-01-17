@@ -148,38 +148,44 @@
 		function search_user() {
 			var user_id = document.getElementById("user_id").value;
 			var user_name = document.getElementById("user_name").value;
-			var result = document.getElementById("search_user");
-			$.post("/search_user/" + user_id + "/" + user_name, function (data, status) {
-				var get_data = JSON.parse(data);
-				var para = document.getElementById("search_user_result");
-				for (var key_num in get_data) {
-					var item = get_data[key_num];
-					var item_block = document.createElement("div");
-					item_block.className = "widget-shadow";
-					var item_seperate = document.createElement("hr");
-					item_block.appendChild(item_seperate);
-					for (var key in item) {
-						var line = document.createElement("div")
-						var name = document.createElement("div");
-						name.className = "col-sm-3"
-						var line_name = document.createElement("p");
-						var content_name = document.createTextNode(key);
-						line_name.appendChild(content_name);
-						name.appendChild(line_name);
-						line.appendChild(name);
-						var value = document.createElement("div");
-						value.className = "col-sm-8"
-						var line_value = document.createElement("p");
-						var content_value = document.createTextNode(item[key]);
-						line_value.appendChild(content_value);
-						value.appendChild(line_value);
-						line.appendChild(value);
-						item_block.appendChild(line);
+			if (user_id == "" && user_name == "") {
+				alert("Invalid Input: Empty Input.");
+			}
+			else {
+				var result = document.getElementById("search_user");
+				$.post("/search_user/" + user_id + "/" + user_name, function (data, status) {
+					var get_data = JSON.parse(data);
+					var para = document.getElementById("search_user_result");
+					for (var key_num in get_data) {
+						var item = get_data[key_num];
+						var item_block = document.createElement("div");
+						item_block.className = "widget-shadow";
+						var item_seperate = document.createElement("hr");
+						item_block.appendChild(item_seperate);
+						for (var key in item) {
+							var line = document.createElement("div")
+							var name = document.createElement("div");
+							name.className = "col-sm-3"
+							var line_name = document.createElement("p");
+							var content_name = document.createTextNode(key);
+							line_name.appendChild(content_name);
+							name.appendChild(line_name);
+							line.appendChild(name);
+							var value = document.createElement("div");
+							value.className = "col-sm-8"
+							var line_value = document.createElement("p");
+							var content_value = document.createTextNode(item[key]);
+							line_value.appendChild(content_value);
+							value.appendChild(line_value);
+							line.appendChild(value);
+							item_block.appendChild(line);
+						}
+						para.appendChild(item_block);
 					}
-					para.appendChild(item_block);
-				}
-				result.style.display = "block";
-			});
+					result.style.display = "block";
+				});
+			}
+
 		}
 	</script>
 	<br>
@@ -228,38 +234,43 @@
 			var review_count = document.getElementById('review_count').value;
 			var star_small = document.getElementById('star_small').value;
 			var star_big = document.getElementById('star_big').value;
-			var result = document.getElementById("search_business");
-			$.post("/search_business/" + business_name + "/" + state + "/" + review_count + "/" + star_small + "/" + star_big, function (data, status) {
-				var get_data = JSON.parse(data);
-				var para = document.getElementById("search_business_result");
-				for (var key_num in get_data) {
-					var item = get_data[key_num];
-					var item_block = document.createElement("div");
-					item_block.className = "widget-shadow";
-					var item_seperate = document.createElement("hr");
-					item_block.appendChild(item_seperate);
-					for (var key in item) {
-						var line = document.createElement("div")
-						var name = document.createElement("div");
-						name.className = "col-sm-3"
-						var line_name = document.createElement("p");
-						var content_name = document.createTextNode(key);
-						line_name.appendChild(content_name);
-						name.appendChild(line_name);
-						line.appendChild(name);
-						var value = document.createElement("div");
-						value.className = "col-sm-8"
-						var line_value = document.createElement("p");
-						var content_value = document.createTextNode(item[key]);
-						line_value.appendChild(content_value);
-						value.appendChild(line_value);
-						line.appendChild(value);
-						item_block.appendChild(line);
+			if (business_name == "" && bstate == "" && review_count == "" && star_small == "" && star_big == "") {
+				alert("Invalid Input: Empty Input.");
+			}
+			else {
+				var result = document.getElementById("search_business");
+				$.post("/search_business/" + business_name + "/" + state + "/" + review_count + "/" + star_small + "/" + star_big, function (data, status) {
+					var get_data = JSON.parse(data);
+					var para = document.getElementById("search_business_result");
+					for (var key_num in get_data) {
+						var item = get_data[key_num];
+						var item_block = document.createElement("div");
+						item_block.className = "widget-shadow";
+						var item_seperate = document.createElement("hr");
+						item_block.appendChild(item_seperate);
+						for (var key in item) {
+							var line = document.createElement("div")
+							var name = document.createElement("div");
+							name.className = "col-sm-3"
+							var line_name = document.createElement("p");
+							var content_name = document.createTextNode(key);
+							line_name.appendChild(content_name);
+							name.appendChild(line_name);
+							line.appendChild(name);
+							var value = document.createElement("div");
+							value.className = "col-sm-8"
+							var line_value = document.createElement("p");
+							var content_value = document.createTextNode(item[key]);
+							line_value.appendChild(content_value);
+							value.appendChild(line_value);
+							line.appendChild(value);
+							item_block.appendChild(line);
+						}
+						para.appendChild(item_block);
 					}
-					para.appendChild(item_block);
-				}
-				result.style.display = "block";
-			});
+					result.style.display = "block";
+				});
+			}
 		}
 	</script>
 	<hr style="margin-left: 25%; margin-right: 10%;">
@@ -277,11 +288,16 @@
 	<img style="margin-left: 20%;display:none; text-align:center;" id="img_wordcloud">
 	<script>
 		function wordcloud() {
-            var business_id = document.getElementById("wordcloud").value;
-            var img_wordcloud = document.getElementById("img_wordcloud");
-            $("#img_wordcloud").attr("src", "/wordcloud/image/" + business_id);
-            img_wordcloud.style.display = "block";
-        }
+			var business_id = document.getElementById("wordcloud").value;
+			if (business_id == "") {
+				alert("Invalid Input: Empty Input.");
+			}
+			else {
+				var img_wordcloud = document.getElementById("img_wordcloud");
+				$("#img_wordcloud").attr("src", "/wordcloud/image/" + business_id);
+				img_wordcloud.style.display = "block";
+			}
+		}
 	</script>
 	<hr style="margin-left: 25%; margin-right: 10%;">
 	<div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
@@ -311,92 +327,97 @@
 			var visited = document.getElementById("visited");
 			var para = document.getElementById("recommendation_block");
 			var user_id_display = document.getElementById("user_id_display");
-			$.post("/recommend/" + user_id + "/" + option_num, function (data, status) {
-				// alert(data)
-				// var user_id_display = document.getElementById("user_id_display");
-				var id_content = document.createTextNode("User ID: " + user_id);
-				var id_h = document.createElement("h5");
-				id_h.style = "text-transform:none;";
-				id_h.appendChild(id_content);
-				user_id_display.appendChild(id_h);
-				var recommend = JSON.parse(data);
-				for (var i = 0; i < option_num; i++) {
-					var div = document.createElement("div");
-					div.className = "widget-shadow";
-					var title = document.createElement("div");
-					title.className = "form-title";
-					var body = document.createElement("div");
-					body.className = "form-body";
-					var title_h = document.createElement("h5");
-					title_h.style = "text-transform:none;";
-					var title_content = document.createTextNode("Recommendation " + String(i + 1));
-					title_h.appendChild(title_content);
-					title.appendChild(title_h);
-					var name_content = document.createTextNode("Business name: " + recommend["0"][i]["name"]);
-					var category_content = document.createTextNode("Category: " + recommend["0"][i]["category"]);
-					var stars_content = document.createTextNode("Stars: " + recommend["0"][i]["stars"]);
-					var address_content = document.createTextNode("Address: " + recommend["0"][i]["address"]);
-					var name = document.createElement("h6");
-					name.style = "text-transform:none;";
-					var category = document.createElement("h6");
-					category.style = "text-transform:none;";
-					var stars = document.createElement("h6");
-					stars.style = "text-transform:none;";
-					var address = document.createElement("h6");
-					address.style = "text-transform:none;";
-					name.appendChild(name_content);
-					category.appendChild(category_content);
-					stars.appendChild(stars_content);
-					address.appendChild(address_content);
-					body.appendChild(name);
-					body.appendChild(category);
-					body.appendChild(stars);
-					body.appendChild(address);
-					div.appendChild(title);
-					div.appendChild(body);
-					para.appendChild(div);
-				}
-				// alert(recommend["1"].length)
-				// alert(recommend["1"][0]["name"])
-				for (var i = 0; i < recommend["1"].length; i++) {
-					var div = document.createElement("div");
-					div.className = "widget-shadow";
-					var title = document.createElement("div");
-					title.className = "form-title";
-					var body = document.createElement("div");
-					body.className = "form-body";
-					var title_h = document.createElement("h5");
-					title_h.style = "text-transform:none;";
-					var title_content = document.createTextNode("Visited " + String(i + 1));
-					title_h.appendChild(title_content);
-					title.appendChild(title_h);
-					var visited_name_content = document.createTextNode("Business name: " + recommend["1"][i]["name"]);
-					var category_content = document.createTextNode("Category: " + recommend["1"][i]["categories"]);
-					var stars_content = document.createTextNode("Stars: " + recommend["1"][i]["stars"]);
-					var address_content = document.createTextNode("Address: " + recommend["1"][i]["address"]);
-					var visited_name = document.createElement("h6");
-					visited_name.style = "text-transform:none;";
-					var category = document.createElement("h6");
-					category.style = "text-transform:none;";
-					var stars = document.createElement("h6");
-					stars.style = "text-transform:none;";
-					var address = document.createElement("h6");
-					address.style = "text-transform:none;";
-					visited_name.appendChild(visited_name_content);
-					category.appendChild(category_content);
-					stars.appendChild(stars_content);
-					address.appendChild(address_content);
-					body.appendChild(visited_name);
-					body.appendChild(category);
-					body.appendChild(stars);
-					body.appendChild(address);
-					div.appendChild(title);
-					div.appendChild(body);
-					visited.appendChild(div);
-				}
-				user_info_box.style.display = "block";
-				para.style.display = "block";
-			})
+			if (user_id == "" || option_num == "") {
+				alert("Invalid Input: Missing Input.");
+			}
+			else {
+				$.post("/recommend/" + user_id + "/" + option_num, function (data, status) {
+					// alert(data)
+					// var user_id_display = document.getElementById("user_id_display");
+					var id_content = document.createTextNode("User ID: " + user_id);
+					var id_h = document.createElement("h5");
+					id_h.style = "text-transform:none;";
+					id_h.appendChild(id_content);
+					user_id_display.appendChild(id_h);
+					var recommend = JSON.parse(data);
+					for (var i = 0; i < option_num; i++) {
+						var div = document.createElement("div");
+						div.className = "widget-shadow";
+						var title = document.createElement("div");
+						title.className = "form-title";
+						var body = document.createElement("div");
+						body.className = "form-body";
+						var title_h = document.createElement("h5");
+						title_h.style = "text-transform:none;";
+						var title_content = document.createTextNode("Recommendation " + String(i + 1));
+						title_h.appendChild(title_content);
+						title.appendChild(title_h);
+						var name_content = document.createTextNode("Business name: " + recommend["0"][i]["name"]);
+						var category_content = document.createTextNode("Category: " + recommend["0"][i]["category"]);
+						var stars_content = document.createTextNode("Stars: " + recommend["0"][i]["stars"]);
+						var address_content = document.createTextNode("Address: " + recommend["0"][i]["address"]);
+						var name = document.createElement("h6");
+						name.style = "text-transform:none;";
+						var category = document.createElement("h6");
+						category.style = "text-transform:none;";
+						var stars = document.createElement("h6");
+						stars.style = "text-transform:none;";
+						var address = document.createElement("h6");
+						address.style = "text-transform:none;";
+						name.appendChild(name_content);
+						category.appendChild(category_content);
+						stars.appendChild(stars_content);
+						address.appendChild(address_content);
+						body.appendChild(name);
+						body.appendChild(category);
+						body.appendChild(stars);
+						body.appendChild(address);
+						div.appendChild(title);
+						div.appendChild(body);
+						para.appendChild(div);
+					}
+					// alert(recommend["1"].length)
+					// alert(recommend["1"][0]["name"])
+					for (var i = 0; i < recommend["1"].length; i++) {
+						var div = document.createElement("div");
+						div.className = "widget-shadow";
+						var title = document.createElement("div");
+						title.className = "form-title";
+						var body = document.createElement("div");
+						body.className = "form-body";
+						var title_h = document.createElement("h5");
+						title_h.style = "text-transform:none;";
+						var title_content = document.createTextNode("Visited " + String(i + 1));
+						title_h.appendChild(title_content);
+						title.appendChild(title_h);
+						var visited_name_content = document.createTextNode("Business name: " + recommend["1"][i]["name"]);
+						var category_content = document.createTextNode("Category: " + recommend["1"][i]["categories"]);
+						var stars_content = document.createTextNode("Stars: " + recommend["1"][i]["stars"]);
+						var address_content = document.createTextNode("Address: " + recommend["1"][i]["address"]);
+						var visited_name = document.createElement("h6");
+						visited_name.style = "text-transform:none;";
+						var category = document.createElement("h6");
+						category.style = "text-transform:none;";
+						var stars = document.createElement("h6");
+						stars.style = "text-transform:none;";
+						var address = document.createElement("h6");
+						address.style = "text-transform:none;";
+						visited_name.appendChild(visited_name_content);
+						category.appendChild(category_content);
+						stars.appendChild(stars_content);
+						address.appendChild(address_content);
+						body.appendChild(visited_name);
+						body.appendChild(category);
+						body.appendChild(stars);
+						body.appendChild(address);
+						div.appendChild(title);
+						div.appendChild(body);
+						visited.appendChild(div);
+					}
+					user_info_box.style.display = "block";
+					para.style.display = "block";
+				})
+			}
 		}
 	</script>
 	<br />
