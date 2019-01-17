@@ -18,7 +18,7 @@ def askMongo(dict):
     print(result)
     return result
 
-numberlist = ["latitude", "longitude", "stars", "review_count", "average_star", "rstars"]
+numberlist = ["latitude", "longitude", "star", "review_count", "average_star", "rstars"]
 
 def generalQuery(db, dict):
     print("enter generalQuery")
@@ -35,6 +35,11 @@ def generalQuery(db, dict):
         result["error"] = "Collection " + dict["collection"] + " doesn't find"
         return result 
     
+    docs = collection.find({})
+    for doc in docs:
+        result[0] = list(doc.keys())
+        break
+
     index = 1
     for i in range(len(dict["key"])):
         if dict["key"][i] not in numberlist:
@@ -42,22 +47,12 @@ def generalQuery(db, dict):
         elif dict["key"][i] == "star" and dict["value"][i][0] == dict["value"][i][1]:
             docs = collection.find({"star" : float(dict["value"][i][0])})
         elif dict["key"][i] == "star":
-            docs = collection.find({"star" : {"$gte" : float(dict["value"][i][0]), "$lte" : float(dict["value"][i][0])}})
+            docs = collection.find({"star" : {"$gte" : float(dict["value"][i][0]), "$lte" : float(dict["value"][i][1])}})
         else:
             docs = collection.find({dict["key"][i] : float(dict["value"][i])})
         for doc in docs:
             result[index] = doc
             index += 1
-
-    # if dict["key"] in numberlist:
-    #     dict["value"] = float(dict["value"])
-
-    # docs = collection.find({dict["key"] : dict["value"]})
-
-    # index = 1
-    # for doc in docs:
-    #     result[index] = doc
-    #     index += 1
     
     return result
 
