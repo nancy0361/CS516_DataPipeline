@@ -137,10 +137,33 @@
 			<input type="button" class="btn btn-default" value="Check Profile" onclick="search_user()">
 		</form>
 	</div>
-	<div id="search_user" style="display:none;margin-left: 20%;">
-		<br />
-		<h5>result</h5>
-		<div id="search_user_result"></div>
+
+	<div style="margin-left: 20%;" class="bs-example widget-shadow" id="contextual-table">
+		<h4>Colored Rows Table:</h4>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Column heading</th>
+					<th>Column heading</th>
+					<th>Column heading</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="active">
+					<th scope="row">1</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+				<tr>
+					<th scope="row">6</th>
+					<td>Column content</td>
+					<td>Column content</td>
+					<td>Column content</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 	<script>
 		function search_user() {
@@ -184,6 +207,7 @@
 					}
 					result.style.display = "block";
 				});
+
 			}
 
 		}
@@ -221,11 +245,25 @@
 			<input type="button" class="btn btn-default" value="See Result" onclick="search_business()">
 		</form>
 	</div>
-	<div id="search_business" style="display:none;margin-left: 20%;">
+	<div id="search_business" class="bs-example widget-shadow" style="display:none;margin-left: 20%;">
+		<br />
+		<h4>Search Result:</h4>
+		<table class="table">
+			<thead>
+				<tr id="search_business_title">
+					<th>#</th>
+				</tr>
+			</thead>
+			<tbody id="search_business_result">
+
+			</tbody>
+		</table>
+	</div>
+	<!-- <div id="search_business" style="display:none;margin-left: 20%;">
 		<br />
 		<h5>result</h5>
 		<div id="search_business_result"></div>
-	</div>
+	</div> -->
 	<script>
 		function search_business() {
 			var business_name = document.getElementById('business_name').value;
@@ -276,6 +314,39 @@
 						para.appendChild(item_block);
 					}
 					result.style.display = "block";
+				});
+				$.post("/search_business/" + business_name + "/" + state + "/" + review_count + "/" + star_small + "/" + star_big, function (data, status) {
+					var get_data = JSON.parse(data);
+					var title_list = get_data[0];
+					var table = document.getElementById("search_business");
+					var titles = document.getElementById("search_business_title");
+					var result = document.getElementById("search_business_result");
+					for (var title in title_list){
+						var title_th = document.createElement("th");
+						var title_value = document.createTextNode(title);
+						title_th.appendChild(title_value);
+					}
+					for (var key_num in get_data) {
+						if(key_num == 0){
+							continue;
+						}
+						var item = get_data[key_num];
+						var line = document.createElement("tr");
+						if (key_num % 2 == 0) {
+							line.className = 'active';
+						}
+						var num = document.createElement('th');
+						var num_value = document.createTextNode(String(key_num));
+						num.scope = "row";
+						num.appendChild(num_value);
+						for(var title in title_list){
+							var content_td = document.createElement("td");
+							var content_value = document.createTextNode(item[title]);
+							content_td.appendChild(content_value);
+						}
+						result.appendChild(line);
+					}
+					table.style.display = "block";
 				});
 			}
 		}
