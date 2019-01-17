@@ -206,7 +206,7 @@
 				<li class="col-sm-3">
 					<label style="font-size: 18px;" for="review_count">Number of Reviews</label><br>
 					<input class="form-control" style="font-size: 18px; width: 100%;" type="number" name="review_count" id="review_ount"
-					 min="0">
+					 min="0" value=0>
 				</li>
 				<li class="col-sm-3">
 					<label style="font-size: 18px;" for="star_small">Rating Star Between</label><br>
@@ -230,10 +230,13 @@
 		function search_business() {
 			var business_name = document.getElementById('business_name').value;
 			var state = document.getElementById('state').value;
-			var review_count = document.getElementById('review_count').value;
+			var review_count = 0;
+			if (document.getElementById('review_count') != null) {
+				review_count = document.getElementById('review_count').value;
+			}
 			var star_small = document.getElementById('star_small').value;
 			var star_big = document.getElementById('star_big').value;
-			if (business_name == "" && bstate == "" && review_count == "" && star_small == "" && star_big == "") {
+			if (business_name == "" && state == "" && review_count == "" && star_small == "" && star_big == "") {
 				alert("Invalid Input: Empty Input.");
 			}
 			else {
