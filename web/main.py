@@ -136,7 +136,7 @@ def upload():
 
 @app.route('/analysis')
 def open_analysis_page():
-    return render_template('analysis.html')
+    return render_template('analyze_direct.html')
 
 
 @app.route('/costumer_query')
