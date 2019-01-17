@@ -9,13 +9,15 @@ import findspark
 from io import BytesIO
 from database import *
 import json
+import sys
+sys.path.append('..')
 from dataMining.checkDB import checkStatus
 from dataMining.databaseInit import initializeDatabase
 from dataMining.mongoQuery import askMongo
 from flask_uploads import UploadSet, configure_uploads
 from flask import Flask, render_template, request, send_file
-import sys
-sys.path.append('..')
+
+
 
 findspark.init()
 
@@ -134,7 +136,7 @@ def upload():
 
 @app.route('/analysis')
 def open_analysis_page():
-    return render_template('analyze_direct.html')
+    return render_template('analysis.html')
 
 
 @app.route('/costumer_query')

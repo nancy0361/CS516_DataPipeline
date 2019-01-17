@@ -51,7 +51,9 @@
 
 	<!-- COLORS -->
 	<link rel="stylesheet" id="color" href="../static/css/default.css">
-
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous">
+   	</script>
 </head>
 
 <body class="cbp-spmenu-push">
@@ -185,20 +187,21 @@
 	<div class="offers" style="margin-left: 20%; margin-top: 60px; margin-right: 100px;">
 		<h5>Want to Check The Rating History for Your Business?</h5>
 		<p>Please tell us your business id.</p><br>
-		<form action="" method="post" id="rating_history" name="rating_history">
+		<!-- <form action="" method="post" id="rating_history" name="rating_history"> -->
 			<label style="font-size: 18px;" for="business_id_rating">Business ID</label>
 			<input class="form-control" style="font-size: 18px; width: 30%;" type="text" name="business_id_rating" id="business_id_rating"
 			 placeholder="UTm5QZThPQlT35mkAcGOjg">
 			<br><br><br>
 			<input type="button" class="btn btn-default" value="Check Information" onclick="rating_history()">
-		</form>
+		<!-- </form> -->
 	</div>
 	<img style="margin-left:20%;display:none; text-align:center;" id="img_ratings">
 	<script>
 		function rating_history() {
             var business_id = document.getElementById("business_id_rating").value;
-            var img_ratings = document.getElementById("img_ratings");
-            $("#img_ratings").attr("src", "/ratings/image/" + business_id);
+			var img_ratings = document.getElementById("img_ratings");
+			$("#img_ratings").attr("src", "/ratings/image/" + business_id);
+			alert(business_id);
             img_ratings.style.display = "block";
         }
 	</script>
