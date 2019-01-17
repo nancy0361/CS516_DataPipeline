@@ -251,10 +251,10 @@ def search_user(user_id, user_name):
     print("Search_user--User_name: " + user_name)
     key = []
     value = []
-    if user_id != '':
+    if user_id != '_':
         key.append('_id')
         value.append(user_id)
-    if user_name != '':
+    if user_name != '_':
         key.append('name')
         value.append(user_name)
     input_dict = {'collection': 'User', "key": key, "value": value}
