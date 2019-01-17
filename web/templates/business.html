@@ -152,8 +152,8 @@
 				alert("Invalid Input: Empty Input.");
 			}
 			else {
-				business_name = (business_name != "") ? business_name : "#";
-				business_id = (business_id != "") ? business_id : "#";
+				business_name = (business_name != "") ? business_name : "_";
+				business_id = (business_id != "") ? business_id : "_";
 				var result = document.getElementById("search_business");
 				$.post("/check_business_info/" + business_id + "/" + business_name, function (data, status) {
 					var get_data = JSON.parse(data);

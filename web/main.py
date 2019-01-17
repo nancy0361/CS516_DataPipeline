@@ -272,19 +272,19 @@ def search_business(business_name, state, review_count, star_small, star_big):
     print("Search_business--Star_big: " + star_big)
     key = []
     value = []
-    if business_name != '':
+    if business_name != '_':
         key.append('name')
         value.append(business_name)
-    if state != '':
+    if state != '_':
         key.append('state')
         value.append(state)
-    if review_count != '':
+    if review_count != '_':
         key.append('review_count')
         value.append(review_count)
     star_max = max(star_small, star_big)
     star_min = min(star_small, star_big)
     star_min = star_min if star_min != '' else star_max
-    if star_max != '':
+    if star_max != '_':
         key.append('star')
         value.append([star_min, star_max])
     input_dict = {'collection': 'Business', "key": key, "value": value}
@@ -298,10 +298,10 @@ def check_business_info(business_id, business_name):
     print("Check_business_info--Business_name: " + business_name)
     key = []
     value = []
-    if business_id != '':
+    if business_id != '_':
         key.append('_id')
         value.append(business_id)
-    if business_name != '':
+    if business_name != '_':
         key.append('name')
         value.append(business_name)
     input_dict = {'collection': 'Business', "key": key, "value": value}
