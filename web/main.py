@@ -281,9 +281,13 @@ def search_business(business_name, state, review_count, star_small, star_big):
     if review_count != '_':
         key.append('review_count')
         value.append(review_count)
-    star_max = max(star_small, star_big)
-    star_min = min(star_small, star_big)
-    star_min = star_min if star_min != '' else star_max
+    print(star_small)
+    print(star_big)
+    star_max = star_big
+    star_min = star_small
+    # star_max = max(star_small, star_big)
+    # star_min = min(star_small, star_big)
+    # star_min = star_min if star_min != '' else star_max
     if star_max != '_':
         key.append('star')
         value.append([star_min, star_max])
