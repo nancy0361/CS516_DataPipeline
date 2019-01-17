@@ -323,8 +323,10 @@
 					var result = document.getElementById("search_business_result");
 					for (var title in title_list){
 						var title_th = document.createElement("th");
+						var title_p = document.createElement("p");
 						var title_value = document.createTextNode(title);
-						title_th.appendChild(title_value);
+						title_p.appendChild(title_value);
+						title_th.appendChild(title_p);
 					}
 					for (var key_num in get_data) {
 						if(key_num == 0){
