@@ -245,7 +245,7 @@
 			<input type="button" class="btn btn-default" value="See Result" onclick="search_business()">
 		</form>
 	</div>
-	<div id="search_business" class="bs-example widget-shadow" style="display:none;margin-left: 20%;">
+	<div id="search_business" class="bs-example widget-shadow" style="display:none;margin-left: 20%;margin-right: 40px;">
 		<br />
 		<h4>Search Result:</h4>
 		<table class="table">
@@ -323,10 +323,9 @@
 					var result = document.getElementById("search_business_result");
 					for (var title in title_list){
 						var title_th = document.createElement("th");
-						var title_p = document.createElement("p");
-						var title_value = document.createTextNode(title);
-						title_p.appendChild(title_value);
-						title_th.appendChild(title_p);
+						var title_value = document.createTextNode(title_list[title]);
+						title_th.appendChild(title_value);
+						titles.appendChild(title_th);
 					}
 					for (var key_num in get_data) {
 						if(key_num == 0){
@@ -343,7 +342,7 @@
 						num.appendChild(num_value);
 						for(var title in title_list){
 							var content_td = document.createElement("td");
-							var content_value = document.createTextNode(item[title]);
+							var content_value = document.createTextNode(item[title_list[title]]);
 							content_td.appendChild(content_value);
 						}
 						result.appendChild(line);
