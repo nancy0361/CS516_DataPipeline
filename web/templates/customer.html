@@ -340,9 +340,9 @@
 						var num_value = document.createTextNode(String(key_num));
 						num.scope = "row";
 						num.appendChild(num_value);
+						line.appendChild(num);
 						for(var title in title_list){
 							var content_td = document.createElement("td");
-							alert(item[title_list[title]]);
 							var content_value = document.createTextNode(item[title_list[title]]);
 							content_td.appendChild(content_value);
 							line.appendChild(content_td);
