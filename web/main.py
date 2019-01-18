@@ -103,7 +103,7 @@ def open_acknowledge():
 def open_status():
     report = checkStatus()
     print(report)
-    return render_template('status.html')
+    return render_template('status.html', report=report)
 
 
 dataset = UploadSet(name='dataset', extensions='json')
