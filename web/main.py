@@ -216,6 +216,7 @@ def show_distribution(state):
 
 @app.route("/wordcloud/image/<business_id>", methods=['Get'])
 def show_wordcloud(business_id):
+    print(business_id)
     wordcloud = get_wordcloud(business_id)
     plt.imshow(wordcloud)
     plt.axis('off')  # remove axis

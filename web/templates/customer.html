@@ -315,17 +315,18 @@
 			<label style="font-size: 18px;" for="wordcloud">Business ID: </label>
 			<input class="form-control" style="font-size: 18px; width: 20%;" type="text" name="wordcloud" id="wordcloud">
 			<br><br><br>
-			<input type="button" class="btn btn-default" value="Check Key Words" onclick="wordcloud()">
+			<input type="button" class="btn btn-default" value="Check Key Words" onclick="wordcloud_func()">
 		</form>
 	</div>
 	<img style="margin-left: 20%;display:none; text-align:center;" id="img_wordcloud">
 	<script>
-		function wordcloud() {
+		function wordcloud_func() {
 			var business_id = document.getElementById("wordcloud").value;
 			if (business_id == "") {
 				alert("Invalid Input: Empty Input.");
 			}
 			else {
+				alert(business_id);
 				var img_wordcloud = document.getElementById("img_wordcloud");
 				$("#img_wordcloud").attr("src", "/wordcloud/image/" + business_id);
 				img_wordcloud.style.display = "block";
