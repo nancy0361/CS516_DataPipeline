@@ -51,7 +51,9 @@
 
 	<!-- COLORS -->
 	<link rel="stylesheet" id="color" href="../static/css/default.css">
-
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	 crossorigin="anonymous">
+	</script>
 </head>
 
 <body class="cbp-spmenu-push" onload="show_status()">
@@ -117,6 +119,10 @@
 		<h4 style="color: #252525;font-size: 24px;">Database Snapshot</h4>
 		<hr>
 	</div>
+	<div class="heading text-center" style="display:none;margin-top:30px;" id="report">
+		<h4 style="color: #252525;font-size: 24px;">Database Creation Report</h4>
+		<hr>
+	</div>
 	<div id="db_info" style="margin-left: 20%;display:none;margin-bottom: 100px;">
 
 	</div>
@@ -129,7 +135,7 @@
 				contentType: "application/json",
 				data: JSON.stringify(""),
 				success: function (data, status) {
-					alert("Database create successfully. Pleale look at the creation report.");
+					// alert("Database create successfully. Pleale look at the creation report.");
 
 					var info = data;
 
@@ -202,26 +208,6 @@
 			});
 		}
 	</script>
-	<!-- <div style="margin-left: 20%; margin-top: 60px;">
-		<ul class="row">
-			<li class="col-sm-5">
-			</li>
-			<li class="col-sm-4">
-
-			</li>
-		</ul>
-	</div>
-	<br>
-	<br>
-	<div style="margin-left: 20%; margin-top: 60px;">
-		<p>Database Name: {{report.Database.db}}</p><br />
-		<p>This Database has {{report.Database.collections}} tables.</p><br />
-		<p>They are {{report.Collection.collection_names}}</p>
-	</div>
-	<br>
-	<br>
-	<br>
-	<br> -->
 </body>
 
 </html>

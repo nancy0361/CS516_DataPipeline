@@ -106,11 +106,11 @@ def open_status():
     # return render_template('status.html', report=report)
     return render_template('status.html')
 
-@app.route('/status_content', methods=["Get"])
+@app.route('/status_content', methods=["Post"])
 def show_status():
     report = checkStatus()
     print(report)
-    return report
+    return json.dumps(report)
 
 
 dataset = UploadSet(name='dataset', extensions='json')
@@ -131,7 +131,7 @@ def open_analysis_page():
     return render_template('analyze_direct.html')
 
 
-@app.route('customer_query')
+@app.route('/customer_query')
 def open_customer_page():
     return render_template('customer.html')
 
