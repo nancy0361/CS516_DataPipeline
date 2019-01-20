@@ -137,33 +137,19 @@
 			<input type="button" class="btn btn-default" value="Check Profile" onclick="search_user()">
 		</form>
 	</div>
-
-	<div style="margin-left: 20%;" class="bs-example widget-shadow" id="contextual-table">
-		<h4>Colored Rows Table:</h4>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>#</th>
-					<th>Column heading</th>
-					<th>Column heading</th>
-					<th>Column heading</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class="active">
-					<th scope="row">1</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-				<tr>
-					<th scope="row">6</th>
-					<td>Column content</td>
-					<td>Column content</td>
-					<td>Column content</td>
-				</tr>
-			</tbody>
-		</table>
+	<div id="search_user" style="display:none;margin-left: 20%;margin-right: 40px;">
+		<h4>Search Result:</h4>
+		<div class="bs-example widget-shadow">
+			<table class="table">
+				<thead>
+					<tr id="search_user_title">
+						<th style="margin-left: 20px;">#</th>
+					</tr>
+				</thead>
+				<tbody id="search_user_result">
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<script>
 		function search_user() {
@@ -175,41 +161,44 @@
 			else {
 				user_id = (user_id != "") ? user_id : "_";
 				user_name = (user_name != "") ? user_name : "_";
-				var result = document.getElementById("search_user");
 				$.post("/search_user/" + user_id + "/" + user_name, function (data, status) {
 					var get_data = JSON.parse(data);
-					var para = document.getElementById("search_user_result");
-					for (var key_num in get_data) {
-						var item = get_data[key_num];
-						var item_block = document.createElement("div");
-						item_block.className = "widget-shadow";
-						var item_seperate = document.createElement("hr");
-						item_block.appendChild(item_seperate);
-						for (var key in item) {
-							var line = document.createElement("div")
-							var name = document.createElement("div");
-							name.className = "col-sm-3"
-							var line_name = document.createElement("p");
-							var content_name = document.createTextNode(key);
-							line_name.appendChild(content_name);
-							name.appendChild(line_name);
-							line.appendChild(name);
-							var value = document.createElement("div");
-							value.className = "col-sm-8"
-							var line_value = document.createElement("p");
-							var content_value = document.createTextNode(item[key]);
-							line_value.appendChild(content_value);
-							value.appendChild(line_value);
-							line.appendChild(value);
-							item_block.appendChild(line);
-						}
-						para.appendChild(item_block);
+					var title_list = get_data[0];
+					var table = document.getElementById("search_user");
+					var titles = document.getElementById("search_user_title");
+					var result = document.getElementById("search_user_result");
+					for (var title in title_list) {
+						var title_th = document.createElement("th");
+						var title_value = document.createTextNode(title_list[title]);
+						title_th.appendChild(title_value);
+						titles.appendChild(title_th);
 					}
-					result.style.display = "block";
+					for (var key_num in get_data) {
+						if (key_num == 0) {
+							continue;
+						}
+						var item = get_data[key_num];
+						var line = document.createElement("tr");
+						if (key_num % 2 == 0) {
+							line.className = 'active';
+						}
+						var num = document.createElement('th');
+						var num_value = document.createTextNode(String(key_num));
+						num.style = "margin-left: 20px;"
+						num.scope = "row";
+						num.appendChild(num_value);
+						line.appendChild(num);
+						for (var title in title_list) {
+							var content_td = document.createElement("td");
+							var content_value = document.createTextNode(item[title_list[title]]);
+							content_td.appendChild(content_value);
+							line.appendChild(content_td);
+						}
+						result.appendChild(line);
+					}
+					table.style.display = "block";
 				});
-
 			}
-
 		}
 	</script>
 	<br>
@@ -245,25 +234,20 @@
 			<input type="button" class="btn btn-default" value="See Result" onclick="search_business()">
 		</form>
 	</div>
-	<div id="search_business" class="bs-example widget-shadow" style="display:none;margin-left: 20%;margin-right: 40px;">
-		<br />
+	<div id="search_business" style="display:none;margin-left: 20%;margin-right: 40px;">
 		<h4>Search Result:</h4>
-		<table class="table">
-			<thead>
-				<tr id="search_business_title">
-					<th>#</th>
-				</tr>
-			</thead>
-			<tbody id="search_business_result">
-
-			</tbody>
-		</table>
+		<div class="bs-example widget-shadow">
+			<table class="table">
+				<thead>
+					<tr id="search_business_title">
+						<th style="margin-left: 20px;">#</th>
+					</tr>
+				</thead>
+				<tbody id="search_business_result">
+				</tbody>
+			</table>
+		</div>
 	</div>
-	<!-- <div id="search_business" style="display:none;margin-left: 20%;">
-		<br />
-		<h5>result</h5>
-		<div id="search_business_result"></div>
-	</div> -->
 	<script>
 		function search_business() {
 			var business_name = document.getElementById('business_name').value;
@@ -283,52 +267,20 @@
 				review_count = (review_count != "") ? review_count : "_";
 				star_small = (star_small != "") ? star_small : "_";
 				star_big = (star_big != "") ? star_big : "_";
-				// var result = document.getElementById("search_business");
-				// $.post("/search_business/" + business_name + "/" + state + "/" + review_count + "/" + star_small + "/" + star_big, function (data, status) {
-				// 	var get_data = JSON.parse(data);
-				// 	var para = document.getElementById("search_business_result");
-				// 	for (var key_num in get_data) {
-				// 		var item = get_data[key_num];
-				// 		var item_block = document.createElement("div");
-				// 		item_block.className = "widget-shadow";
-				// 		var item_seperate = document.createElement("hr");
-				// 		item_block.appendChild(item_seperate);
-				// 		for (var key in item) {
-				// 			var line = document.createElement("div")
-				// 			var name = document.createElement("div");
-				// 			name.className = "col-sm-3"
-				// 			var line_name = document.createElement("p");
-				// 			var content_name = document.createTextNode(key);
-				// 			line_name.appendChild(content_name);
-				// 			name.appendChild(line_name);
-				// 			line.appendChild(name);
-				// 			var value = document.createElement("div");
-				// 			value.className = "col-sm-8"
-				// 			var line_value = document.createElement("p");
-				// 			var content_value = document.createTextNode(item[key]);
-				// 			line_value.appendChild(content_value);
-				// 			value.appendChild(line_value);
-				// 			line.appendChild(value);
-				// 			item_block.appendChild(line);
-				// 		}
-				// 		para.appendChild(item_block);
-				// 	}
-				// 	result.style.display = "block";
-				// });
 				$.post("/search_business/" + business_name + "/" + state + "/" + review_count + "/" + star_small + "/" + star_big, function (data, status) {
 					var get_data = JSON.parse(data);
 					var title_list = get_data[0];
 					var table = document.getElementById("search_business");
 					var titles = document.getElementById("search_business_title");
 					var result = document.getElementById("search_business_result");
-					for (var title in title_list){
+					for (var title in title_list) {
 						var title_th = document.createElement("th");
 						var title_value = document.createTextNode(title_list[title]);
 						title_th.appendChild(title_value);
 						titles.appendChild(title_th);
 					}
 					for (var key_num in get_data) {
-						if(key_num == 0){
+						if (key_num == 0) {
 							continue;
 						}
 						var item = get_data[key_num];
@@ -338,10 +290,11 @@
 						}
 						var num = document.createElement('th');
 						var num_value = document.createTextNode(String(key_num));
+						num.style = "margin-left: 20px;"
 						num.scope = "row";
 						num.appendChild(num_value);
 						line.appendChild(num);
-						for(var title in title_list){
+						for (var title in title_list) {
 							var content_td = document.createElement("td");
 							var content_value = document.createTextNode(item[title_list[title]]);
 							content_td.appendChild(content_value);
