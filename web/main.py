@@ -101,9 +101,16 @@ def open_acknowledge():
 
 @app.route('/status', methods=["Get"])
 def open_status():
+    # report = checkStatus()
+    # print(report)
+    # return render_template('status.html', report=report)
+    return render_template('status.html')
+
+@app.route('/status_content', methods=["Get"])
+def show_status():
     report = checkStatus()
     print(report)
-    return render_template('status.html', report=report)
+    return report
 
 
 dataset = UploadSet(name='dataset', extensions='json')
@@ -118,28 +125,13 @@ def upload():
         return render_template('upload.html', temp="Upload Successfully")
     return render_template('upload.html')
 
-# @app.route('/bubble-chart')
-# def bubble_chart():
-#     test = [
-#         {"text": "Java", "count": "236"},
-#         {"text": ".Net", "count": "382"},
-#         {"text": "Php", "count": "170"},
-#         {"text": "Ruby", "count": "123"},
-#         {"text": "D", "count": "12"},
-#         {"text": "Python", "count": "170"},
-#         {"text": "C/C++", "count": "382"},
-#         {"text": "Pascal", "count": "10"},
-#         {"text": "Something", "count": "170"},
-#       ]
-#     return render_template('bubble_chart.html', temp=json.dumps(test))
-
 
 @app.route('/analysis')
 def open_analysis_page():
     return render_template('analyze_direct.html')
 
 
-@app.route('/costumer_query')
+@app.route('customer_query')
 def open_customer_page():
     return render_template('customer.html')
 
@@ -187,14 +179,6 @@ def show_ratings(business_id):
     img.seek(0)
     return send_file(img, mimetype='image/png')
 
-# @app.route("/ratings")
-# def ratings_page():
-#     return render_template("ratings.html", title="ratings")
-
-# @app.route("/distribution", methods=['Get'])
-# def distribution_page():
-#     return render_template("distribution.html", title="distribution of stars")
-
 
 @app.route("/distribution/image/<state>", methods=['Get'])
 def show_distribution(state):
@@ -224,10 +208,6 @@ def show_wordcloud(business_id):
     plt.savefig(img)
     img.seek(0)
     return send_file(img, mimetype='text/plain')
-
-# @app.route("/wordcloud", methods=['Get'])
-# def wordcloud_page():
-#     return render_template('wordcloud.html', title="wordcloud")
 
 
 @app.route('/recommendation')

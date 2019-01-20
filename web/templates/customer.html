@@ -326,7 +326,6 @@
 				alert("Invalid Input: Empty Input.");
 			}
 			else {
-				alert(business_id);
 				var img_wordcloud = document.getElementById("img_wordcloud");
 				$("#img_wordcloud").attr("src", "/wordcloud/image/" + business_id);
 				img_wordcloud.style.display = "block";
@@ -365,8 +364,6 @@
 			}
 			else {
 				$.post("/recommend/" + user_id + "/" + option_num, function (data, status) {
-					// alert(data)
-					// var user_id_display = document.getElementById("user_id_display");
 					var id_content = document.createTextNode("User ID: " + user_id);
 					var id_h = document.createElement("h5");
 					id_h.style = "text-transform:none;";
@@ -409,8 +406,6 @@
 						div.appendChild(body);
 						para.appendChild(div);
 					}
-					// alert(recommend["1"].length)
-					// alert(recommend["1"][0]["name"])
 					for (var i = 0; i < recommend["1"].length; i++) {
 						var div = document.createElement("div");
 						div.className = "widget-shadow";
