@@ -133,7 +133,7 @@
 
 	</div> -->
 	<div class="col-sm-7" id="db_info" style="display:none;margin-left: 20%;margin-right: 40px;">
-		<div class="bs-example widget-shadow">
+		<div class="bs-example" style="font-size:20px;">
 			<table class="table">
 				<tbody id="db_info_items">
 				</tbody>
@@ -242,9 +242,9 @@
 						var i = 1;
 						for (var key in info["Database"]) {
 							var line = document.createElement("tr");
-							if (i % 2 == 0) {
-								line.className = 'active';
-							}
+							// if (i % 2 == 0) {
+							// 	line.className = 'active';
+							// }
 							var title = document.createElement("td");
 							var title_content = document.createTextNode(key);
 							title.appendChild(title_content);
