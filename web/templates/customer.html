@@ -353,12 +353,12 @@
 	</div>
 	<script>
 		function get_user_id() {
-			var user_info_box = document.getElementById("user_info");
+			// var user_info_box = document.getElementById("user_info");
 			var user_id = document.getElementById("user_id_rec").value;
 			var option_num = document.getElementById("rec_num").value;
-			var visited = document.getElementById("visited");
-			var para = document.getElementById("recommendation_block");
-			var user_id_display = document.getElementById("user_id_display");
+			// var visited = document.getElementById("visited");
+			// var para = document.getElementById("recommendation_block");
+			// var user_id_display = document.getElementById("user_id_display");
 			if (user_id == "" || option_num == "") {
 				alert("Invalid Input: Missing Input.");
 			}
@@ -445,6 +445,12 @@
 					// user_info_box.style.display = "block";
 					// para.style.display = "block";
 					var recommend = JSON.parse(data);
+					var show_user_info = document.getElementById('user_id_name');
+					var info_h = document.createElement('h4');
+					var info_content = document.createTextNode('User ID: ' + user_id + '             User Name: ' + recommend["2"]);
+					info_h.appendChild(info_content);
+					show_user_info.appendChild(info_h);
+					show_user_info.style.display = 'block';
 					var visited_table = document.getElementById("visited");
 					var visited_title = document.getElementById("visited_title");
 					var visited_result = document.getElementById("visited_result");
@@ -530,7 +536,10 @@
 		<div class="col-md-4" style="display: none;" id="visited"> </div>
 		<div class="col-md-4" style="display: none;" id="recommendation_block"> </div>
 	</div> -->
-	<div class="col-sm-8" id="visited" style="display:none;margin-left: 20%;margin-right: 40px;">
+	<div id='user_id_name'style="display:none;margin-left: 20%;margin-right: 40px;">
+
+	</div>
+	<div class="col-sm-8" id="visited" style="display:none; margin-top:10px;margin-left: 20%;margin-right: 40px;">
 		<h4>Visited:</h4>
 		<div class="bs-example widget-shadow">
 			<table class="table">
