@@ -53,13 +53,16 @@ def make_pred(user_id, n=5):
     print("user_id " + str(user_id))
     user_idn = user[user_id]
     visited = all_visited[user_idn]
+    print(visited)
     test_user = sqlc.createDataFrame([Row(user_idn=user_idn, business_idn=float(
         i)) for i in list(set(range(n_business)).difference(set(visited)))])
 
     pred_test = best_model.transform(test_user).na.fill(-5.0)
+    print(pred_test)
     top_pred = pred_test.orderBy(desc('prediction')).select(
         'business_idn').rdd.map(lambda row: row.business_idn).take(int(n))
-    response = list(map(lambda idn: rest[idn], top_pred))
+    # response = list(map(lambda idn: rest[idn], top_pred))
+    response = list(sorted(map(lambda idn: rest[idn], top_pred), key=lambda k: k['stars'], reverse=True))
     # response_visited = list(sorted(map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True)[:int(n)])
     response_visited = list(sorted(
         map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True))
