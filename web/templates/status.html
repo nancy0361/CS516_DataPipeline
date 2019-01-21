@@ -140,6 +140,23 @@
 			</table>
 		</div>
 	</div>
+	<div id="coll_info" style="display:none;margin-left: 20%;margin-right: 40px;">
+		<h4>Collections Information:</h4>
+		<div class="bs-example widget-shadow">
+			<table class="table">
+				<thead>
+					<tr id="coll_info_title">
+						<th>Name</th>
+						<th>Primary Key</th>
+						<th>Records Number</th>
+						<th>Table Size</th>
+					</tr>
+				</thead>
+				<tbody id="coll_info_result">
+				</tbody>
+			</table>
+		</div>
+	</div>
 	<script>
 		function show_status() {
 			$.ajax({
@@ -240,6 +257,13 @@
 							i = i + 1;
 						}
 						table.style.display = "block";
+						for (var j = 0; j < info["Collection"]['collection_names'].length; j++) {
+							var coll_name = info["Collection"]['collection_names'][j];
+							var coll_line = document.createElement("tr");
+							if(j % 2 == 1){
+								coll_line.className = 'active';
+							}
+						}
 					}
 				}
 			});
