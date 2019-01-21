@@ -140,6 +140,8 @@
 			</table>
 		</div>
 	</div>
+	<br>
+	<br>
 	<div id="coll_info" style="display:none;margin-left: 20%;margin-right: 40px;">
 		<h4>Collections Information:</h4>
 		<div class="bs-example widget-shadow">
@@ -239,12 +241,8 @@
 						// db_info.style.display = "block";
 						var table = document.getElementById("db_info");
 						var result = document.getElementById("db_info_items");
-						var i = 1;
 						for (var key in info["Database"]) {
 							var line = document.createElement("tr");
-							// if (i % 2 == 0) {
-							// 	line.className = 'active';
-							// }
 							var title = document.createElement("td");
 							var title_content = document.createTextNode(key);
 							title.appendChild(title_content);
@@ -254,16 +252,35 @@
 							value.appendChild(value_content);
 							line.appendChild(value);
 							result.appendChild(line);
-							i = i + 1;
 						}
 						table.style.display = "block";
+						var coll_table = document.getElementById("coll_info");
+						var coll_result = document.getElementById("coll_info_result");
 						for (var j = 0; j < info["Collection"]['collection_names'].length; j++) {
 							var coll_name = info["Collection"]['collection_names'][j];
 							var coll_line = document.createElement("tr");
 							if(j % 2 == 1){
 								coll_line.className = 'active';
 							}
+							var name = document.createElement("td");
+							var name_content = document.createTextNode(String(info["Collection"][coll_name]['Name']));
+							name.appendChild(name_content);
+							coll_line.appendChild(name);
+							var pk = document.createElement("td");
+							var pk_content = document.createTextNode(String(info["Collection"][coll_name]['Primary Key']));
+							pk.appendChild(pk_content);
+							coll_line.appendChild(pk);
+							var rec_num = document.createElement("td");
+							var rec_num_content = document.createTextNode(String(info["Collection"][coll_name]['Records Number']));
+							rec_num.appendChild(rec_num_content);
+							coll_line.appendChild(rec_num);
+							var table_size = document.createElement("td");
+							var table_size_content = document.createTextNode(String(info["Collection"][coll_name]['Table Size']));
+							table_size.appendChild(table_size_content);
+							coll_line.appendChild(table_size);
+							coll_result.appendChild(coll_line);
 						}
+						coll_table.style.display = "block";
 					}
 				}
 			});
