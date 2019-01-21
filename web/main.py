@@ -51,6 +51,14 @@ def random_user():
 def make_pred(user_id, n=5):
     print("n " + str(n))
     print("user_id " + str(user_id))
+
+    conn = MongoClient('127.0.0.1', 27017)
+    db = conn.yelp
+    collection = db.user
+    result = collection.find({"user_id" : str(user_id)})
+    for doc in result:
+        name = doc['name']
+
     user_idn = user[user_id]
     visited = all_visited[user_idn]
     test_user = sqlc.createDataFrame([Row(user_idn=user_idn, business_idn=float(
@@ -64,7 +72,7 @@ def make_pred(user_id, n=5):
     response_visited = list(sorted(
         map(lambda idn: rest[idn], visited), key=lambda k: k['stars'], reverse=True))
     print(response_visited)
-    return json.dumps({0: response, 1: response_visited})
+    return json.dumps({0: response, 1: response_visited, 2: name})
 
 # @app.route("/list", methods=["GET"])
 # def list_ratings():
