@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Homepage</title>
+	<title>Customer</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
@@ -446,10 +446,16 @@
 					// para.style.display = "block";
 					var recommend = JSON.parse(data);
 					var show_user_info = document.getElementById('user_id_name');
-					var info_h = document.createElement('h4');
-					var info_content = document.createTextNode('User ID: ' + user_id + '             User Name: ' + recommend["2"]);
-					info_h.appendChild(info_content);
-					show_user_info.appendChild(info_h);
+					var info_id = document.createElement('h4');
+					info_id.style.textTransform = 'none';
+					var info_id_content = document.createTextNode('User ID:\t\t' + user_id );
+					var info_name = document.createElement('h4');
+					info_name.style.textTransform = 'none';
+					var info_name_content = document.createTextNode('User Name:\t' + recommend["2"]);
+					info_id.appendChild(info_id_content);
+					info_name.appendChild(info_name_content);
+					show_user_info.appendChild(info_id);
+					show_user_info.appendChild(info_name);
 					show_user_info.style.display = 'block';
 					var visited_table = document.getElementById("visited");
 					var visited_title = document.getElementById("visited_title");
@@ -536,11 +542,11 @@
 		<div class="col-md-4" style="display: none;" id="visited"> </div>
 		<div class="col-md-4" style="display: none;" id="recommendation_block"> </div>
 	</div> -->
-	<div id='user_id_name'style="display:none;margin-left: 20%;margin-right: 40px;">
+	<div id='user_id_name'style="display:none;margin-left: 21%;margin-right: 40px;text-transform:none;">
 
 	</div>
 	<div class="col-sm-8" id="visited" style="display:none; margin-top:10px;margin-left: 20%;margin-right: 40px;">
-		<h4>Visited:</h4>
+		<h4 style="text-transform:none;">Visited:</h4>
 		<div class="bs-example widget-shadow">
 			<table class="table">
 				<thead>
@@ -558,7 +564,7 @@
 		</div>
 	</div>
 	<div class="col-sm-8" id="recommendation" style="display:none;margin-left: 20%;margin-right: 40px;">
-		<h4>Recommendation:</h4>
+		<h4 style="text-transform:none;">Recommendation:</h4>
 		<div class="bs-example widget-shadow">
 			<table class="table">
 				<thead>
