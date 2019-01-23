@@ -35,12 +35,6 @@ def generalQuery(db, dict):
         result["error"] = "Collection " + dict["collection"] + " doesn't find"
         return result 
     
-    docs = collection.find({})
-    for doc in docs:
-        result[0] = list(doc.keys())
-        break
-
-    index = 1
     for i in range(len(dict["key"])):
         if dict["key"][i] not in numberlist:
             docs = collection.find({dict["key"][i] : dict["value"][i]})
@@ -50,10 +44,29 @@ def generalQuery(db, dict):
             docs = collection.find({"star" : {"$gte" : float(dict["value"][i][0]), "$lte" : float(dict["value"][i][1])}})
         else:
             docs = collection.find({dict["key"][i] : float(dict["value"][i])})
+        
+        index = 1
+        if i == 0 :
+            for doc in docs:
+                result[index] = doc
+                index += 1
+            continue
+
+        newResult = {}
+        
         for doc in docs:
-            result[index] = doc
-            index += 1
+            for i, item in result.items():
+                print(item)
+                if doc['_id'] == item['_id']:
+                    newResult[index] = doc
+                    index += 1
+                    break
+        result = newResult
     
+    docs = collection.find({})
+    for doc in docs:
+        result[0] = list(doc.keys())
+        break
     return result
 
 if __name__ == '__main__':
